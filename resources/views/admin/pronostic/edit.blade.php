@@ -5,7 +5,10 @@
         <div class="card-header">
             <div class="card-header-container">
                 <h6 class="card-title">
-                    Editer son pronostic
+                    {{ trans('global.edit') }}
+                    {{ trans('cruds.pronostic.title_singular') }}:
+                    {{ trans('cruds.pronostic.fields.id') }}
+                    {{ $pronostic->id }}
                 </h6>
             </div>
         </div>

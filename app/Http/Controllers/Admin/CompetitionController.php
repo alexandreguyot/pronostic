@@ -35,6 +35,8 @@ class CompetitionController extends Controller
     {
         abort_if(Gate::denies('competition_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $competition->load('sport');
+
         return view('admin.competition.show', compact('competition'));
     }
 }

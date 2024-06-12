@@ -202,6 +202,26 @@ class PermissionsTableSeeder extends Seeder
                 'id'    => 48,
                 'title' => 'game_access',
             ],
+            [
+                'id'    => 49,
+                'title' => 'sport_create',
+            ],
+            [
+                'id'    => 50,
+                'title' => 'sport_edit',
+            ],
+            [
+                'id'    => 51,
+                'title' => 'sport_show',
+            ],
+            [
+                'id'    => 52,
+                'title' => 'sport_delete',
+            ],
+            [
+                'id'    => 53,
+                'title' => 'sport_access',
+            ],
         ];
 
         Permission::insert($permissions);

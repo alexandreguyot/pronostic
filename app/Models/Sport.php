@@ -9,27 +9,24 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Competition extends Model
+class Sport extends Model
 {
     use HasFactory, HasAdvancedFilter, SoftDeletes;
 
-    public $table = 'competitions';
+    public $table = 'sports';
 
     protected $fillable = [
         'title',
-        'sport_id',
     ];
 
     public $orderable = [
         'id',
         'title',
-        'sport.title',
     ];
 
     public $filterable = [
         'id',
         'title',
-        'sport.title',
     ];
 
     protected $dates = [
@@ -41,11 +38,6 @@ class Competition extends Model
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
-    }
-
-    public function sport()
-    {
-        return $this->belongsTo(Sport::class);
     }
 
     public function getCreatedAtAttribute($value)

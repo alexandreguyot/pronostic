@@ -75,7 +75,7 @@
                 @can('game_access')
                     <li class="items-center">
                         <a class="{{ request()->is("admin/games*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.games.index") }}">
-                            <i class="fa-fw c-sidebar-nav-icon fas fa-cogs">
+                            <i class="fa-fw c-sidebar-nav-icon fab fa-accusoft">
                             </i>
                             {{ trans('cruds.game.title') }}
                         </a>
@@ -96,6 +96,15 @@
                             <i class="fa-fw c-sidebar-nav-icon fas fa-align-justify">
                             </i>
                             {{ trans('cruds.competition.title') }}
+                        </a>
+                    </li>
+                @endcan
+                @can('sport_access')
+                    <li class="items-center">
+                        <a class="{{ request()->is("admin/sports*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.sports.index") }}">
+                            <i class="fa-fw c-sidebar-nav-icon fas fa-cogs">
+                            </i>
+                            {{ trans('cruds.sport.title') }}
                         </a>
                     </li>
                 @endcan
