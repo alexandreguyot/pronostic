@@ -17,16 +17,22 @@ class Team extends Model
 
     protected $fillable = [
         'name',
+        'sport',
+        'group',
     ];
 
     public $orderable = [
         'id',
         'name',
+        'sport',
+        'group',
     ];
 
     public $filterable = [
         'id',
         'name',
+        'sport',
+        'group',
     ];
 
     protected $dates = [

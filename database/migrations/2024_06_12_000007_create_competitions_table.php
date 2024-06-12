@@ -11,6 +11,7 @@ class CreateCompetitionsTable extends Migration
         Schema::create('competitions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
+            $table->string('sport');
             $table->timestamps();
             $table->softDeletes();
         });

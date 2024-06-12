@@ -49,6 +49,10 @@
                             @include('components.table.sort', ['field' => 'title'])
                         </th>
                         <th>
+                            {{ trans('cruds.competition.fields.sport') }}
+                            @include('components.table.sort', ['field' => 'sport'])
+                        </th>
+                        <th>
                         </th>
                     </tr>
                 </thead>
@@ -63,6 +67,9 @@
                             </td>
                             <td>
                                 {{ $competition->title }}
+                            </td>
+                            <td>
+                                {{ $competition->sport }}
                             </td>
                             <td>
                                 <div class="flex justify-end">
