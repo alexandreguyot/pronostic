@@ -120,7 +120,7 @@ return [
         'title_singular' => 'Classement',
     ],
     'championship' => [
-        'title'          => 'Championnat',
+        'title'          => 'Championnats',
         'title_singular' => 'Championnat',
         'fields'         => [
             'id'                => 'ID',
@@ -138,8 +138,8 @@ return [
         ],
     ],
     'competition' => [
-        'title'          => 'Competitions',
-        'title_singular' => 'Competition',
+        'title'          => 'Compétitions',
+        'title_singular' => 'Compétition',
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => ' ',
@@ -201,5 +201,4 @@ return [
             'deleted_at_helper' => ' ',
         ],
     ],
-
 ];

@@ -5,8 +5,7 @@
         <div class="card-header">
             <div class="card-header-container">
                 <h6 class="card-title">
-                    {{ trans('global.create') }}
-                    {{ trans('cruds.permission.title_singular') }}
+                    Créer une permission
                 </h6>
             </div>
         </div>
