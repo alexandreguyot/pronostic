@@ -35,6 +35,14 @@ class Create extends Component
                 'string',
                 'required',
             ],
+            'team.sport' => [
+                'string',
+                'required',
+            ],
+            'team.group' => [
+                'string',
+                'nullable',
+            ],
         ];
     }
 }

@@ -10,6 +10,16 @@
             {{ trans('cruds.competition.fields.title_helper') }}
         </div>
     </div>
+    <div class="form-group {{ $errors->has('competition.sport') ? 'invalid' : '' }}">
+        <label class="form-label required" for="sport">{{ trans('cruds.competition.fields.sport') }}</label>
+        <input class="form-control" type="text" name="sport" id="sport" required wire:model.defer="competition.sport">
+        <div class="validation-message">
+            {{ $errors->first('competition.sport') }}
+        </div>
+        <div class="help-block">
+            {{ trans('cruds.competition.fields.sport_helper') }}
+        </div>
+    </div>
 
     <div class="form-group">
         <button class="btn btn-indigo mr-2" type="submit">

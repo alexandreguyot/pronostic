@@ -17,16 +17,19 @@ class Competition extends Model
 
     protected $fillable = [
         'title',
+        'sport',
     ];
 
     public $orderable = [
         'id',
         'title',
+        'sport',
     ];
 
     public $filterable = [
         'id',
         'title',
+        'sport',
     ];
 
     protected $dates = [

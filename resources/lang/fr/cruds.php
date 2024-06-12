@@ -96,8 +96,8 @@ return [
         'title_singular' => 'Paramètre',
     ],
     'team' => [
-        'title'          => 'Teams',
-        'title_singular' => 'Team',
+        'title'          => 'Equipes',
+        'title_singular' => 'Equipe',
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => ' ',
@@ -109,6 +109,10 @@ return [
             'updated_at_helper' => ' ',
             'deleted_at'        => 'Deleted at',
             'deleted_at_helper' => ' ',
+            'sport'             => 'Sport',
+            'sport_helper'      => ' ',
+            'group'             => 'Groupe',
+            'group_helper'      => ' ',
         ],
     ],
     'classement' => [
@@ -134,7 +138,7 @@ return [
         ],
     ],
     'competition' => [
-        'title'          => 'Competition',
+        'title'          => 'Competitions',
         'title_singular' => 'Competition',
         'fields'         => [
             'id'                => 'ID',
@@ -147,6 +151,8 @@ return [
             'updated_at_helper' => ' ',
             'deleted_at'        => 'Deleted at',
             'deleted_at_helper' => ' ',
+            'sport'             => 'Sport',
+            'sport_helper'      => ' ',
         ],
     ],
     'game' => [

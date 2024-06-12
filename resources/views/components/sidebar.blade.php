@@ -72,42 +72,31 @@
                         </a>
                     </li>
                 @endcan
-                @can('parametre_access')
+                @can('game_access')
                     <li class="items-center">
-                        <a class="has-sub {{ request()->is("admin/games*")||request()->is("admin/teams*")||request()->is("admin/competitions*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="#" onclick="window.openSubNav(this)">
-                            <i class="fa-fw fas c-sidebar-nav-icon fa-cogs">
+                        <a class="{{ request()->is("admin/games*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.games.index") }}">
+                            <i class="fa-fw c-sidebar-nav-icon fas fa-cogs">
                             </i>
-                            {{ trans('cruds.parametre.title') }}
+                            {{ trans('cruds.game.title') }}
                         </a>
-                        <ul class="ml-4 subnav hidden">
-                            @can('game_access')
-                                <li class="items-center">
-                                    <a class="{{ request()->is("admin/games*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.games.index") }}">
-                                        <i class="fa-fw c-sidebar-nav-icon fas fa-cogs">
-                                        </i>
-                                        {{ trans('cruds.game.title') }}
-                                    </a>
-                                </li>
-                            @endcan
-                            @can('team_access')
-                                <li class="items-center">
-                                    <a class="{{ request()->is("admin/teams*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.teams.index") }}">
-                                        <i class="fa-fw c-sidebar-nav-icon fas fa-align-justify">
-                                        </i>
-                                        {{ trans('cruds.team.title') }}
-                                    </a>
-                                </li>
-                            @endcan
-                            @can('competition_access')
-                                <li class="items-center">
-                                    <a class="{{ request()->is("admin/competitions*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.competitions.index") }}">
-                                        <i class="fa-fw c-sidebar-nav-icon fas fa-align-justify">
-                                        </i>
-                                        {{ trans('cruds.competition.title') }}
-                                    </a>
-                                </li>
-                            @endcan
-                        </ul>
+                    </li>
+                @endcan
+                @can('team_access')
+                    <li class="items-center">
+                        <a class="{{ request()->is("admin/teams*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.teams.index") }}">
+                            <i class="fa-fw c-sidebar-nav-icon fas fa-align-justify">
+                            </i>
+                            {{ trans('cruds.team.title') }}
+                        </a>
+                    </li>
+                @endcan
+                @can('competition_access')
+                    <li class="items-center">
+                        <a class="{{ request()->is("admin/competitions*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.competitions.index") }}">
+                            <i class="fa-fw c-sidebar-nav-icon fas fa-align-justify">
+                            </i>
+                            {{ trans('cruds.competition.title') }}
+                        </a>
                     </li>
                 @endcan
                 @can('user_management_access')

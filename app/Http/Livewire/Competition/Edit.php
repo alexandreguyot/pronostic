@@ -35,6 +35,10 @@ class Edit extends Component
                 'string',
                 'required',
             ],
+            'competition.sport' => [
+                'string',
+                'required',
+            ],
         ];
     }
 }
