@@ -5,10 +5,7 @@
         <div class="card-header">
             <div class="card-header-container">
                 <h6 class="card-title">
-                    {{ trans('global.edit') }}
-                    {{ trans('cruds.sport.title_singular') }}:
-                    {{ trans('cruds.sport.fields.id') }}
-                    {{ $sport->id }}
+                    Editer un sport
                 </h6>
             </div>
         </div>
