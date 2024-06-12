@@ -10,11 +10,11 @@
             {{ trans('cruds.competition.fields.title_helper') }}
         </div>
     </div>
-    <div class="form-group {{ $errors->has('competition.sport') ? 'invalid' : '' }}">
+    <div class="form-group {{ $errors->has('competition.sport_id') ? 'invalid' : '' }}">
         <label class="form-label required" for="sport">{{ trans('cruds.competition.fields.sport') }}</label>
-        <input class="form-control" type="text" name="sport" id="sport" required wire:model.defer="competition.sport">
+        <x-select-list class="form-control" required id="sport" name="sport" :options="$this->listsForFields['sport']" wire:model="competition.sport_id" />
         <div class="validation-message">
-            {{ $errors->first('competition.sport') }}
+            {{ $errors->first('competition.sport_id') }}
         </div>
         <div class="help-block">
             {{ trans('cruds.competition.fields.sport_helper') }}

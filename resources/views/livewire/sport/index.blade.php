@@ -8,16 +8,16 @@
                 @endforeach
             </select>
 
-            @can('permission_delete')
+            @can('sport_delete')
                 <button class="btn btn-rose ml-3 disabled:opacity-50 disabled:cursor-not-allowed" type="button" wire:click="confirm('deleteSelected')" wire:loading.attr="disabled" {{ $this->selectedCount ? '' : 'disabled' }}>
                     {{ __('Delete Selected') }}
                 </button>
             @endcan
 
             @if(file_exists(app_path('Http/Livewire/ExcelExport.php')))
-                <livewire:excel-export model="Permission" format="csv" />
-                <livewire:excel-export model="Permission" format="xlsx" />
-                <livewire:excel-export model="Permission" format="pdf" />
+                <livewire:excel-export model="Sport" format="csv" />
+                <livewire:excel-export model="Sport" format="xlsx" />
+                <livewire:excel-export model="Sport" format="pdf" />
             @endif
 
 
@@ -41,11 +41,11 @@
                         <th class="w-9">
                         </th>
                         <th class="w-28">
-                            {{ trans('cruds.permission.fields.id') }}
+                            {{ trans('cruds.sport.fields.id') }}
                             @include('components.table.sort', ['field' => 'id'])
                         </th>
                         <th>
-                            {{ trans('cruds.permission.fields.title') }}
+                            {{ trans('cruds.sport.fields.title') }}
                             @include('components.table.sort', ['field' => 'title'])
                         </th>
                         <th>
@@ -53,31 +53,31 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse($permissions as $permission)
+                    @forelse($sports as $sport)
                         <tr>
                             <td>
-                                <input type="checkbox" value="{{ $permission->id }}" wire:model="selected">
+                                <input type="checkbox" value="{{ $sport->id }}" wire:model="selected">
                             </td>
                             <td>
-                                {{ $permission->id }}
+                                {{ $sport->id }}
                             </td>
                             <td>
-                                {{ $permission->title }}
+                                {{ $sport->title }}
                             </td>
                             <td>
                                 <div class="flex justify-end">
-                                    @can('permission_show')
-                                        <a class="btn btn-sm btn-info mr-2" href="{{ route('admin.permissions.show', $permission) }}">
+                                    @can('sport_show')
+                                        <a class="btn btn-sm btn-info mr-2" href="{{ route('admin.sports.show', $sport) }}">
                                             {{ trans('global.view') }}
                                         </a>
                                     @endcan
-                                    @can('permission_edit')
-                                        <a class="btn btn-sm btn-success mr-2" href="{{ route('admin.permissions.edit', $permission) }}">
+                                    @can('sport_edit')
+                                        <a class="btn btn-sm btn-success mr-2" href="{{ route('admin.sports.edit', $sport) }}">
                                             {{ trans('global.edit') }}
                                         </a>
                                     @endcan
-                                    @can('permission_delete')
-                                        <button class="btn btn-sm btn-rose mr-2" type="button" wire:click="confirm('delete', {{ $permission->id }})" wire:loading.attr="disabled">
+                                    @can('sport_delete')
+                                        <button class="btn btn-sm btn-rose mr-2" type="button" wire:click="confirm('delete', {{ $sport->id }})" wire:loading.attr="disabled">
                                             {{ trans('global.delete') }}
                                         </button>
                                     @endcan
@@ -104,7 +104,7 @@
                     {{ __('Entries selected') }}
                 </p>
             @endif
-            {{ $permissions->links() }}
+            {{ $sports->links() }}
         </div>
     </div>
 </div>

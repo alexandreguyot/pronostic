@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Livewire\Competition;
+namespace App\Http\Livewire\Sport;
 
 use App\Http\Livewire\WithConfirmation;
 use App\Http\Livewire\WithSorting;
-use App\Models\Competition;
+use App\Models\Sport;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Gate;
 use Livewire\Component;
@@ -62,35 +62,35 @@ class Index extends Component
         $this->sortDirection     = 'desc';
         $this->perPage           = 100;
         $this->paginationOptions = config('project.pagination.options');
-        $this->orderable         = (new Competition())->orderable;
+        $this->orderable         = (new Sport())->orderable;
     }
 
     public function render()
     {
-        $query = Competition::with(['sport'])->advancedFilter([
+        $query = Sport::advancedFilter([
             's'               => $this->search ?: null,
             'order_column'    => $this->sortBy,
             'order_direction' => $this->sortDirection,
         ]);
 
-        $competitions = $query->paginate($this->perPage);
+        $sports = $query->paginate($this->perPage);
 
-        return view('livewire.competition.index', compact('competitions', 'query'));
+        return view('livewire.sport.index', compact('query', 'sports'));
     }
 
     public function deleteSelected()
     {
-        abort_if(Gate::denies('competition_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('sport_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        Competition::whereIn('id', $this->selected)->delete();
+        Sport::whereIn('id', $this->selected)->delete();
 
         $this->resetSelected();
     }
 
-    public function delete(Competition $competition)
+    public function delete(Sport $sport)
     {
-        abort_if(Gate::denies('competition_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('sport_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $competition->delete();
+        $sport->delete();
     }
 }

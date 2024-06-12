@@ -5,7 +5,8 @@
         <div class="card-header">
             <div class="card-header-container">
                 <h6 class="card-title">
-                   Créer une championnat
+                    {{ trans('global.create') }}
+                    {{ trans('cruds.championship.title_singular') }}
                 </h6>
             </div>
         </div>
