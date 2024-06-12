@@ -8,6 +8,8 @@ use Livewire\Component;
 
 class Create extends Component
 {
+    public array $sport = [];
+
     public Competition $competition;
 
     public array $listsForFields = [];
@@ -28,6 +30,7 @@ class Create extends Component
         $this->validate();
 
         $this->competition->save();
+        $this->competition->sport()->sync($this->sport);
 
         return redirect()->route('admin.competitions.index');
     }
@@ -39,10 +42,13 @@ class Create extends Component
                 'string',
                 'required',
             ],
-            'competition.sport_id' => [
+            'sport' => [
+                'required',
+                'array',
+            ],
+            'sport.*.id' => [
                 'integer',
                 'exists:sports,id',
-                'required',
             ],
         ];
     }

@@ -70,6 +70,16 @@
             {{ trans('cruds.game.fields.exterior_score_helper') }}
         </div>
     </div>
+    <div class="form-group {{ $errors->has('game.sport_id') ? 'invalid' : '' }}">
+        <label class="form-label required" for="sport">{{ trans('cruds.game.fields.sport') }}</label>
+        <x-select-list class="form-control" required id="sport" name="sport" :options="$this->listsForFields['sport']" wire:model="game.sport_id" />
+        <div class="validation-message">
+            {{ $errors->first('game.sport_id') }}
+        </div>
+        <div class="help-block">
+            {{ trans('cruds.game.fields.sport_helper') }}
+        </div>
+    </div>
 
     <div class="form-group">
         <button class="btn btn-indigo mr-2" type="submit">

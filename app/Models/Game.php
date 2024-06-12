@@ -30,6 +30,7 @@ class Game extends Model
         'home_score',
         'exterior_team_id',
         'exterior_score',
+        'sport_id',
     ];
 
     public $orderable = [
@@ -41,6 +42,7 @@ class Game extends Model
         'home_score',
         'exterior_team.name',
         'exterior_score',
+        'sport.title',
     ];
 
     public $filterable = [
@@ -52,6 +54,7 @@ class Game extends Model
         'home_score',
         'exterior_team.name',
         'exterior_score',
+        'sport.title',
     ];
 
     protected function serializeDate(DateTimeInterface $date)
@@ -82,6 +85,11 @@ class Game extends Model
     public function exteriorTeam()
     {
         return $this->belongsTo(Team::class);
+    }
+
+    public function sport()
+    {
+        return $this->belongsTo(Sport::class);
     }
 
     public function getCreatedAtAttribute($value)

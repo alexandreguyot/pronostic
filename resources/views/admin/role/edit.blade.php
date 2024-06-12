@@ -5,7 +5,10 @@
         <div class="card-header">
             <div class="card-header-container">
                 <h6 class="card-title">
-                    Editer un rôle
+                    {{ trans('global.edit') }}
+                    {{ trans('cruds.role.title_singular') }}:
+                    {{ trans('cruds.role.fields.id') }}
+                    {{ $role->id }}
                 </h6>
             </div>
         </div>

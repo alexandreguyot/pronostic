@@ -15,6 +15,8 @@ class AddRelationshipFieldsToGamesTable extends Migration
             $table->foreign('home_team_id', 'home_team_fk_9862338')->references('id')->on('teams');
             $table->unsignedBigInteger('exterior_team_id')->nullable();
             $table->foreign('exterior_team_id', 'exterior_team_fk_9862340')->references('id')->on('teams');
+            $table->unsignedBigInteger('sport_id')->nullable();
+            $table->foreign('sport_id', 'sport_fk_9865388')->references('id')->on('sports');
         });
     }
 }

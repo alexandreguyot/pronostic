@@ -35,7 +35,7 @@ class GameController extends Controller
     {
         abort_if(Gate::denies('game_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $game->load('competition', 'homeTeam', 'exteriorTeam');
+        $game->load('competition', 'homeTeam', 'exteriorTeam', 'sport');
 
         return view('admin.game.show', compact('game'));
     }

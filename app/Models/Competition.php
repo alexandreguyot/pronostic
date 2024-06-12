@@ -17,13 +17,11 @@ class Competition extends Model
 
     protected $fillable = [
         'title',
-        'sport_id',
     ];
 
     public $orderable = [
         'id',
         'title',
-        'sport.title',
     ];
 
     public $filterable = [
@@ -45,7 +43,7 @@ class Competition extends Model
 
     public function sport()
     {
-        return $this->belongsTo(Sport::class);
+        return $this->belongsToMany(Sport::class);
     }
 
     public function getCreatedAtAttribute($value)
