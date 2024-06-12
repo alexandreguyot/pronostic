@@ -120,7 +120,7 @@ return [
         'title_singular' => 'Classement',
     ],
     'championship' => [
-        'title'          => 'Championnats',
+        'title'          => 'Championnat',
         'title_singular' => 'Championnat',
         'fields'         => [
             'id'                => 'ID',
@@ -138,8 +138,8 @@ return [
         ],
     ],
     'competition' => [
-        'title'          => 'Compétitions',
-        'title_singular' => 'Compétition',
+        'title'          => 'Competitions',
+        'title_singular' => 'Competition',
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => ' ',
@@ -181,6 +181,8 @@ return [
             'updated_at_helper'     => ' ',
             'deleted_at'            => 'Deleted at',
             'deleted_at_helper'     => ' ',
+            'sport'                 => 'Sport',
+            'sport_helper'          => ' ',
         ],
     ],
     'sport' => [
@@ -199,4 +201,5 @@ return [
             'deleted_at_helper' => ' ',
         ],
     ],
+
 ];

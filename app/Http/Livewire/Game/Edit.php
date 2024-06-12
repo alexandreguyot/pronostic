@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Game;
 
 use App\Models\Competition;
 use App\Models\Game;
+use App\Models\Sport;
 use App\Models\Team;
 use Livewire\Component;
 
@@ -71,6 +72,11 @@ class Edit extends Component
                 'max:2147483647',
                 'required',
             ],
+            'game.sport_id' => [
+                'integer',
+                'exists:sports,id',
+                'required',
+            ],
         ];
     }
 
@@ -79,5 +85,6 @@ class Edit extends Component
         $this->listsForFields['competition']   = Competition::pluck('title', 'id')->toArray();
         $this->listsForFields['home_team']     = Team::pluck('name', 'id')->toArray();
         $this->listsForFields['exterior_team'] = Team::pluck('name', 'id')->toArray();
+        $this->listsForFields['sport']         = Sport::pluck('title', 'id')->toArray();
     }
 }

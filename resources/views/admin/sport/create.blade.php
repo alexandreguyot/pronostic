@@ -5,7 +5,8 @@
         <div class="card-header">
             <div class="card-header-container">
                 <h6 class="card-title">
-                    Créer un sport
+                    {{ trans('global.create') }}
+                    {{ trans('cruds.sport.title_singular') }}
                 </h6>
             </div>
         </div>

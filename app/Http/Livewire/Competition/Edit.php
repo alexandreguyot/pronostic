@@ -8,6 +8,8 @@ use Livewire\Component;
 
 class Edit extends Component
 {
+    public array $sport = [];
+
     public Competition $competition;
 
     public array $listsForFields = [];
@@ -15,6 +17,7 @@ class Edit extends Component
     public function mount(Competition $competition)
     {
         $this->competition = $competition;
+        $this->sport       = $this->competition->sport()->pluck('id')->toArray();
         $this->initListsForFields();
     }
 
@@ -28,6 +31,7 @@ class Edit extends Component
         $this->validate();
 
         $this->competition->save();
+        $this->competition->sport()->sync($this->sport);
 
         return redirect()->route('admin.competitions.index');
     }
@@ -39,10 +43,13 @@ class Edit extends Component
                 'string',
                 'required',
             ],
-            'competition.sport_id' => [
+            'sport' => [
+                'required',
+                'array',
+            ],
+            'sport.*.id' => [
                 'integer',
                 'exists:sports,id',
-                'required',
             ],
         ];
     }
