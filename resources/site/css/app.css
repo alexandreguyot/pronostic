@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "/node_modules/flag-icons/css/flag-icons.min.css";
+
+.fi.icons{
+    border-radius: 50%;
+    line-height: 3em;
+    width: 3em;
+}
+
+.bg-gradient-date {
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.2) 100%);
+}
+
+.bg-gradient-title {
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.5) 100%);
+}
+
+body {
+    background: #1772D7;
+    background: linear-gradient(90deg, #1772D7 0%, #1751AF 100%);
+    color: white;
+}
+

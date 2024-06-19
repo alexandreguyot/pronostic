@@ -70,7 +70,7 @@ return [
         ],
     ],
     'pronostic' => [
-        'title'          => 'Pronostic',
+        'title'          => 'Pronostics',
         'title_singular' => 'Pronostic',
         'fields'         => [
             'id'                    => 'ID',
@@ -116,12 +116,12 @@ return [
         ],
     ],
     'classement' => [
-        'title'          => 'Classement',
+        'title'          => 'Classements',
         'title_singular' => 'Classement',
     ],
-    'championship' => [
-        'title'          => 'Championnats',
-        'title_singular' => 'Championnat',
+    'league' => [
+        'title'          => 'Ligues',
+        'title_singular' => 'Ligue',
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => ' ',
@@ -133,8 +133,10 @@ return [
             'updated_at_helper' => ' ',
             'deleted_at'        => 'Deleted at',
             'deleted_at_helper' => ' ',
-            'user'              => 'User',
+            'user'              => 'Utilisateurs',
             'user_helper'       => ' ',
+            'competition'        => 'Compétitions',
+            'competition_helper' => ' ',
         ],
     ],
     'competition' => [

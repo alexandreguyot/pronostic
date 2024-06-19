@@ -1,21 +1,21 @@
-<nav class="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-white flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6">
-    <div class="md:flex-col md:items-stretch md:min-h-full md:flex-nowrap px-0 flex flex-wrap items-center justify-between w-full mx-auto">
-        <button class="cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent" type="button" onclick="toggleNavbar('example-collapse-sidebar')">
+<nav class="relative z-10 flex flex-wrap items-center justify-between px-6 py-4 bg-white shadow-xl md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden md:w-64">
+    <div class="flex flex-wrap items-center justify-between w-full px-0 mx-auto md:flex-col md:items-stretch md:min-h-full md:flex-nowrap">
+        <button class="px-3 py-1 text-xl leading-none text-black bg-transparent border border-transparent border-solid rounded opacity-50 cursor-pointer md:hidden" type="button" onclick="toggleNavbar('example-collapse-sidebar')">
             <i class="fas fa-bars"></i>
         </button>
-        <a class="md:block text-left md:pb-2 text-blueGray-700 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0" href="{{ route('admin.home') }}">
+        <a class="inline-block p-4 px-0 mr-0 text-sm font-bold text-left uppercase md:block md:pb-2 text-blueGray-700 whitespace-nowrap" href="{{ route('admin.home') }}">
             {{ trans('panel.site_title') }}
         </a>
-        <div class="md:flex md:flex-col md:items-stretch md:opacity-100 md:relative md:mt-4 md:shadow-none shadow absolute top-0 left-0 right-0 z-40 overflow-y-auto overflow-x-hidden h-auto items-center flex-1 rounded hidden" id="example-collapse-sidebar">
-            <div class="md:min-w-full md:hidden block pb-4 mb-4 border-b border-solid border-blueGray-300">
+        <div class="absolute top-0 left-0 right-0 z-40 items-center flex-1 hidden h-auto overflow-x-hidden overflow-y-auto rounded shadow md:flex md:flex-col md:items-stretch md:opacity-100 md:relative md:mt-4 md:shadow-none" id="example-collapse-sidebar">
+            <div class="block pb-4 mb-4 border-b border-solid md:min-w-full md:hidden border-blueGray-300">
                 <div class="flex flex-wrap">
                     <div class="w-6/12">
-                        <a class="md:block text-left md:pb-2 text-blueGray-700 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0" href="{{ route('admin.home') }}">
+                        <a class="inline-block p-4 px-0 mr-0 text-sm font-bold text-left uppercase md:block md:pb-2 text-blueGray-700 whitespace-nowrap" href="{{ route('admin.home') }}">
                             {{ trans('panel.site_title') }}
                         </a>
                     </div>
-                    <div class="w-6/12 flex justify-end">
-                        <button type="button" class="cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent" onclick="toggleNavbar('example-collapse-sidebar')">
+                    <div class="flex justify-end w-6/12">
+                        <button type="button" class="px-3 py-1 text-xl leading-none text-black bg-transparent border border-transparent border-solid rounded opacity-50 cursor-pointer md:hidden" onclick="toggleNavbar('example-collapse-sidebar')">
                             <i class="fas fa-times"></i>
                         </button>
                     </div>
@@ -23,7 +23,7 @@
             </div>
 
             <form class="mt-6 mb-4 md:hidden">
-                <div class="mb-3 pt-0">
+                <div class="pt-0 mb-3">
                     @livewire('global-search')
                 </div>
             </form>
@@ -37,7 +37,7 @@
             <hr class="mb-6 md:min-w-full" />
             <!-- Heading -->
 
-            <ul class="md:flex-col md:min-w-full flex flex-col list-none">
+            <ul class="flex flex-col list-none md:flex-col md:min-w-full">
                 <li class="items-center">
                     <a href="{{ route("admin.home") }}" class="{{ request()->is("admin") ? "sidebar-nav-active" : "sidebar-nav" }}">
                         <i class="fas fa-tv"></i>
@@ -65,19 +65,19 @@
                 @endcan
                 @can('championship_access')
                     <li class="items-center">
-                        <a class="{{ request()->is("admin/championships*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.championships.index") }}">
+                        <a class="{{ request()->is("admin/leagues*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.leagues.index") }}">
                             <i class="fa-fw c-sidebar-nav-icon fas fa-cogs">
                             </i>
-                            {{ trans('cruds.championship.title') }}
+                            {{ trans('cruds.league.title') }}
                         </a>
                     </li>
                 @endcan
-                @can('game_access')
+                @can('competition_access')
                     <li class="items-center">
-                        <a class="{{ request()->is("admin/games*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.games.index") }}">
-                            <i class="fa-fw c-sidebar-nav-icon fab fa-accusoft">
+                        <a class="{{ request()->is("admin/competitions*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.competitions.index") }}">
+                            <i class="fa-fw c-sidebar-nav-icon fas fa-trophy">
                             </i>
-                            {{ trans('cruds.game.title') }}
+                            {{ trans('cruds.competition.title') }}
                         </a>
                     </li>
                 @endcan
@@ -90,12 +90,11 @@
                         </a>
                     </li>
                 @endcan
-                @can('competition_access')
+                @can('game_access')
                     <li class="items-center">
-                        <a class="{{ request()->is("admin/competitions*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.competitions.index") }}">
-                            <i class="fa-fw c-sidebar-nav-icon fas fa-align-justify">
-                            </i>
-                            {{ trans('cruds.competition.title') }}
+                        <a class="{{ request()->is("admin/games*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.games.index") }}">
+                            <i class="fa-fw c-sidebar-nav-icon fas fa-running"></i>
+                            {{ trans('cruds.game.title') }}
                         </a>
                     </li>
                 @endcan
@@ -115,7 +114,7 @@
                             </i>
                             {{ trans('cruds.userManagement.title') }}
                         </a>
-                        <ul class="ml-4 subnav hidden">
+                        <ul class="hidden ml-4 subnav">
                             @can('permission_access')
                                 <li class="items-center">
                                     <a class="{{ request()->is("admin/permissions*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.permissions.index") }}">

@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Championship;
+use App\Models\League;
 
 class ChampionshipTableSeeder extends Seeder
 {
@@ -13,13 +13,13 @@ class ChampionshipTableSeeder extends Seeder
      */
     public function run(): void
     {
-        $championship = [
+        $league = [
             [
                 'id'                => 1,
                 'title'             => 'Wiztivi Pronostic',
             ]
         ];
 
-        Championship::insert($championship);
+        League::insert($league);
     }
 }

@@ -30,6 +30,10 @@ return [
 
     'env' => env('APP_ENV', 'production'),
 
+    'base_url' => env('APP_BASEURL', 'localhost'), // NEW
+
+    'admin_subdomain' => env('APP_SUBDOMAIN_URL', 'admin'), // NEW
+
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode

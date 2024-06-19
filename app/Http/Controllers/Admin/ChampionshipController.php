@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Championship;
+use App\Models\League;
 use Gate;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -14,29 +14,29 @@ class ChampionshipController extends Controller
     {
         abort_if(Gate::denies('championship_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.championship.index');
+        return view('admin.league.index');
     }
 
     public function create()
     {
         abort_if(Gate::denies('championship_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.championship.create');
+        return view('admin.league.create');
     }
 
-    public function edit(Championship $championship)
+    public function edit(League $league)
     {
         abort_if(Gate::denies('championship_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.championship.edit', compact('championship'));
+        return view('admin.league.edit', compact('league'));
     }
 
-    public function show(Championship $championship)
+    public function show(League $league)
     {
         abort_if(Gate::denies('championship_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $championship->load('user');
+        $league->load('user');
 
-        return view('admin.championship.show', compact('championship'));
+        return view('admin.league.show', compact('league'));
     }
 }
