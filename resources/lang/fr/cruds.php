@@ -137,6 +137,8 @@ return [
             'user_helper'       => ' ',
             'competition'        => 'Compétitions',
             'competition_helper' => ' ',
+            'sport'        => 'Sports',
+            'sport_helper' => 'sélectionnez une compétition avant',
         ],
     ],
     'competition' => [

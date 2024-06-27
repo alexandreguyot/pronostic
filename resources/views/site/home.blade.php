@@ -5,29 +5,41 @@
     </div>
 
     <div class="flex flex-col justify-center w-full">
-        <div class="flex justify-center w-full bg-gradient-date text-white py-2 text-sm">
-            Vendredi 14 juin
-        </div>
-        <div class="flex py-2">
-            <div class="flex flex-col items-center justify-center w-1/3">
-                <span class="icons fi fi-de fis"></span>
-                <p>Allemagne</p>
+        @foreach ($games as $game)
+            <div class="flex justify-between w-full bg-gradient-date text-white px-4 py-2 text-sm">
+                @if($game->competition)
+                    <span>{{ $game->competition->title ?? '' }}</span>
+                @endif
+                <span>{{ $game->getDateView() }}</span>
+                @if($game->sport)
+                    <span>{{ $game->sport->title ?? '' }}</span>
+                @endif
             </div>
-            <div class="flex items-center justify-center w-1/3">
-                <div class="flex flex-col items-center">
-                    <div class="mb-2">
-                        J1 - 17:00
-                    </div>
-                    <div class="flex space-x-4 w-full">
-                        <input type="text" maxlength="3" class="block py-3 text-sm font-extrabold text-center text-gray-900 bg-white border border-gray-300 rounded-lg w-9 h-9 focus:ring-primary-500 focus:border-primary-500" required />
-                        <input type="text" maxlength="3" class="block py-3 text-sm font-extrabold text-center text-gray-900 bg-white border border-gray-300 rounded-lg w-9 h-9 focus:ring-primary-500 focus:border-primary-500" required />
+            <div class="flex py-2">
+                <div class="flex flex-col items-center justify-center w-1/3">
+                    @if($game->homeTeam)
+                        <span class="icons {{ $game->homeTeam->icon }}"></span>
+                        <p>{{ $game->homeTeam->name ?? '' }}</p>
+                    @endif
+                </div>
+                <div class="flex items-center justify-center w-1/3">
+                    <div class="flex flex-col items-center">
+                        <div class="mb-2">
+                            {{ $game->getHourView() }}
+                        </div>
+                        <div class="flex space-x-4 w-full">
+                            <input type="number" min="1" max="999" inputmode="numeric" class="block py-3 text-sm font-extrabold text-center text-gray-900 bg-white rounded-lg w-16 h-9" />
+                            <input type="number" min="1" max="999" inputmode="numeric" class="block py-3 text-sm font-extrabold text-center text-gray-900 bg-white rounded-lg w-16 h-9" />
+                        </div>
                     </div>
                 </div>
+                <div class="flex flex-col items-center justify-center w-1/3">
+                    @if($game->exteriorTeam)
+                        <span class="icons {{ $game->exteriorTeam->icon }}"></span>
+                        <p>{{ $game->exteriorTeam->name ?? '' }}</p>
+                    @endif
+                </div>
             </div>
-            <div class="flex flex-col items-center justify-center w-1/3">
-                <span class="icons fi fi-gb-sct fis"></span>
-                <p>Ecosse</p>
-            </div>
-        </div>
+        @endforeach
     </div>
 @endsection

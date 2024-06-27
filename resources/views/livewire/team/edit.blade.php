@@ -1,4 +1,4 @@
-<form wire:submit.prevent="submit" class="pt-3">
+<form wire:submit.prevent="submit" class="pt-3 grid grid-cols-2 gap-2">
 
     <div class="form-group {{ $errors->has('team.name') ? 'invalid' : '' }}">
         <label class="form-label required" for="name">{{ trans('cruds.team.fields.name') }}</label>
@@ -10,11 +10,11 @@
             {{ trans('cruds.team.fields.name_helper') }}
         </div>
     </div>
-    <div class="form-group {{ $errors->has('team.sport') ? 'invalid' : '' }}">
+    <div class="form-group {{ $errors->has('team.sport_id') ? 'invalid' : '' }}">
         <label class="form-label required" for="sport">{{ trans('cruds.team.fields.sport') }}</label>
-        <input class="form-control" type="text" name="sport" id="sport" required wire:model.defer="team.sport">
+        <x-select-list class="form-control" required id="sport" name="sport" :options="$this->listsForFields['sport']" wire:model="team.sport_id" />
         <div class="validation-message">
-            {{ $errors->first('team.sport') }}
+            {{ $errors->first('team.sport_id') }}
         </div>
         <div class="help-block">
             {{ trans('cruds.team.fields.sport_helper') }}

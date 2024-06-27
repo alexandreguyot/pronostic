@@ -1,4 +1,4 @@
-<form wire:submit.prevent="submit" class="pt-3">
+<form wire:submit.prevent="submit" class="pt-3 grid grid-cols-2 gap-2">
 
     <div class="form-group {{ $errors->has('game.competition_id') ? 'invalid' : '' }}">
         <label class="form-label required" for="competition">{{ trans('cruds.game.fields.competition') }}</label>
@@ -41,8 +41,8 @@
         </div>
     </div>
     <div class="form-group {{ $errors->has('game.home_score') ? 'invalid' : '' }}">
-        <label class="form-label required" for="home_score">{{ trans('cruds.game.fields.home_score') }}</label>
-        <input class="form-control" type="number" name="home_score" id="home_score" required wire:model.defer="game.home_score" step="1">
+        <label class="form-label" for="home_score">{{ trans('cruds.game.fields.home_score') }}</label>
+        <input class="form-control" type="number" name="home_score" id="home_score" wire:model.defer="game.home_score" step="1">
         <div class="validation-message">
             {{ $errors->first('game.home_score') }}
         </div>
@@ -61,8 +61,8 @@
         </div>
     </div>
     <div class="form-group {{ $errors->has('game.exterior_score') ? 'invalid' : '' }}">
-        <label class="form-label required" for="exterior_score">{{ trans('cruds.game.fields.exterior_score') }}</label>
-        <input class="form-control" type="number" name="exterior_score" id="exterior_score" required wire:model.defer="game.exterior_score" step="1">
+        <label class="form-label" for="exterior_score">{{ trans('cruds.game.fields.exterior_score') }}</label>
+        <input class="form-control" type="number" name="exterior_score" id="exterior_score" wire:model.defer="game.exterior_score" step="1">
         <div class="validation-message">
             {{ $errors->first('game.exterior_score') }}
         </div>

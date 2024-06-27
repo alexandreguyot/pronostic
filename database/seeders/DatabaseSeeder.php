@@ -15,8 +15,10 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             RoleUserTableSeeder::class,
             CompetitionTableSeeder::class,
-            ChampionshipTableSeeder::class,
+            LeagueTableSeeder::class,
             SportTableSeeder::class,
+            TeamTableSeeder::class,
+            GameTableSeeder::class,
         ]);
     }
 }

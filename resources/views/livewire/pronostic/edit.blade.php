@@ -1,4 +1,4 @@
-<form wire:submit.prevent="submit" class="pt-3">
+<form wire:submit.prevent="submit" class="pt-3 grid grid-cols-2 gap-2">
 
     <div class="form-group {{ $errors->has('pronostic.game_id') ? 'invalid' : '' }}">
         <label class="form-label required" for="game">{{ trans('cruds.pronostic.fields.game') }}</label>

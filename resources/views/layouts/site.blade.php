@@ -12,45 +12,43 @@
 </head>
 
 <body>
-    <div class="flex flex-col items-center min-h-screen">
+    <div class="flex flex-col items-center min-h-screen mb-16">
         @yield('content')
-
-        <div class="fixed bottom-0 bg-gradient-title w-full">
-            <div class="flex justify-around text-white">
-                <button class="px-2 py-2 text-white text-xs focus:outline-none">
-                    <div class="flex flex-col items-center justify-center whitespace-nowrap">
-                        <i class="fa-fw c-sidebar-nav-icon fas fa-trophy"></i>
-                        <p>Mes pronos</p>
-                    </div>
-                </button>
-                <button class="px-2 py-2 text-white text-xs focus:outline-none">
-                    <div class="flex flex-col items-center justify-center whitespace-nowrap">
-                        <i class="fa-fw c-sidebar-nav-icon fas fa-trophy"></i>
-                        <p>Résultats</p>
-                    </div>
-                </button>
-                <button class="px-2 py-2 text-white text-xs focus:outline-none">
-                    <div class="flex flex-col items-center justify-center whitespace-nowrap">
-                        <i class="fa-fw c-sidebar-nav-icon fas fa-trophy"></i>
-                        <p>Classements</p>
-                    </div>
-                </button>
-                <button class="px-2 py-2 text-white text-xs focus:outline-none">
-                    <div class="flex flex-col items-center justify-center whitespace-nowrap">
-                        <i class="fa-fw c-sidebar-nav-icon fas fa-trophy"></i>
-                        <p>Mes ligues</p>
-                    </div>
-                </button>
-                <button class="px-2 py-2 text-white text-xs focus:outline-none">
-                    <div class="flex flex-col items-center justify-center whitespace-nowrap">
-                        <i class="fa-fw c-sidebar-nav-icon fas fa-trophy"></i>
-                        <p>Profil</p>
-                    </div>
-                </button>
-            </div>
+    </div>
+    <div class="fixed bottom-0 bg-menu py-4 w-full">
+        <div class="flex justify-around text-white">
+            <button class="px-2 text-white text-sm focus:outline-none">
+                <div class="flex flex-col items-center justify-center whitespace-nowrap">
+                    <i class="fa-fw c-sidebar-nav-icon fas fa-trophy"></i>
+                    <p>Mes pronos</p>
+                </div>
+            </button>
+            <button class="px-2 text-white text-sm focus:outline-none">
+                <div class="flex flex-col items-center justify-center whitespace-nowrap">
+                    <i class="fa-fw c-sidebar-nav-icon fas fa-trophy"></i>
+                    <p>Résultats</p>
+                </div>
+            </button>
+            <button class="px-2 text-white text-sm focus:outline-none">
+                <div class="flex flex-col items-center justify-center whitespace-nowrap">
+                    <i class="fa-fw c-sidebar-nav-icon fas fa-trophy"></i>
+                    <p>Classements</p>
+                </div>
+            </button>
+            <button class="px-2 text-white text-sm focus:outline-none">
+                <div class="flex flex-col items-center justify-center whitespace-nowrap">
+                    <i class="fa-fw c-sidebar-nav-icon fas fa-trophy"></i>
+                    <p>Mes ligues</p>
+                </div>
+            </button>
+            <button class="px-2 text-white text-sm focus:outline-none">
+                <div class="flex flex-col items-center justify-center whitespace-nowrap">
+                    <i class="fa-fw c-sidebar-nav-icon fas fa-trophy"></i>
+                    <p>Profil</p>
+                </div>
+            </button>
         </div>
     </div>
-
     <script type="text/javascript" src="{{ asset('site/js/app.js') }}"></script>
     @livewireScripts
     @yield('scripts')

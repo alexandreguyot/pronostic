@@ -3,14 +3,18 @@
 namespace App\Http\Livewire\Team;
 
 use App\Models\Team;
+use App\Models\Sport;
 use Livewire\Component;
 
 class Create extends Component
 {
     public Team $team;
 
+    public array $listsForFields = [];
+
     public function mount(Team $team)
     {
+        $this->initListsForFields();
         $this->team = $team;
     }
 
@@ -35,14 +39,25 @@ class Create extends Component
                 'string',
                 'required',
             ],
-            'team.sport' => [
-                'string',
+            'team.sport_id' => [
+                'integer',
+                'exists:sports,id',
                 'required',
             ],
+
             'team.group' => [
                 'string',
                 'nullable',
             ],
+            'team.icon' => [
+                'string',
+                'nullable',
+            ],
         ];
+    }
+
+    protected function initListsForFields(): void
+    {
+        $this->listsForFields['sport'] = Sport::pluck('title', 'id')->toArray();
     }
 }

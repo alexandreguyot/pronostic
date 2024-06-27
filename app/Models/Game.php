@@ -77,6 +77,14 @@ class Game extends Model
         $this->attributes['date_time'] = $value ? Carbon::createFromFormat(config('project.datetime_format'), $value)->format('Y-m-d H:i:s') : null;
     }
 
+    public function getDateView() {
+        return Carbon::createFromFormat(config('project.datetime_format'), $this->date_time)->formatLocalized('%A %d %B');
+    }
+
+    public function getHourView() {
+        return Carbon::createFromFormat(config('project.datetime_format'), $this->date_time)->format('H:i');
+    }
+
     public function homeTeam()
     {
         return $this->belongsTo(Team::class);

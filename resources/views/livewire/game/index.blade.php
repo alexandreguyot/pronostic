@@ -12,43 +12,29 @@
             <table class="table w-full table-index">
                 <thead>
                     <tr>
-                        <th class="w-9">
-                        </th>
-                        <th class="w-28">
-                            {{ trans('cruds.game.fields.id') }}
-                            @include('components.table.sort', ['field' => 'id'])
-                        </th>
                         <th>
                             {{ trans('cruds.game.fields.competition') }}
-                            @include('components.table.sort', ['field' => 'competition.title'])
                         </th>
                         <th>
                             {{ trans('cruds.game.fields.tour') }}
-                            @include('components.table.sort', ['field' => 'tour'])
                         </th>
                         <th>
                             {{ trans('cruds.game.fields.date_time') }}
-                            @include('components.table.sort', ['field' => 'date_time'])
                         </th>
                         <th>
                             {{ trans('cruds.game.fields.home_team') }}
-                            @include('components.table.sort', ['field' => 'home_team.name'])
                         </th>
                         <th>
                             {{ trans('cruds.game.fields.home_score') }}
-                            @include('components.table.sort', ['field' => 'home_score'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.game.fields.exterior_team') }}
-                            @include('components.table.sort', ['field' => 'exterior_team.name'])
                         </th>
                         <th>
                             {{ trans('cruds.game.fields.exterior_score') }}
-                            @include('components.table.sort', ['field' => 'exterior_score'])
+                        </th>
+                        <th>
+                            {{ trans('cruds.game.fields.exterior_team') }}
                         </th>
                         <th>
                             {{ trans('cruds.game.fields.sport') }}
-                            @include('components.table.sort', ['field' => 'sport.title'])
                         </th>
                         <th>
                         </th>
@@ -57,12 +43,6 @@
                 <tbody>
                     @forelse($games as $game)
                         <tr>
-                            <td>
-                                <input type="checkbox" value="{{ $game->id }}" wire:model="selected">
-                            </td>
-                            <td>
-                                {{ $game->id }}
-                            </td>
                             <td>
                                 @if($game->competition)
                                     <span class="badge badge-relationship">{{ $game->competition->title ?? '' }}</span>
@@ -83,12 +63,12 @@
                                 {{ $game->home_score }}
                             </td>
                             <td>
+                                {{ $game->exterior_score }}
+                            </td>
+                            <td>
                                 @if($game->exteriorTeam)
                                     <span class="badge badge-relationship">{{ $game->exteriorTeam->name ?? '' }}</span>
                                 @endif
-                            </td>
-                            <td>
-                                {{ $game->exterior_score }}
                             </td>
                             <td>
                                 @if($game->sport)

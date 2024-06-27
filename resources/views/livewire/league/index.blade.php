@@ -17,6 +17,12 @@
                             @include('components.table.sort', ['field' => 'title'])
                         </th>
                         <th>
+                            {{ trans('cruds.league.fields.competition') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.league.fields.sport') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.league.fields.user') }}
                         </th>
                         <th>
@@ -28,6 +34,16 @@
                         <tr>
                             <td>
                                 {{ $league->title }}
+                            </td>
+                            <td>
+                                @if($league->competition)
+                                    <span class="badge badge-relationship">{{ $league->competition->title ?? '' }}</span>
+                                @endif
+                            </td>
+                            <td>
+                                @if($league->sport)
+                                    <span class="badge badge-relationship">{{ $league->sport->title ?? '' }}</span>
+                                @endif
                             </td>
                             <td>
                                 @foreach($league->user as $key => $entry)

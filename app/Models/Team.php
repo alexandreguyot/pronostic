@@ -17,22 +17,23 @@ class Team extends Model
 
     protected $fillable = [
         'name',
-        'sport',
+        'sport_id',
         'group',
+        'icon',
     ];
 
     public $orderable = [
         'id',
         'name',
-        'sport',
-        'group',
+        'sport.title',
+        'icon',
     ];
 
     public $filterable = [
         'id',
         'name',
-        'sport',
-        'group',
+        'sport.title',
+        'icon',
     ];
 
     protected $dates = [
@@ -44,6 +45,11 @@ class Team extends Model
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
+    }
+
+    public function sport()
+    {
+        return $this->belongsTo(Sport::class);
     }
 
     public function getCreatedAtAttribute($value)

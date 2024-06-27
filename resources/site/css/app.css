@@ -15,6 +15,11 @@
     background: linear-gradient(90deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.2) 100%);
 }
 
+.bg-menu {
+    background: #1E3E76;
+    color: white;
+}
+
 .bg-gradient-title {
     background: rgb(0,0,0);
     background: linear-gradient(90deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.5) 100%);

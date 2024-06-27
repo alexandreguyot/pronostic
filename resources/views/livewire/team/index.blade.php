@@ -12,12 +12,6 @@
             <table class="table w-full table-index">
                 <thead>
                     <tr>
-                        <th class="w-9">
-                        </th>
-                        <th class="w-28">
-                            {{ trans('cruds.team.fields.id') }}
-                            @include('components.table.sort', ['field' => 'id'])
-                        </th>
                         <th>
                             {{ trans('cruds.team.fields.name') }}
                             @include('components.table.sort', ['field' => 'name'])
@@ -38,16 +32,12 @@
                     @forelse($teams as $team)
                         <tr>
                             <td>
-                                <input type="checkbox" value="{{ $team->id }}" wire:model="selected">
-                            </td>
-                            <td>
-                                {{ $team->id }}
-                            </td>
-                            <td>
                                 {{ $team->name }}
                             </td>
                             <td>
-                                {{ $team->sport }}
+                                @if($team->sport)
+                                    <span class="badge badge-relationship">{{ $team->sport->title ?? '' }}</span>
+                                @endif
                             </td>
                             <td>
                                 {{ $team->group }}

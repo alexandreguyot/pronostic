@@ -95,14 +95,6 @@
     @apply text-blueGray-600
 }
 
-.form-group {
-    @apply mt-4
-}
-
-.form-group:first-of-type {
-    @apply mt-0
-}
-
 .validation-message {
     display: none;
     @apply text-red-500

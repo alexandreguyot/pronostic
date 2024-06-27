@@ -12,8 +12,8 @@ class CreateGamesTable extends Migration
             $table->bigIncrements('id');
             $table->string('tour')->nullable();
             $table->datetime('date_time');
-            $table->integer('home_score');
-            $table->integer('exterior_score');
+            $table->integer('home_score')->nullable();
+            $table->integer('exterior_score')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

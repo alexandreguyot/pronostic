@@ -57,9 +57,7 @@ class Edit extends Component
             ],
             'game.home_score' => [
                 'integer',
-                'min:-2147483648',
                 'max:2147483647',
-                'required',
             ],
             'game.exterior_team_id' => [
                 'integer',
@@ -68,9 +66,7 @@ class Edit extends Component
             ],
             'game.exterior_score' => [
                 'integer',
-                'min:-2147483648',
                 'max:2147483647',
-                'required',
             ],
             'game.sport_id' => [
                 'integer',

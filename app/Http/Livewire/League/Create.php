@@ -4,13 +4,13 @@ namespace App\Http\Livewire\League;
 
 use App\Models\League;
 use App\Models\User;
+use App\Models\Sport;
 use App\Models\Competition;
 use Livewire\Component;
 
 class Create extends Component
 {
     public array $user = [];
-    public array $competition = [];
 
     public array $listsForFields = [];
 
@@ -33,7 +33,6 @@ class Create extends Component
 
         $this->league->save();
         $this->league->user()->sync($this->user);
-        $this->league->competition()->sync($this->competition);
 
         return redirect()->route('admin.leagues.index');
     }
@@ -52,16 +51,27 @@ class Create extends Component
                 'integer',
                 'exists:users,id',
             ],
-            'competition.*.id' => [
+            'league.competition_id' => [
                 'integer',
                 'exists:competitions,id',
+                'required',
+            ],
+            'league.sport_id' => [
+                'integer',
+                'exists:sports,id',
+                'required',
             ],
         ];
+    }
+
+    public function updatedLeagueCompetitionId($value) {
+        dd('ici', $value);
     }
 
     protected function initListsForFields(): void
     {
         $this->listsForFields['user'] = User::pluck('name', 'id')->toArray();
         $this->listsForFields['competition'] = Competition::pluck('title', 'id')->toArray();
+        $this->listsForFields['sport'] = [];
     }
 }
