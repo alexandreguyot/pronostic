@@ -28,8 +28,8 @@
                             {{ $game->getHourView() }}
                         </div>
                         <div class="flex space-x-4 w-full">
-                            <input type="number" maxlength="3" class="block py-3 text-sm font-extrabold text-center text-gray-900 bg-white rounded-lg w-16 h-9 input-pronostic" />
-                            <input type="number" maxlength="3" class="block py-3 text-sm font-extrabold text-center text-gray-900 bg-white rounded-lg w-16 h-9 input-pronostic" />
+                            <input type="text" class="block py-3 text-sm font-extrabold text-center text-gray-900 bg-white rounded-lg w-16 h-9 input-pronostic" />
+                            <input type="text" class="block py-3 text-sm font-extrabold text-center text-gray-900 bg-white rounded-lg w-16 h-9 input-pronostic" />
                         </div>
                     </div>
                 </div>

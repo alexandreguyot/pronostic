@@ -8,6 +8,7 @@ use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Builder;
 
 class Game extends Model
 {
@@ -114,4 +115,15 @@ class Game extends Model
     {
         return $value ? Carbon::createFromFormat('Y-m-d H:i:s', $value)->format(config('project.datetime_format')) : null;
     }
+
+    public function scopeNotPassed(Builder $builder)
+    {
+        return $builder->where('date_time', '>=', Carbon::now());
+    }
+
+    public function scopePassed(Builder $builder)
+    {
+        return $builder->where('date_time', '<', Carbon::now());
+    }
+
 }

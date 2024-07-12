@@ -44,6 +44,7 @@ return [
     'timeTo'                         => 'à',
     'toggleNavigation'               => 'Basculer la navigation',
     'user_name'                      => 'Nom',
+    'user_firstname'                 => 'Prénom',
     'verifyYourEmail'                => 'Veuillez vérifier votre email',
     'verifyYourUser'                 => 'Consultez l\'email reçu pour terminer votre enregistrement',
     'view'                           => 'Afficher',

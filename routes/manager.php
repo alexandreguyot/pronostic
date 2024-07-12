@@ -19,7 +19,7 @@ Auth::routes(['verify' => true]);
 
 Route::redirect('/', '/login');
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'verified']], function () {
+Route::group(['as' => 'admin.', 'middleware' => ['auth', 'verified']], function () {
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
 

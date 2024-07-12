@@ -1,7 +1,7 @@
 @extends('layouts.site')
 @section('content')
     <div class="flex justify-center w-full bg-gradient-title py-4">
-        <h2 class="font-bold text-xl">Mes Pronos</h2>
+        <h2 class="font-bold text-xl">Résultats</h2>
     </div>
 
     <div class="flex flex-col justify-center w-full">
@@ -28,8 +28,8 @@
                             {{ $game->getHourView() }}
                         </div>
                         <div class="flex space-x-4 w-full">
-                            <input type="number" maxlength="3" class="block py-3 text-sm font-extrabold text-center text-gray-900 bg-white rounded-lg w-16 h-9 input-pronostic" />
-                            <input type="number" maxlength="3" class="block py-3 text-sm font-extrabold text-center text-gray-900 bg-white rounded-lg w-16 h-9 input-pronostic" />
+                            <input type="number" maxlength="3" class="block py-3 text-sm font-extrabold text-center text-gray-900 bg-white rounded-lg w-16 h-9 input-pronostic" disabled/>
+                            <input type="number" maxlength="3" class="block py-3 text-sm font-extrabold text-center text-gray-900 bg-white rounded-lg w-16 h-9 input-pronostic" disabled />
                         </div>
                     </div>
                 </div>

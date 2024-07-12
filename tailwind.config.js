@@ -19,11 +19,10 @@ module.exports = {
         lightBlue: colors.sky,
         orange: colors.orange,
         red: colors.red,
-        topBlue: "1751AF",
-        lightBlueSite: "1772D7",
-        darkBlueSite: "1751AF",
+        topBlue: "#1751AF",
+        lightBlueSite: "#1772D7",
+        darkBlueSite: "#1751AF",
         focusBlueSite: "#3DE6F3"
-
       },
       minHeight: {
         'screen-75': '75vh'

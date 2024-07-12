@@ -63,6 +63,30 @@ class TeamTableSeeder extends Seeder
                 'icon'              => 'fi fi-ss fis'
             ],
             [
+                'name'              => 'Porto Rico',
+                'sport_id'          => 1,
+                'group'             => 'Groupe C',
+                'icon'              => 'fi fi-ss fis'
+            ],
+            [
+                'name'              => 'Espagne',
+                'sport_id'          => 1,
+                'group'             => 'Groupe A',
+                'icon'              => 'fi fi-es fis'
+            ],
+            [
+                'name'              => 'Brésil',
+                'sport_id'          => 1,
+                'group'             => 'Groupe B',
+                'icon'              => 'fi fi-br fis'
+            ],
+            [
+                'name'              => 'Grèce',
+                'sport_id'          => 1,
+                'group'             => 'Groupe A',
+                'icon'              => 'fi fi-gr fis'
+            ],
+            [
                 'name'              => 'France F',
                 'sport_id'             => 2,
                 'group'             => 'Groupe B',
