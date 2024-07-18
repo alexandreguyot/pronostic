@@ -6,9 +6,9 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['verify' => true]);
 
-Route::redirect('/', '/login');
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
+    Route::redirect('/', '/pronostics');
     Route::get('/pronostics', [SiteHomeController::class, 'pronostics'])->name('pronostics');
     Route::get('/resultats', [SiteHomeController::class, 'results'])->name('results');
     Route::get('/classements', [SiteHomeController::class, 'rank'])->name('rank');
