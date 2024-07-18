@@ -67,7 +67,7 @@ class Index extends Component
 
     public function render()
     {
-        $query = Pronostic::with(['game'])->advancedFilter([
+        $query = Pronostic::with(['game', 'user'])->advancedFilter([
             's'               => $this->search ?: null,
             'order_column'    => $this->sortBy,
             'order_direction' => $this->sortDirection,

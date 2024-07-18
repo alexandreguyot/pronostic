@@ -1,27 +1,35 @@
 <?php
 
-namespace App\Http\Livewire\Pronostic;
+namespace App\Http\Livewire\Site;
 
+use Livewire\Component;
 use App\Models\Game;
 use App\Models\Pronostic;
 use App\Models\User;
-use Livewire\Component;
+use Auth;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
-class Edit extends Component
+class Pronos extends Component
 {
+    use LivewireAlert;
+
     public Pronostic $pronostic;
+    public Game $game;
+    public User $user;
 
     public array $listsForFields = [];
 
-    public function mount(Pronostic $pronostic)
+    public function mount(Pronostic $pronostic, Game $game, User $user)
     {
         $this->pronostic = $pronostic;
-        $this->initListsForFields();
+        $this->pronostic->user_id = $this->user->id;
+        $this->pronostic->game_id = $this->game->id;
+        $this->pronostic->save();
     }
 
     public function render()
     {
-        return view('livewire.pronostic.edit');
+        return view('livewire.site.pronos');
     }
 
     public function submit()
@@ -30,7 +38,7 @@ class Edit extends Component
 
         $this->pronostic->save();
 
-        return redirect()->route('admin.pronostics.index');
+        return redirect()->route('pronostics');
     }
 
     protected function rules(): array
@@ -65,11 +73,5 @@ class Edit extends Component
                 'nullable',
             ],
         ];
-    }
-
-    protected function initListsForFields(): void
-    {
-        $this->listsForFields['game'] = Game::pluck('date_time', 'id')->toArray();
-        $this->listsForFields['user'] = User::pluck('name', 'id')->toArray();
     }
 }

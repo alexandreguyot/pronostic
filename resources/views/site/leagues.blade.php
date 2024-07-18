@@ -4,7 +4,7 @@
         <h2 class="font-bold text-xl">Mes Ligues</h2>
     </div>
 
-    <div class="flex justify-between  w-full">
+    <div class="flex justify-between w-full p-4">
         @livewire('site.league.create')
         @livewire('site.league.join')
     </div>

@@ -27,10 +27,7 @@
                         <div class="mb-2">
                             {{ $game->getHourView() }}
                         </div>
-                        <div class="flex space-x-4 w-full">
-                            <input type="text" class="block py-3 text-sm font-extrabold text-center text-gray-900 bg-white rounded-lg w-16 h-9 input-pronostic" />
-                            <input type="text" class="block py-3 text-sm font-extrabold text-center text-gray-900 bg-white rounded-lg w-16 h-9 input-pronostic" />
-                        </div>
+                        @livewire('site.pronos', ['game' => $game, 'user' => Auth::user()])
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center w-1/3">

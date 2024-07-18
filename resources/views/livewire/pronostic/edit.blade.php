@@ -10,6 +10,16 @@
             {{ trans('cruds.pronostic.fields.game_helper') }}
         </div>
     </div>
+    <div class="form-group {{ $errors->has('pronostic.user_id') ? 'invalid' : '' }}">
+        <label class="form-label required" for="user">{{ trans('cruds.pronostic.fields.user') }}</label>
+        <x-select-list class="form-control" required id="user" name="user" :options="$this->listsForFields['user']" wire:model="pronostic.user_id" />
+        <div class="validation-message">
+            {{ $errors->first('pronostic.user_id') }}
+        </div>
+        <div class="help-block">
+            {{ trans('cruds.pronostic.fields.user_helper') }}
+        </div>
+    </div>
     <div class="form-group {{ $errors->has('pronostic.score_home') ? 'invalid' : '' }}">
         <label class="form-label required" for="score_home">{{ trans('cruds.pronostic.fields.score_home') }}</label>
         <input class="form-control" type="number" name="score_home" id="score_home" required wire:model.defer="pronostic.score_home" step="1">

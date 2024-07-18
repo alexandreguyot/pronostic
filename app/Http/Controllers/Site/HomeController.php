@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Game;
 use App\Models\League;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -34,9 +35,8 @@ class HomeController extends Controller
         return view('site.league', compact('league'));
     }
 
-
     public function profile() {
-        $games = Game::passed()->orderBy('date_time')->get();
-        return view('site.results', compact('games'));
+        $user = Auth::user();
+        return view('site.profile', compact('user'));
     }
 }

@@ -10,7 +10,7 @@ class CreatePronosticsTable extends Migration
     {
         Schema::create('pronostics', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('score_home');
+            $table->integer('score_home')->nullable();
             $table->integer('score_exterior')->nullable();
             $table->integer('points')->nullable();
             $table->timestamps();

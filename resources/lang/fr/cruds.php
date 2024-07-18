@@ -89,6 +89,8 @@ return [
             'points_helper'         => ' ',
             'game'                  => 'Match',
             'game_helper'           => ' ',
+            'user'                  => 'Utilisateur',
+            'user_helper'           => ' ',
         ],
     ],
     'parametre' => [

@@ -61,6 +61,9 @@
     </div>
     <script type="text/javascript" src="{{ asset('site/js/app.js') }}"></script>
     @livewireScripts
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('vendor/livewire-alert/livewire-alert.js') }}"></script>
+    <x-livewire-alert::flash />
     @yield('scripts')
     @stack('scripts')
 </body>

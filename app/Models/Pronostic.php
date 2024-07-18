@@ -23,6 +23,7 @@ class Pronostic extends Model
 
     protected $fillable = [
         'game_id',
+        'user_id',
         'score_home',
         'score_exterior',
         'points',
@@ -33,6 +34,8 @@ class Pronostic extends Model
         'game.date_time',
         'game.home_score',
         'game.exterior_score',
+        'user.name',
+        'user.firstname',
         'score_home',
         'score_exterior',
         'points',
@@ -43,6 +46,8 @@ class Pronostic extends Model
         'game.date_time',
         'game.home_score',
         'game.exterior_score',
+        'user.name',
+        'user.firstname',
         'score_home',
         'score_exterior',
         'points',
@@ -56,6 +61,11 @@ class Pronostic extends Model
     public function game()
     {
         return $this->belongsTo(Game::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function getCreatedAtAttribute($value)
