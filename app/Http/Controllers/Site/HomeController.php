@@ -6,13 +6,26 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Game;
 use App\Models\League;
+use App\Models\Pronostic;
 use Auth;
 
 class HomeController extends Controller
 {
     public function pronostics() {
         $games = Game::notPassed()->orderBy('date_time')->get();
-        return view('site.pronostics', compact('games'));
+        foreach ($games as $game) {
+            $prono = Pronostic::where('game_id', $game->id)->where('user_id', Auth::user()->id)->first();
+            if (!$prono) {
+                $prono = new Pronostic();
+                $prono->user_id = Auth::user()->id;
+                $prono->game_id = $game->id;
+                $prono->save();
+            }
+        }
+
+        $pronostics = Pronostic::where('user_id', Auth::user()->id)->get();
+
+        return view('site.pronostics', compact('pronostics'));
     }
 
     public function results() {

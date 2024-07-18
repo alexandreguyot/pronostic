@@ -22,9 +22,6 @@ class Pronos extends Component
     public function mount(Pronostic $pronostic, Game $game, User $user)
     {
         $this->pronostic = $pronostic;
-        $this->pronostic->user_id = $this->user->id;
-        $this->pronostic->game_id = $this->game->id;
-        $this->pronostic->save();
     }
 
     public function render()
