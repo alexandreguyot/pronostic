@@ -3,6 +3,7 @@
 use App\Http\Controllers\Site\HomeController as SiteHomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\AuthController;
 
 Auth::routes(['verify' => true]);
 

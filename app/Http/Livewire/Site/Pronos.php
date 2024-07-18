@@ -38,6 +38,16 @@ class Pronos extends Component
         return redirect()->route('pronostics');
     }
 
+    public function updatedPronosticScoreHome($value) {
+        $this->pronostic->score_home = $value;
+        $this->pronostic->save();
+    }
+
+    public function updatedPronosticScoreExterior($value) {
+        $this->pronostic->score_exterior = $value;
+        $this->pronostic->save();
+    }
+
     protected function rules(): array
     {
         return [
@@ -53,20 +63,20 @@ class Pronos extends Component
             ],
             'pronostic.score_home' => [
                 'integer',
-                'min:-2147483648',
-                'max:2147483647',
+                'min:0',
+                'max:999',
                 'nullable',
             ],
             'pronostic.score_exterior' => [
                 'integer',
-                'min:-2147483648',
-                'max:2147483647',
+                'min:0',
+                'max:999',
                 'nullable',
             ],
             'pronostic.points' => [
                 'integer',
-                'min:-2147483648',
-                'max:2147483647',
+                'min:0',
+                'max:999',
                 'nullable',
             ],
         ];

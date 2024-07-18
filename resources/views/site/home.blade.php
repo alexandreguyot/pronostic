@@ -1,7 +1,14 @@
 @extends('layouts.site')
 @section('content')
-    <div class="flex justify-center w-full bg-gradient-title py-4">
-        <h2 class="font-bold text-xl">Mes Pronos</h2>
+    <div class="flex w-full bg-gradient-title py-4">
+        <div class="w-1/4"></div>
+        <h2 class="w-2/4 font-bold text-2xl">Mes Pronos</h2>
+        <div class="w-1/4">
+            <form id="" action="{{ route('manager.logout') }}" method="POST">
+                {{ csrf_field() }}
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </form>
+        </div>
     </div>
 
     <div class="flex flex-col justify-center w-full">

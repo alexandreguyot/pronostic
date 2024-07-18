@@ -48,20 +48,20 @@ class Edit extends Component
             ],
             'pronostic.score_home' => [
                 'integer',
-                'min:-2147483648',
-                'max:2147483647',
+                'min:0',
+                'max:999',
                 'nullable',
             ],
             'pronostic.score_exterior' => [
                 'integer',
-                'min:-2147483648',
-                'max:2147483647',
+                'min:0',
+                'max:999',
                 'nullable',
             ],
             'pronostic.points' => [
                 'integer',
-                'min:-2147483648',
-                'max:2147483647',
+                'min:0',
+                'max:999',
                 'nullable',
             ],
         ];
