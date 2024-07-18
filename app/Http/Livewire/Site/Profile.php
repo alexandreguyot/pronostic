@@ -13,17 +13,14 @@ class Profile extends Component
 
     public User $user;
 
-    public array $listsForFields = [];
-
-    public function mount(User $user)
-    {
-        $this->user  = $user;
+    public function mount(User $user) {
+        $this->user = $user;
     }
-
 
     public function submit()
     {
         $this->validate();
+
         $this->user->save();
 
         $this->alert('success', 'Profil mis à jour');
@@ -50,6 +47,6 @@ class Profile extends Component
 
     public function render()
     {
-        return view('livewire.site.profile');
+        return view('livewire.site.profile',);
     }
 }

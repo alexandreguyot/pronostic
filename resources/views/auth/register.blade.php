@@ -29,7 +29,7 @@
                                 @enderror
                             </div>
                             <div class="relative w-full mb-3">
-                                <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="name">
+                                <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="firstname">
                                     {{ __('global.user_firstname') }}
                                 </label>
                                 <input id="firstname" name="firstname" type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full {{ $errors->has('firstname') ? ' ring ring-red-300' : '' }}" placeholder="{{ __('global.user_firstname') }}" required autofocus autocomplete="firstname" value="{{ old('firstname') }}" />
