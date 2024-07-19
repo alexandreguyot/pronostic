@@ -11,6 +11,8 @@ use Livewire\Component;
 class Create extends Component
 {
     public array $user = [];
+    public array $competition = [];
+    public array $sport = [];
 
     public array $listsForFields = [];
 
@@ -32,6 +34,8 @@ class Create extends Component
         $this->validate();
 
         $this->league->save();
+        $this->league->competition()->sync($this->competition);
+        $this->league->sport()->sync($this->sport);
         $this->league->user()->sync($this->user);
 
         return redirect()->route('admin.leagues.index');
@@ -65,7 +69,7 @@ class Create extends Component
     }
 
     public function updatedLeagueCompetitionId($value) {
-        dd('ici', $value);
+        $this->league->competition_id = $value;
     }
 
     protected function initListsForFields(): void

@@ -11,6 +11,8 @@ use Livewire\Component;
 class Edit extends Component
 {
     public array $user = [];
+    public array $competition = [];
+    public array $sport = [];
 
     public array $listsForFields = [];
 
@@ -20,6 +22,8 @@ class Edit extends Component
     {
         $this->league = $league;
         $this->user         = $this->league->user()->pluck('id')->toArray();
+        $this->competition         = $this->league->competition()->pluck('id')->toArray();
+        $this->sport         = $this->league->sport()->pluck('id')->toArray();
         $this->initListsForFields();
     }
 
@@ -33,14 +37,16 @@ class Edit extends Component
         $this->validate();
 
         $this->league->save();
+        $this->league->competition()->sync($this->competition);
+        $this->league->sport()->sync($this->sport);
         $this->league->user()->sync($this->user);
 
         return redirect()->route('admin.leagues.index');
     }
 
     public function updatedLeagueCompetitionId($value) {
-        dd(Competiton::where('id', $value)->get());
-        $this->listsForFields['sport'] = Competiton::where('id', $value)->get()->sport();
+        $this->league->competition_id = $value;
+        $this->listsForFields['sport'] = Competition::where('id', $value)->first()->sport();
     }
 
     protected function rules(): array
@@ -74,6 +80,6 @@ class Edit extends Component
     {
         $this->listsForFields['user'] = User::pluck('name', 'id')->toArray();
         $this->listsForFields['competition'] = Competition::pluck('title', 'id')->toArray();
-        $this->listsForFields['sport'] = Sport::pluck('title', 'id')->toArray();
+        $this->listsForFields['sport'] =  Sport::pluck('title', 'id')->toArray();
     }
 }

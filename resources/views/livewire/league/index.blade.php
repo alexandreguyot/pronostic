@@ -52,17 +52,17 @@
                             </td>
                             <td>
                                 <div class="flex justify-end">
-                                    @can('championship_show')
+                                    @can('league_show')
                                         <a class="mr-2 btn btn-sm btn-info" href="{{ route('admin.leagues.show', $league) }}">
                                             {{ trans('global.view') }}
                                         </a>
                                     @endcan
-                                    @can('championship_edit')
+                                    @can('league_edit')
                                         <a class="mr-2 btn btn-sm btn-success" href="{{ route('admin.leagues.edit', $league) }}">
                                             {{ trans('global.edit') }}
                                         </a>
                                     @endcan
-                                    @can('championship_delete')
+                                    @can('league_delete')
                                         <button class="mr-2 btn btn-sm btn-rose" type="button" wire:click="confirm('delete', {{ $league->id }})" wire:loading.attr="disabled">
                                             {{ trans('global.delete') }}
                                         </button>

@@ -144,23 +144,23 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 34,
-                'title' => 'championship_create',
+                'title' => 'league_create',
             ],
             [
                 'id'    => 35,
-                'title' => 'championship_edit',
+                'title' => 'league_edit',
             ],
             [
                 'id'    => 36,
-                'title' => 'championship_show',
+                'title' => 'league_show',
             ],
             [
                 'id'    => 37,
-                'title' => 'championship_delete',
+                'title' => 'league_delete',
             ],
             [
                 'id'    => 38,
-                'title' => 'championship_access',
+                'title' => 'league_access',
             ],
             [
                 'id'    => 39,

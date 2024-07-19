@@ -63,7 +63,7 @@
                         </a>
                     </li>
                 @endcan
-                @can('championship_access')
+                @can('league_access')
                     <li class="items-center">
                         <a class="{{ request()->is("admin/leagues*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.leagues.index") }}">
                             <i class="fa-fw c-sidebar-nav-icon fas fa-cogs">

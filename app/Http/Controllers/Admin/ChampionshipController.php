@@ -12,28 +12,28 @@ class ChampionshipController extends Controller
 {
     public function index()
     {
-        abort_if(Gate::denies('championship_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('league_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return view('admin.league.index');
     }
 
     public function create()
     {
-        abort_if(Gate::denies('championship_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('league_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return view('admin.league.create');
     }
 
     public function edit(League $league)
     {
-        abort_if(Gate::denies('championship_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('league_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return view('admin.league.edit', compact('league'));
     }
 
     public function show(League $league)
     {
-        abort_if(Gate::denies('championship_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('league_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $league->load('user');
 

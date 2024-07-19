@@ -18,14 +18,12 @@ class League extends Model
     protected $fillable = [
         'title',
         'competition_id',
-        'sport_id'
     ];
 
     public $orderable = [
         'id',
         'title',
         'competition.title',
-        'sport.title',
     ];
 
     public $filterable = [
@@ -33,7 +31,6 @@ class League extends Model
         'title',
         'user.name',
         'competition.title',
-        'sport.title',
     ];
 
     protected $dates = [
@@ -52,14 +49,14 @@ class League extends Model
         return $this->belongsToMany(User::class);
     }
 
-    public function competition()
-    {
-        return $this->belongsTo(Competition::class);
-    }
-
     public function sport()
     {
-        return $this->belongsTo(Sport::class);
+        return $this->belongsToMany(Sport::class);
+    }
+
+    public function competition()
+    {
+        return $this->belongsToMany(Competition::class);
     }
 
     public function getCreatedAtAttribute($value)

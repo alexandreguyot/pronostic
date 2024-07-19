@@ -23,9 +23,16 @@ class HomeController extends Controller
             }
         }
 
-        $pronostics = Pronostic::where('user_id', Auth::user()->id)->get();
+        $groupedPronostics = Pronostic::with(['game', 'game.sport'])
+            ->join('games', 'pronostics.game_id', '=', 'games.id')
+            ->join('sports', 'games.sport_id', '=', 'sports.id')
+            ->where('pronostics.user_id', Auth::user()->id)
+            ->orderBy('games.date_time')
+            ->select('pronostics.*', 'sports.title as sport_title')
+            ->get()
+            ->groupBy('sport_title');
 
-        return view('site.pronostics', compact('pronostics'));
+        return view('site.pronostics', compact('groupedPronostics'));
     }
 
     public function results() {

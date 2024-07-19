@@ -80,7 +80,7 @@ class Index extends Component
 
     public function deleteSelected()
     {
-        abort_if(Gate::denies('championship_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('league_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         League::whereIn('id', $this->selected)->delete();
 
@@ -89,7 +89,7 @@ class Index extends Component
 
     public function delete(League $league)
     {
-        abort_if(Gate::denies('championship_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('league_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $league->delete();
     }

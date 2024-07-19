@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
             SportTableSeeder::class,
             TeamTableSeeder::class,
             GameTableSeeder::class,
+            CompetitionSportTableSeeder::class,
+            LeagueRelationTableSeeder::class,
         ]);
     }
 }
