@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Game;
 use App\Models\League;
 use App\Models\Pronostic;
+use Carbon\Carbon;
 use Auth;
 
 class HomeController extends Controller
@@ -27,6 +28,7 @@ class HomeController extends Controller
             ->join('games', 'pronostics.game_id', '=', 'games.id')
             ->join('sports', 'games.sport_id', '=', 'sports.id')
             ->where('pronostics.user_id', Auth::user()->id)
+            ->where('games.date_time', '>', Carbon::now())
             ->orderBy('games.date_time')
             ->select('pronostics.*', 'sports.title as sport_title')
             ->get()
@@ -36,8 +38,17 @@ class HomeController extends Controller
     }
 
     public function results() {
-        $games = Game::passed()->orderBy('date_time')->get();
-        return view('site.results', compact('games'));
+        $groupedPronostics = Pronostic::with(['game', 'game.sport'])
+            ->join('games', 'pronostics.game_id', '=', 'games.id')
+            ->join('sports', 'games.sport_id', '=', 'sports.id')
+            ->where('pronostics.user_id', Auth::user()->id)
+            ->where('games.date_time', '<', Carbon::now())
+            ->orderBy('games.date_time')
+            ->select('pronostics.*', 'sports.title as sport_title')
+            ->get()
+            ->groupBy('sport_title');
+
+        return view('site.results', compact('groupedPronostics'));
     }
 
     public function rank() {
@@ -58,5 +69,9 @@ class HomeController extends Controller
     public function profile() {
         $user = Auth::user();
         return view('site.profile', compact('user'));
+    }
+
+    public function rules() {
+        return view('site.rules');
     }
 }

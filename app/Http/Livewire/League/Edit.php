@@ -44,9 +44,8 @@ class Edit extends Component
         return redirect()->route('admin.leagues.index');
     }
 
-    public function updatedLeagueCompetitionId($value) {
-        $this->league->competition_id = $value;
-        $this->listsForFields['sport'] = Competition::where('id', $value)->first()->sport();
+    public function updatedCompetition($value) {
+        $this->listsForFields['sport'] = Competition::where('id', $value)->first()->sport()->pluck('title', 'id')->toArray();
     }
 
     protected function rules(): array
@@ -62,16 +61,6 @@ class Edit extends Component
             'user.*.id' => [
                 'integer',
                 'exists:users,id',
-            ],
-            'league.competition_id' => [
-                'integer',
-                'exists:competitions,id',
-                'required',
-            ],
-            'league.sport_id' => [
-                'integer',
-                'exists:sports,id',
-                'required',
             ],
         ];
     }

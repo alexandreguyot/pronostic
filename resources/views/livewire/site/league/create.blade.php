@@ -11,26 +11,25 @@
                 <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
                     <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                         <div class="sm:flex sm:items-start">
-                            <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 sm:mx-0 sm:h-10 sm:w-10">
-                                <svg class="h-6 w-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-                                </svg>
-                            </div>
-                            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                                <h3 class="text-lg leading-6 font-medium text-gray-900">
+                            <div class=" sm:mt-0 sm:ml-4 sm:text-left">
+                                <h3 class="text-center text-lg leading-6 font-medium text-gray-900">
                                     Créer une nouvelle ligue
                                 </h3>
                                 <div class="mt-2">
-                                    <input type="text" wire:model="league.title" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Titre de la league">
-                                    @error('title') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                                    <label for="title" class="text-gray-900 block mb-2 text-sm font-medium">Titre</label>
+                                    <input type="text" id="title" required wire:model="league.title"
+                                    class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                    />
                                 </div>
-                                <div class="mt-2">
-                                    <input type="text" wire:model="league.competition_id" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Titre de la league">
-                                    @error('title') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                                <div>
+                                    <label for="firstname" class="text-gray-900 block mb-2 text-sm font-medium">Competition</label>
+                                    <x-select-list class="form-control" id="competition" name="competition" wire:model="competition" :options="$this->listsForFields['competition']" />
+                                        @error('title') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                                 </div>
-                                <div class="mt-2">
-                                    <input type="text" wire:model="league.sport_id" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Titre de la league">
-                                    @error('title') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                                <div>
+                                    <label for="email" class="text-gray-900 block mb-2 text-sm font-medium">Sport</label>
+                                    <x-select-list class="form-control" id="sport_id" name="sport_id" wire:model="sport" :options="$this->listsForFields['sport']" button="false" multiple/>
+                                        @error('title') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                         </div>

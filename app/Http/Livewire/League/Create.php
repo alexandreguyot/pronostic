@@ -54,17 +54,7 @@ class Create extends Component
             'user.*.id' => [
                 'integer',
                 'exists:users,id',
-            ],
-            'league.competition_id' => [
-                'integer',
-                'exists:competitions,id',
-                'required',
-            ],
-            'league.sport_id' => [
-                'integer',
-                'exists:sports,id',
-                'required',
-            ],
+            ]
         ];
     }
 

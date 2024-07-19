@@ -13,6 +13,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/pronostics', [SiteHomeController::class, 'pronostics'])->name('pronostics');
     Route::get('/resultats', [SiteHomeController::class, 'results'])->name('results');
     Route::get('/classements', [SiteHomeController::class, 'rank'])->name('rank');
+    Route::get('/reglements', [SiteHomeController::class, 'rules'])->name('rules');
     Route::get('/ligues', [SiteHomeController::class, 'leagues'])->name('leagues');
     Route::get('/profil', [SiteHomeController::class, 'profile'])->name('profile');
 

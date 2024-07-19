@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @import "/node_modules/flag-icons/css/flag-icons.min.css";
+@import "~select2/dist/css/select2.min.css";
+@import "../../css/select.css";
+@import "../../css/theme.css";
 
 .fi.icons{
     border-radius: 50%;

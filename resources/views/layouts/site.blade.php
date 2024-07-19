@@ -43,6 +43,14 @@
             </button>
             <button class="text-white text-sm focus:outline-none">
                 <div class="items-center justify-center whitespace-nowrap">
+                    <a href="{{ route('rules')}}" class="flex flex-col justify-center {{ request()->is("rules*") ? "text-focusBlueSite" : "" }}">
+                        <i class="fa-fw c-sidebar-nav-icon fas fa-bars m-auto"></i>
+                        Réglements
+                    </a>
+                </div>
+            </button>
+            <button class="text-white text-sm focus:outline-none hidden">
+                <div class="items-center justify-center whitespace-nowrap">
                     <a href="{{ route('leagues')}}" class="flex flex-col justify-center {{ request()->is("ligues*") ? "text-focusBlueSite" : "" }}">
                         <i class="fa-fw c-sidebar-nav-icon fas fa-bars m-auto"></i>
                         Ligues

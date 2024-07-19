@@ -1,6 +1,6 @@
 <div>
     <div wire:ignore class="w-full">
-        @if(isset($attributes['multiple']))
+        @if(isset($attributes['multiple']) && !isset($attributes['button']))
             <div id="{{ $attributes['id'] }}-btn-container" class="mb-3">
                 <button type="button" class="btn btn-info btn-sm select-all-button">{{ trans('global.select_all') }}</button>
                 <button type="button" class="btn btn-info btn-sm deselect-all-button">{{ trans('global.deselect_all') }}</button>

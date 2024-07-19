@@ -62,11 +62,11 @@
                     e.preventDefault();
                     const target = e.target.getAttribute('data-tab');
 
-                    tabs.forEach(t => {
-                        t.classList.remove('text-indigo-600', 'border-indigo-500');
-                        t.classList.add('text-gray-500', 'border-transparent');
-                    });
-                    e.target.classList.add('text-indigo-600', 'border-indigo-500');
+                    // tabs.forEach(t => {
+                    //     t.classList.remove('text-blue-600', 'border-blue-500');
+                    //     t.classList.add('text-gray-500', 'border-transparent');
+                    // });
+                    // e.target.classList.add('text-blue-600', 'border-blue-500');
                     e.target.classList.remove('text-gray-500', 'border-transparent');
 
                     contents.forEach(content => {
