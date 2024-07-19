@@ -22,6 +22,14 @@ class SportTableSeeder extends Seeder
                 'id'                => 2,
                 'title'             => 'Basket-ball (F)',
             ],
+            [
+                'id'                => 3,
+                'title'             => 'Handball (H)',
+            ],
+            [
+                'id'                => 4,
+                'title'             => 'Handball (F)',
+            ],
         ];
 
         Sport::insert($sports);

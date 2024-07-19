@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
                 'password'          => bcrypt('alex'),
                 'remember_token'    => null,
                 'email_verified_at' => now(),
-                'locale'            => '',
+                'locale'            => 'fr',
             ],
             [
                 'id'                => 2,
@@ -28,7 +28,7 @@ class UsersTableSeeder extends Seeder
                 'password'          => bcrypt('joueur1'),
                 'remember_token'    => null,
                 'email_verified_at' => now(),
-                'locale'            => '',
+                'locale'            => 'fr',
             ],
         ];
 
