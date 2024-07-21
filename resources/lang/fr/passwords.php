@@ -7,5 +7,4 @@ return [
     'token'    => 'Le jeton de réinitialisation du mot de passe n\'est pas valide.',
     'user'     => 'Nous ne trouvons pas d\'utilisateur correspondant à cette adresse email.',
     'updated'  => 'Votre mot de passe a été changé !',
-
 ];

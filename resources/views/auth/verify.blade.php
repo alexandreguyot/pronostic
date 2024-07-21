@@ -9,7 +9,7 @@
                     <div class="rounded-t mb-0 px-6 py-6">
                         <div class="text-center mb-3">
                             <h6 class="text-blueGray-500 text-sm font-bold">
-                                {{ __('Verify Your Email Address') }}
+                                {{ __('Vérifiez votre adresse e-mail') }}
                             </h6>
                         </div>
                         <hr class="mt-6 border-b-1 border-blueGray-300" />
@@ -18,16 +18,16 @@
                         @if(session('resent'))
                             <div class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-green-500">
                                 <span class="inline-block align-middle mr-8">
-                                    {{ __('A fresh verification link has been sent to your email address.') }}
+                                    {{ __('Un nouveau lien de vérification a été envoyé à votre adresse e-mail.') }}
                                 </span>
                             </div>
                         @endif
-                        {{ __('Before proceeding, please check your email for a verification link.') }}
-                        {{ __('If you did not receive the email') }},
+                        {{ __('Avant de continuer, veuillez vérifier votre e-mail pour un lien de vérification.') }}
+                        {{ __('Si vous n\'avez pas reçu l\'e-mail') }},
                         <form class="inline" method="POST" action="{{ route('verification.resend') }}">
                             @csrf
                             <button class="inline-block p-0 m-0 text-lightBlue-500 hover:underline align-baseline">
-                                {{ __('click here to request another') }}
+                                {{ __('cliquez ici pour en demander un autre') }}
                             </button>.
                         </form>
                     </div>
