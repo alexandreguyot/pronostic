@@ -58,15 +58,17 @@ class Edit extends Component
             'game.home_score' => [
                 'integer',
                 'max:2147483647',
+                'nullable',
             ],
             'game.exterior_team_id' => [
                 'integer',
                 'exists:teams,id',
-                'required',
+                'nullable',
             ],
             'game.exterior_score' => [
                 'integer',
                 'max:2147483647',
+                'nullable',
             ],
             'game.sport_id' => [
                 'integer',

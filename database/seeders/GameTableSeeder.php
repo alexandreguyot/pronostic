@@ -18,6 +18,28 @@ class GameTableSeeder extends Seeder
             [
                 'tour' => '',
                 'competition_id' => 1,
+                'sport_id' => 4,
+                'home_team_id' => 1,
+                'exterior_team_id' => 10,
+                'date_time' => Carbon::create(2024, 07, 26, 20, 00, 00, 'Europe/Paris'),
+            ],
+            [
+                'tour' => '',
+                'competition_id' => 1,
+                'sport_id' => 5,
+                'home_team_id' => 1,
+                'date_time' => Carbon::create(2024, 07, 26, 20, 00, 00, 'Europe/Paris'),
+            ],
+            [
+                'tour' => '',
+                'competition_id' => 1,
+                'sport_id' => 5,
+                'home_team_id' => 6,
+                'date_time' => Carbon::create(2024, 07, 26, 20, 00, 00, 'Europe/Paris'),
+            ],
+            [
+                'tour' => '',
+                'competition_id' => 1,
                 'sport_id' => 1,
                 'home_team_id' => 5,
                 'exterior_team_id' => 10,

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Game;
 use App\Models\League;
 use App\Models\Pronostic;
+use App\Models\Sport;
 use Carbon\Carbon;
 use Auth;
 use Illuminate\Support\Collection;
@@ -31,9 +32,20 @@ class HomeController extends Controller
             ->where('pronostics.user_id', Auth::user()->id)
             ->where('games.date_time', '>', Carbon::now())
             ->orderBy('games.date_time')
-            ->select('pronostics.*', 'sports.title as sport_title')
+            ->select('pronostics.*', 'sports.id as sport_id', 'sports.title as sport_title')
             ->get()
             ->groupBy('sport_title');
+
+        $groupedPronostics->transform(function ($pronostics, $sportTitle) {
+            $sport = Sport::find($pronostics->first()->sport_id);
+            $mediaItem = $sport->getPictoAttribute();
+            $url = $mediaItem->pluck('url')->first();
+
+            return [
+                'pronostics' => $pronostics,
+                'url' => $url,
+            ];
+        });
 
         return view('site.pronostics', compact('groupedPronostics'));
     }
@@ -67,7 +79,7 @@ class HomeController extends Controller
                             $sportsPoints->put($sportTitle, 0);
                         }
                         if ($game->date_time < Carbon::now() && $game->home_score !== null && $game->exterior_score !== null) {
-                            $points = calculatePoints($pronostic);
+                            $points = $pronostic->points || 0;
                             $totalPoints += $points;
                             $sportsPoints[$sportTitle] += $points;
                         }
@@ -87,46 +99,6 @@ class HomeController extends Controller
             ];
         });
         return view('site.rank', compact('leaguesWithPoints', 'leagues'));
-    }
-
-    function calculatePoints($pronostic) {
-        // Logique pour calculer les points
-        $points = 0;
-
-        // Points pour le bon vainqueur
-        if (($pronostic->game->home_score > $pronostic->game->exterior_score && $pronostic->score_home > $pronostic->score_exterior) ||
-            ($pronostic->game->home_score < $pronostic->game->exterior_score && $pronostic->score_home < $pronostic->score_exterior) ||
-            ($pronostic->game->home_score == $pronostic->game->exterior_score && $pronostic->score_home == $pronostic->score_exterior)) {
-            $points += 2;
-        }
-
-        // Points bonus pour le basket
-        if ($pronostic->game->sport->title == 'Basket') {
-            if (abs($pronostic->game->home_score - $pronostic->score_home) <= 5) {
-                $points += 1;
-            }
-            if (abs($pronostic->game->home_score - $pronostic->score_home) <= 2) {
-                $points += 2;
-            }
-            if ($pronostic->game->home_score == $pronostic->score_home && $pronostic->game->exterior_score == $pronostic->score_exterior) {
-                $points += 4;
-            }
-        }
-
-        // Points bonus pour le handball
-        if ($pronostic->game->sport->title == 'Handball') {
-            if (abs($pronostic->game->home_score - $pronostic->score_home) <= 3) {
-                $points += 1;
-            }
-            if (abs($pronostic->game->home_score - $pronostic->score_home) <= 1) {
-                $points += 2;
-            }
-            if ($pronostic->game->home_score == $pronostic->score_home && $pronostic->game->exterior_score == $pronostic->score_exterior) {
-                $points += 4;
-            }
-        }
-
-        return $points;
     }
 
     public function leagues() {

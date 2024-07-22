@@ -1,12 +1,16 @@
 @extends('layouts.site')
 @section('content')
-    <div class="flex w-full bg-gradient-title py-4">
-        <div class="w-1/4"></div>
-        <h2 class="w-2/4 font-bold text-2xl">Réglements</h2>
+    <div class="flex w-full bg-gradient-title p-6">
         <div class="w-1/4">
-            <form id="" action="{{ route('logout') }}" method="POST">
+            <img src="{{ asset('images/logo.png')}}" alt="logo" class="h-10">
+        </div>
+        <h2 class="w-2/4 font-bold text-2xl text-center">Réglements</h2>
+        <div class="w-1/4">
+            <form id="logout" class="text-right pt-1 pr-4 align-middle" action="{{ route('logout') }}" method="POST">
                 {{ csrf_field() }}
-                <i class="fa-solid fa-right-from-bracket"></i>
+                <button type="submit">
+                    <i class="fa-xl fa-solid fa-right-from-bracket"></i>
+                </button>
             </form>
         </div>
     </div>

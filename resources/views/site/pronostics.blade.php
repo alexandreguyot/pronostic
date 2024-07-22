@@ -1,7 +1,9 @@
 @extends('layouts.site')
 @section('content')
-    <div class="flex w-full bg-gradient-title py-4">
-        <div class="w-1/4"></div>
+    <div class="flex w-full bg-gradient-title p-6">
+        <div class="w-1/4">
+            <img src="{{ asset('images/logo.png')}}" alt="logo" class="h-10">
+        </div>
         <h2 class="w-2/4 font-bold text-2xl text-center">Mes Pronos</h2>
         <div class="w-1/4">
             <form id="logout" class="text-right pt-1 pr-4 align-middle" action="{{ route('logout') }}" method="POST">
@@ -14,15 +16,17 @@
     </div>
 
     <div class="container mx-auto p-4">
-        @foreach ($groupedPronostics as $sportTitle => $pronostics)
+        @foreach ($groupedPronostics as $sportTitle => $data)
             <div class="mb-4 border border-gray-200 rounded-lg overflow-hidden">
                 <div class="bg-blue-600 text-white px-4 py-2 cursor-pointer flex w-full h-20 justify-between" onclick="toggleAccordion('{{ Str::slug($sportTitle) }}')">
-                    <img src="{{ asset('images/picto/basketball.png')}}" class="w-16 h-16">
+                    @if ($data['url'])
+                        <img src="{{ $data['url'] }}" alt="Image pour {{ $sportTitle }}">
+                    @endif
                     <h2 class="text-lg align-middle">{{ $sportTitle }}</h2>
                     <div></div>
                 </div>
                 <div id="{{ Str::slug($sportTitle) }}" class="hidden">
-                    @foreach ($pronostics as $pronostic)
+                    @foreach ($data['pronostics'] as $pronostic)
                         <div class="border-b border-gray-200">
                             <div class="flex justify-between w-full bg-gradient-date text-white px-4 py-2 text-sm">
                                 @if($pronostic->game->competition)

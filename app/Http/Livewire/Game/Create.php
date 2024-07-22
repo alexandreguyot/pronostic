@@ -59,18 +59,18 @@ class Create extends Component
                 'integer',
                 'min:-2147483648',
                 'max:2147483647',
-                'required',
+                'nullable',
             ],
             'game.exterior_team_id' => [
                 'integer',
                 'exists:teams,id',
-                'required',
+                'nullable',
             ],
             'game.exterior_score' => [
                 'integer',
                 'min:-2147483648',
                 'max:2147483647',
-                'required',
+                'nullable',
             ],
             'game.sport_id' => [
                 'integer',

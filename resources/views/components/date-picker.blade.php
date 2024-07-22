@@ -13,6 +13,8 @@
 </div>
 
 @push('scripts')
+
+    <script type="text/javascript" src="{{asset('vendor/jquery-ui/ui/i18n/datepicker-fr.js')}}"></script>
     <script>
         document.addEventListener("livewire:load", () => {
     function update(value) {

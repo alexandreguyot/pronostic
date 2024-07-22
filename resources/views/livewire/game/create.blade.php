@@ -61,8 +61,8 @@
         </div>
     </div>
     <div class="form-group {{ $errors->has('game.exterior_team_id') ? 'invalid' : '' }}">
-        <label class="form-label required" for="exterior_team">{{ trans('cruds.game.fields.exterior_team') }}</label>
-        <x-select-list class="form-control" required id="exterior_team" name="exterior_team" :options="$this->listsForFields['exterior_team']" wire:model="game.exterior_team_id" />
+        <label class="form-label" for="exterior_team">{{ trans('cruds.game.fields.exterior_team') }}</label>
+        <x-select-list class="form-control" id="exterior_team" name="exterior_team" :options="$this->listsForFields['exterior_team']" wire:model="game.exterior_team_id" />
         <div class="validation-message">
             {{ $errors->first('game.exterior_team_id') }}
         </div>

@@ -2060,6 +2060,10 @@ module.exports = {
   \*****************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -2105,6 +2109,9 @@ window.openDropdown = function openDropdown(event, dropdownID) {
     fetch('/admin/user-alerts/seen');
   }
 };
+window.Dropzone.options.mydz = _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty({
+  dictDefaultMessage: "Déposer les fichiers ici pour les envoyer"
+}, "dictDefaultMessage", "Déposer les fichiers ici pour les envoyer"), "dictFallbackMessage", "Votre navigateur ne prend pas en charge les téléchargements de fichiers par glisser-déposer."), "dictFallbackText", "Veuillez utiliser le formulaire de secours ci-dessous pour télécharger vos fichiers comme au bon vieux temps."), "dictFileTooBig", "Le fichier est trop volumineux ({{filesize}}MiB). Taille maximale des fichiers: {{maxFilesize}}MiB."), "dictInvalidFileType", "Vous ne pouvez pas envoyer de fichiers de ce type."), "dictResponseError", "Le serveur a répondu avec le code {{statusCode}}."), "dictCancelUpload", "Annuler l'envoi"), "dictCancelUploadConfirmation", "Êtes-vous sûr de vouloir annuler cet envoi ?"), "dictRemoveFile", "Supprimer le fichier"), "dictMaxFilesExceeded", "Vous ne pouvez plus charger de fichiers.");
 
 /***/ }),
 
@@ -2127,6 +2134,8 @@ try {
   __webpack_require__(/*! select2 */ "./node_modules/select2/dist/js/select2.js");
   window.Dropzone = (__webpack_require__(/*! dropzone */ "./node_modules/dropzone/dist/dropzone.js")["default"]);
   __webpack_require__(/*! flatpickr */ "./node_modules/flatpickr/dist/esm/index.js");
+  var french = (__webpack_require__(/*! flatpickr/dist/l10n/fr.js */ "./node_modules/flatpickr/dist/l10n/fr.js")["default"].fr);
+  flatpickr.localize(french);
 } catch (e) {}
 
 /**
@@ -15318,6 +15327,90 @@ if (typeof Object.assign !== "function") {
         return target;
     };
 }
+
+
+/***/ }),
+
+/***/ "./node_modules/flatpickr/dist/l10n/fr.js":
+/*!************************************************!*\
+  !*** ./node_modules/flatpickr/dist/l10n/fr.js ***!
+  \************************************************/
+/***/ (function(__unused_webpack_module, exports) {
+
+(function (global, factory) {
+   true ? factory(exports) :
+  0;
+}(this, (function (exports) { 'use strict';
+
+  var fp = typeof window !== "undefined" && window.flatpickr !== undefined
+      ? window.flatpickr
+      : {
+          l10ns: {},
+      };
+  var French = {
+      firstDayOfWeek: 1,
+      weekdays: {
+          shorthand: ["dim", "lun", "mar", "mer", "jeu", "ven", "sam"],
+          longhand: [
+              "dimanche",
+              "lundi",
+              "mardi",
+              "mercredi",
+              "jeudi",
+              "vendredi",
+              "samedi",
+          ],
+      },
+      months: {
+          shorthand: [
+              "janv",
+              "févr",
+              "mars",
+              "avr",
+              "mai",
+              "juin",
+              "juil",
+              "août",
+              "sept",
+              "oct",
+              "nov",
+              "déc",
+          ],
+          longhand: [
+              "janvier",
+              "février",
+              "mars",
+              "avril",
+              "mai",
+              "juin",
+              "juillet",
+              "août",
+              "septembre",
+              "octobre",
+              "novembre",
+              "décembre",
+          ],
+      },
+      ordinal: function (nth) {
+          if (nth > 1)
+              return "";
+          return "er";
+      },
+      rangeSeparator: " au ",
+      weekAbbreviation: "Sem",
+      scrollTitle: "Défiler pour augmenter la valeur",
+      toggleTitle: "Cliquer pour basculer",
+      time_24hr: true,
+  };
+  fp.l10ns.fr = French;
+  var fr = fp.l10ns;
+
+  exports.French = French;
+  exports.default = fr;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 
 
 /***/ }),

@@ -45,3 +45,18 @@ window.openDropdown = function openDropdown(event, dropdownID) {
     fetch('/admin/user-alerts/seen')
   }
 }
+
+window.Dropzone.options.mydz = {
+    dictDefaultMessage: "Déposer les fichiers ici pour les envoyer",
+    dictDefaultMessage : "Déposer les fichiers ici pour les envoyer",
+    dictFallbackMessage : "Votre navigateur ne prend pas en charge les téléchargements de fichiers par glisser-déposer.",
+    dictFallbackText : "Veuillez utiliser le formulaire de secours ci-dessous pour télécharger vos fichiers comme au bon vieux temps.",
+    dictFileTooBig : "Le fichier est trop volumineux ({{filesize}}MiB). Taille maximale des fichiers: {{maxFilesize}}MiB.",
+    dictInvalidFileType : "Vous ne pouvez pas envoyer de fichiers de ce type.",
+    dictResponseError : "Le serveur a répondu avec le code {{statusCode}}.",
+    dictCancelUpload : "Annuler l'envoi",
+    dictCancelUploadConfirmation : "Êtes-vous sûr de vouloir annuler cet envoi ?",
+    dictRemoveFile : "Supprimer le fichier",
+    dictMaxFilesExceeded : "Vous ne pouvez plus charger de fichiers.",
+};
+

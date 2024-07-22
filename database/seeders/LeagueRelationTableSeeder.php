@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Competition;
 use App\Models\Sport;
 use App\Models\League;
+use App\Models\User;
 
 class LeagueRelationTableSeeder extends Seeder
 {
@@ -16,9 +17,11 @@ class LeagueRelationTableSeeder extends Seeder
     public function run(): void
     {
         $sports = Sport::all()->pluck('id');
-        $competition = Competition::all()->pluck('id');
+        $competitions = Competition::all()->pluck('id');
+        $users = User::all()->pluck('id');
         $league = League::findOrFail(1);
-        $league->sport()->sync($sports);
-        $league->competition()->sync($competition);
+        $league->sports()->sync($sports);
+        $league->competitions()->sync($competitions);
+        $league->users()->sync($users);
     }
 }

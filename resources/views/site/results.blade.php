@@ -1,7 +1,9 @@
 @extends('layouts.site')
 @section('content')
-    <div class="flex w-full bg-gradient-title py-4">
-        <div class="w-1/4"></div>
+    <div class="flex w-full bg-gradient-title p-6">
+        <div class="w-1/4">
+            <img src="{{ asset('images/logo.png')}}" alt="logo" class="h-10">
+        </div>
         <h2 class="w-2/4 font-bold text-2xl text-center">Mes résultats</h2>
         <div class="w-1/4">
             <form id="logout" class="text-right pt-1 pr-4 align-middle" action="{{ route('logout') }}" method="POST">

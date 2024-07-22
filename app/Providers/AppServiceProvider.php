@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Observers\UserObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -31,6 +33,6 @@ class AppServiceProvider extends ServiceProvider
         Carbon::setlocale('fr_FR.UTF-8');
         setlocale(LC_TIME, 'fr_FR.UTF-8');
         setlocale(LC_MONETARY, 'fr_FR.UTF-8');
-
+        User::observe(UserObserver::class);
     }
 }
