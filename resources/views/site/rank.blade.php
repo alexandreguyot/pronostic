@@ -20,38 +20,36 @@
             </a>
         @endforeach
     </nav>
-    @foreach ($leagues as $league)
-        <div class="p-6 w-full">
-            <div data-content="{{ $league->id}}">
-                <table class="w-full bg-transparent">
-                    <thead>
-                        <tr class="border-b-2 border-t-2 border-b-white/30 border-t-white/30">
-                            <th class="py-2 px-4 text-lg text-center leading-4 font-medium text-focusBlueSite uppercase tracking-wider border-right"></th>
-                            <th class="py-2 px-4 text-lg text-center leading-4 font-medium text-focusBlueSite uppercase tracking-wider border-r-2 border-r-white/30">Joueur</th>
-                            <th class="py-2 px-4 text-lg text-center leading-4 font-medium text-focusBlueSite uppercase tracking-wider">Points</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-transparent">
-                        <tr class="text-center border-b-2 border-b-white/30">
-                            <td class="py-2 px-4 border-right">1</td>
-                            <td class="py-2 px-4 border-right">Team A</td>
-                            <td class="py-2 px-4 text-white bg-focusBlueSite/30">86</td>
-                        </tr>
-                        <tr class="text-center border-b-2 border-b-white/30">
-                            <td class="py-2 px-4 border-right">2</td>
-                            <td class="py-2 px-4 border-right">Team B</td>
-                            <td class="py-2 px-4 text-white bg-focusBlueSite/30">82</td>
-                        </tr>
-                        <tr class="text-center border-b-2 border-b-white/30">
-                            <td class="py-2 px-4 border-right">3</td>
-                            <td class="py-2 px-4 border-right">Team C</td>
-                            <td class="py-2 px-4 text-white bg-focusBlueSite/30">75</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    @endforeach
+    @foreach ($leaguesWithPoints as $leagueData)
+    <div class="mb-8">
+        <h2 class="text-2xl font-bold text-center mb-4">{{ $leagueData['league']->name }}</h2>
+        <table class="w-full bg-transparent">
+            <thead>
+                <tr class="border-b-2 border-t-2 border-b-white/30 border-t-white/30">
+                    <th class="py-2 px-4 text-lg text-center leading-4 font-medium text-focusBlueSite uppercase tracking-wider border-right"></th>
+                    <th class="py-2 px-4 text-lg text-center leading-4 font-medium text-focusBlueSite uppercase tracking-wider border-r-2 border-r-white/30">Joueur</th>
+                    @foreach ($league->sports as $sp)
+                        <th class="py-2 px-4 text-lg text-center leading-4 font-medium text-focusBlueSite uppercase tracking-wider border-r-2 border-r-white/30">{{ $sp->title }}</th>
+
+                    @endforeach
+                    <th class="py-2 px-4 text-lg text-center leading-4 font-medium text-focusBlueSite uppercase tracking-wider">Totals des points</th>
+                </tr>
+            </thead>
+            <tbody class="bg-transparent">
+                @foreach ($leagueData['users'] as $index => $user)
+                    <tr class="text-center border-b-2 border-b-white/30">
+                        <td class="py-2 px-4 border-right">{{ $index + 1 }}</td>
+                        <td class="py-2 px-4 border-right">{{ $user->name }}</td>
+                        @foreach ($user->sports_points as $sport => $points)
+                            <td class="py-2 px-4 text-white bg-focusBlueSite/10">{{ $points }}</td>
+                        @endforeach
+                        <td class="py-2 px-4 text-white bg-focusBlueSite/30">{{ $user->total_points }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+@endforeach
      <script>
         document.addEventListener('DOMContentLoaded', function () {
             const tabs = document.querySelectorAll('.tab');

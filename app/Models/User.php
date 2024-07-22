@@ -59,6 +59,28 @@ class User extends Authenticatable implements HasLocalePreference, MustVerifyEma
         'locale',
     ];
 
+    protected $appends = ['total_points', 'sports_points'];
+
+    public function getTotalPointsAttribute()
+    {
+        return $this->attributes['total_points'] ?? 0;
+    }
+
+    public function setTotalPointsAttribute($value)
+    {
+        $this->attributes['total_points'] = $value;
+    }
+
+    public function getSportsPointsAttribute()
+    {
+        return $this->attributes['sports_points'] ?? [];
+    }
+
+    public function setSportsPointsAttribute($value)
+    {
+        $this->attributes['sports_points'] = $value;
+    }
+
     public function getIsAdminAttribute()
     {
         return $this->roles()->where('title', 'Admin')->exists();
@@ -99,6 +121,16 @@ class User extends Authenticatable implements HasLocalePreference, MustVerifyEma
     public function roles()
     {
         return $this->belongsToMany(Role::class);
+    }
+
+    public function pronostics()
+    {
+        return $this->hasMany(Pronostic::class);
+    }
+
+    public function leagues()
+    {
+        return $this->belongsToMany(League::class);
     }
 
     public function getCreatedAtAttribute($value)

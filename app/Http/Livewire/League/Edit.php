@@ -21,9 +21,9 @@ class Edit extends Component
     public function mount(League $league)
     {
         $this->league = $league;
-        $this->user         = $this->league->user()->pluck('id')->toArray();
-        $this->competition         = $this->league->competition()->pluck('id')->toArray();
-        $this->sport         = $this->league->sport()->pluck('id')->toArray();
+        $this->user         = $this->league->users()->pluck('id')->toArray();
+        $this->competition         = $this->league->competitions()->pluck('id')->toArray();
+        $this->sport         = $this->league->sports()->pluck('id')->toArray();
         $this->initListsForFields();
     }
 
@@ -37,9 +37,9 @@ class Edit extends Component
         $this->validate();
 
         $this->league->save();
-        $this->league->competition()->sync($this->competition);
-        $this->league->sport()->sync($this->sport);
-        $this->league->user()->sync($this->user);
+        $this->league->competitions()->sync($this->competition);
+        $this->league->sports()->sync($this->sport);
+        $this->league->users()->sync($this->user);
 
         return redirect()->route('admin.leagues.index');
     }

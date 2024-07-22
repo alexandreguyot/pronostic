@@ -41,11 +41,13 @@ class Pronos extends Component
     public function updatedPronosticScoreHome($value) {
         $this->pronostic->score_home = $value;
         $this->pronostic->save();
+        $this->alert('success', 'Pronostic mis à jour');
     }
 
     public function updatedPronosticScoreExterior($value) {
         $this->pronostic->score_exterior = $value;
         $this->pronostic->save();
+        $this->alert('success', 'Pronostic mis à jour');
     }
 
     protected function rules(): array

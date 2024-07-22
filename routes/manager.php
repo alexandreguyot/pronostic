@@ -51,6 +51,7 @@ Route::group(['as' => 'admin.', 'middleware' => ['auth', 'verified']], function 
     Route::resource('games', GameController::class, ['except' => ['store', 'update', 'destroy']]);
 
     // Sport
+    Route::post('sports/media', [SportController::class, 'storeMedia'])->name('sports.storeMedia');
     Route::resource('sports', SportController::class, ['except' => ['store', 'update', 'destroy']]);
 });
 

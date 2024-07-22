@@ -10,6 +10,16 @@
             {{ trans('cruds.sport.fields.title_helper') }}
         </div>
     </div>
+    <div class="form-group {{ $errors->has('mediaCollections.sport_picto') ? 'invalid' : '' }}">
+        <label class="form-label" for="picto">{{ trans('cruds.sport.fields.picto') }}</label>
+        <x-dropzone id="picto" name="picto" action="{{ route('admin.sports.storeMedia') }}" collection-name="sport_picto" max-file-size="2" max-width="4096" max-height="4096" max-files="1" />
+        <div class="validation-message">
+            {{ $errors->first('mediaCollections.sport_picto') }}
+        </div>
+        <div class="help-block">
+            {{ trans('cruds.sport.fields.picto_helper') }}
+        </div>
+    </div>
 
     <div class="form-group">
         <button class="btn btn-indigo mr-2" type="submit">

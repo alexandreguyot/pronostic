@@ -54,9 +54,9 @@
                     this.emit("addedfile", fileClone)
 
                     if (fileClone.preview_thumbnail !== undefined) {
-                        this.emit("thumbnail", fileClone, fileClone.preview_thumbnail)
+                        this.emit("thumbnail", fileClone, 'http://'+fileClone.preview_thumbnail)
                     } else {
-                        this.emit("thumbnail", fileClone, fileClone.url)
+                        this.emit("thumbnail", fileClone, 'http://'+fileClone.url)
                     }
 
                     this.emit("complete", fileClone)

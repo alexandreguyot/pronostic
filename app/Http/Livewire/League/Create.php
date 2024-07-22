@@ -34,9 +34,9 @@ class Create extends Component
         $this->validate();
 
         $this->league->save();
-        $this->league->competition()->sync($this->competition);
-        $this->league->sport()->sync($this->sport);
-        $this->league->user()->sync($this->user);
+        $this->league->competitions()->sync($this->competition);
+        $this->league->sports()->sync($this->sport);
+        $this->league->users()->sync($this->user);
 
         return redirect()->route('admin.leagues.index');
     }

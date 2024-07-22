@@ -1708,6 +1708,9 @@ select {
 .ml-6 {
 	margin-left: 1.5rem;
 }
+.mb-8 {
+	margin-bottom: 2rem;
+}
 .block {
 	display: block;
 }
@@ -1761,6 +1764,12 @@ select {
 }
 .h-9 {
 	height: 2.25rem;
+}
+.h-8 {
+	height: 2rem;
+}
+.h-20 {
+	height: 5rem;
 }
 .max-h-96 {
 	max-height: 24rem;
@@ -1818,6 +1827,9 @@ select {
 }
 .w-28 {
 	width: 7rem;
+}
+.w-2 {
+	width: 0.5rem;
 }
 .min-w-48 {
 	min-width: 12rem;
@@ -2139,6 +2151,9 @@ select {
 .bg-green-600 {
 	--tw-bg-opacity: 1;
 	background-color: rgba(5, 150, 105, var(--tw-bg-opacity));
+}
+.bg-focusBlueSite\/10 {
+	background-color: rgba(61, 230, 243, 0.1);
 }
 .from-gray-700\/50 {
 	--tw-gradient-from: rgba(55, 65, 81, 0.5);

@@ -44,17 +44,22 @@ class League extends Model
         return $date->format('Y-m-d H:i:s');
     }
 
-    public function user()
+    public function users()
     {
         return $this->belongsToMany(User::class);
     }
 
-    public function sport()
+    public function pronostic()
+    {
+        return $this->hasManyThrough(Pronostic::class, User::class);
+    }
+
+    public function sports()
     {
         return $this->belongsToMany(Sport::class);
     }
 
-    public function competition()
+    public function competitions()
     {
         return $this->belongsToMany(Competition::class);
     }

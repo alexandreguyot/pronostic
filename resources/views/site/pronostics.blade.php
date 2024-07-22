@@ -16,8 +16,10 @@
     <div class="container mx-auto p-4">
         @foreach ($groupedPronostics as $sportTitle => $pronostics)
             <div class="mb-4 border border-gray-200 rounded-lg overflow-hidden">
-                <div class="bg-blue-600 text-white px-4 py-2 cursor-pointer" onclick="toggleAccordion('{{ Str::slug($sportTitle) }}')">
-                    <h2 class="text-lg">{{ $sportTitle }}</h2>
+                <div class="bg-blue-600 text-white px-4 py-2 cursor-pointer flex w-full h-20 justify-between" onclick="toggleAccordion('{{ Str::slug($sportTitle) }}')">
+                    <img src="{{ asset('images/picto/basketball.png')}}" class="w-16 h-16">
+                    <h2 class="text-lg align-middle">{{ $sportTitle }}</h2>
+                    <div></div>
                 </div>
                 <div id="{{ Str::slug($sportTitle) }}" class="hidden">
                     @foreach ($pronostics as $pronostic)

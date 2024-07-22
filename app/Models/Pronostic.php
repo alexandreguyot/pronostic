@@ -67,7 +67,7 @@ class Pronostic extends Model
     {
         return $this->belongsTo(User::class);
     }
-
+    
     public function getCreatedAtAttribute($value)
     {
         return $value ? Carbon::createFromFormat('Y-m-d H:i:s', $value)->format(config('project.datetime_format')) : null;

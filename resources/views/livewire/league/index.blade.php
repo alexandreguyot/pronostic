@@ -36,17 +36,17 @@
                                 {{ $league->title }}
                             </td>
                             <td>
-                                @if($league->competition)
-                                    <span class="badge badge-relationship">{{ $league->competition->title ?? '' }}</span>
-                                @endif
+                                @foreach($league->competitions as $key => $entry)
+                                    <span class="badge badge-relationship">{{ $entry->title }}</span>
+                                @endforeach
                             </td>
                             <td>
-                                @if($league->sport)
-                                    <span class="badge badge-relationship">{{ $league->sport->title ?? '' }}</span>
-                                @endif
+                                @foreach($league->sports as $key => $entry)
+                                    <span class="badge badge-relationship">{{ $entry->title }}</span>
+                                @endforeach
                             </td>
                             <td>
-                                @foreach($league->user as $key => $entry)
+                                @foreach($league->users as $key => $entry)
                                     <span class="badge badge-relationship">{{ $entry->name }}</span>
                                 @endforeach
                             </td>
