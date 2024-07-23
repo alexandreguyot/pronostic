@@ -87,61 +87,61 @@ class TeamTableSeeder extends Seeder
                 'icon'              => 'fi fi-gr fis'
             ],
             [
-                'name'              => 'France F',
+                'name'              => 'France',
                 'sport_id'             => 2,
                 'group'             => 'Groupe B',
                 'icon'              => 'fi fi-fr fis'
             ],
             [
-                'name'              => 'Canada F',
+                'name'              => 'Canada',
                 'sport_id'             => 2,
                 'group'             => 'Groupe B',
                 'icon'              => 'fi fi-ca fis'
             ],
             [
-                'name'              => 'Australie F',
+                'name'              => 'Australie',
                 'sport_id'             => 2,
                 'group'             => 'Groupe B',
                 'icon'              => 'fi fi-as fis'
             ],
             [
-                'name'              => 'Nigéria F',
+                'name'              => 'Nigéria',
                 'sport_id'             => 2,
                 'group'             => 'Groupe B',
                 'icon'              => 'fi fi-ng fis'
             ],
             [
-                'name'              => 'Serbie F',
+                'name'              => 'Serbie',
                 'sport_id'             => 2,
                 'group'             => 'Groupe A',
                 'icon'              => 'fi fi-sr fis'
             ],
             [
-                'name'              => 'Espagne F',
+                'name'              => 'Espagne',
                 'sport_id'             => 2,
                 'group'             => 'Groupe A',
                 'icon'              => 'fi fi-es fis'
             ],
             [
-                'name'              => 'Chine F',
+                'name'              => 'Chine',
                 'sport_id'             => 2,
                 'group'             => 'Groupe A',
                 'icon'              => 'fi fi-cn fis'
             ],
             [
-                'name'              => 'Porto Rico F',
+                'name'              => 'Porto Rico',
                 'sport_id'             => 2,
                 'group'             => 'Groupe A',
                 'icon'              => 'fi fi-pr fis'
             ],
             [
-                'name'              => 'Belgique F',
+                'name'              => 'Belgique',
                 'sport_id'             => 2,
                 'group'             => 'Groupe C',
                 'icon'              => 'fi fi-be fis'
             ],
             [
-                'name'              => 'Allemagne F',
+                'name'              => 'Allemagne',
                 'sport_id'             => 2,
                 'group'             => 'Groupe C',
                 'icon'              => 'fi fi-de fis'

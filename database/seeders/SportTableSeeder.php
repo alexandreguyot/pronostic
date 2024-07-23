@@ -30,6 +30,18 @@ class SportTableSeeder extends Seeder
                 'id'                => 4,
                 'title'             => 'Handball (F)',
             ],
+            [
+                'id'                => 5,
+                'title'             => "Médaille d'or",
+            ],
+            [
+                'id'                => 6,
+                'title'             => "Médaille d'argent",
+            ],
+            [
+                'id'                => 7,
+                'title'             => "Médaille de bronze",
+            ],
         ];
 
         Sport::insert($sports);

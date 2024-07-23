@@ -25,16 +25,11 @@
     @foreach ($leaguesWithPoints as $leagueData)
     <div class="mb-8">
         <h2 class="text-2xl font-bold text-center mb-4">{{ $leagueData['league']->name }}</h2>
-        <div class="overflow-x-auto">
             <table class="w-full bg-transparent">
                 <thead>
                     <tr class="border-b-2 border-t-2 border-b-white/30 border-t-white/30">
                         <th class="py-2 px-4 text-lg text-center leading-4 font-medium text-focusBlueSite uppercase tracking-wider border-right"></th>
                         <th class="py-2 px-4 text-lg text-center leading-4 font-medium text-focusBlueSite uppercase tracking-wider border-r-2 border-r-white/30">Joueur</th>
-                        @foreach ($league->sports as $sp)
-                            <th class="py-2 px-4 text-lg text-center leading-4 font-medium text-focusBlueSite uppercase tracking-wider border-r-2 border-r-white/30">{{ $sp->title }}</th>
-
-                        @endforeach
                         <th class="py-2 px-4 text-lg text-center leading-4 font-medium text-focusBlueSite uppercase tracking-wider">Totals des points</th>
                     </tr>
                 </thead>
@@ -43,17 +38,25 @@
                         <tr class="text-center border-b-2 border-b-white/30">
                             <td class="py-2 px-4 border-right">{{ $index + 1 }}</td>
                             <td class="py-2 px-4 border-right">{{ $user->name }}</td>
-                            @foreach ($user->sports_points as $sport => $points)
-                                <td class="py-2 px-4 text-white bg-focusBlueSite/10">{{ $points }}</td>
-                            @endforeach
-                            <td class="py-2 px-4 text-white bg-focusBlueSite/30">{{ $user->total_points }}</td>
+                            <td class="py-2 px-4 text-white bg-focusBlueSite/30 relative group">
+                                {{ $user->total_points }}
+                                <!-- Info Icon -->
+                                <span class="inline-block ml-2 text-xs text-white bg-black rounded-full p-1 cursor-pointer relative">
+                                    <i class="fa fa-info-circle"></i>
+                                    <!-- Tooltip -->
+                                    <div class="absolute left-1/2 transform -translate-x-1/2 top-full mt-2 bg-black text-white text-xs rounded py-1 px-2 whitespace-nowrap z-10 hidden group-hover:block">
+                                        @foreach ($user->sports_points as $sport => $points)
+                                            <div>{{ $sport }}: {{ $points }} points</div>
+                                        @endforeach
+                                    </div>
+                                </span>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
-    </div>
-@endforeach
+    @endforeach
      <script>
         document.addEventListener('DOMContentLoaded', function () {
             const tabs = document.querySelectorAll('.tab');

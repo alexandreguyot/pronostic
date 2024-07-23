@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
+use App\Observers\UserObserver;
+
 class UsersTableSeeder extends Seeder
 {
     public function run()
@@ -33,5 +35,9 @@ class UsersTableSeeder extends Seeder
         ];
 
         User::insert($users);
+        foreach(User::all() as $user) {
+            $observer = new UserObserver();
+            $observer->created($user);
+        }
     }
 }
