@@ -1,6 +1,5 @@
 <?php
 
 return [
-    'site_title' => 'WiztiGames',
-
+    'site_title' => 'Wiztivi Games',
 ];
