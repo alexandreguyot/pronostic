@@ -26,25 +26,40 @@ class HomeController extends Controller
             }
         }
 
-        $groupedPronostics = Pronostic::with(['game', 'game.sport'])
-            ->join('games', 'pronostics.game_id', '=', 'games.id')
-            ->join('sports', 'games.sport_id', '=', 'sports.id')
-            ->where('pronostics.user_id', Auth::user()->id)
-            ->where('games.date_time', '>', Carbon::now())
-            ->orderBy('games.date_time')
-            ->select('pronostics.*', 'sports.id as sport_id', 'sports.title as sport_title')
-            ->get()
-            ->groupBy('sport_title');
+    $groupedPronostics = Pronostic::with(['game', 'game.sport'])
+        ->join('games', 'pronostics.game_id', '=', 'games.id')
+        ->join('sports', 'games.sport_id', '=', 'sports.id')
+        ->where('pronostics.user_id', Auth::user()->id)
+        ->where('games.date_time', '>', Carbon::now())
+        ->orderBy('games.date_time')
+        ->select('pronostics.*', 'sports.id as sport_id', 'sports.title as sport_title')
+        ->get()
+        ->groupBy(function ($item) {
+            // Regrouper les sports IDs 5, 6, et 7 sous un même titre
+            if (in_array($item->sport_id, [5, 6, 7])) {
+                return 'Médailles';
+            }
+            return $item->sport_title;
+        });
 
         $groupedPronostics->transform(function ($pronostics, $sportTitle) {
+            // Vous pouvez personnaliser le sportTitle si nécessaire, comme ajouter une condition pour le groupe 5-6-7
+            if ($sportTitle === 'Médailles') {
+                $sportTitle = 'Médailles'; // Donnez un nom personnalisé à ce groupe
+            }
+
             $sport = Sport::find($pronostics->first()->sport_id);
-            $mediaItem = $sport->getPictoAttribute();
-            $url = $mediaItem->pluck('url')->first();
+            $mediaItem = $sport ? $sport->getPictoAttribute() : null;
+            $url = $mediaItem ? $mediaItem->pluck('url')->first() : null;
 
             return [
                 'pronostics' => $pronostics,
                 'url' => $url,
             ];
+        });
+        // Trier pour mettre le groupe 'Médailles' en premier
+        $groupedPronostics = $groupedPronostics->sortBy(function ($value, $key) {
+            return $key === 'Médailles' ? 0 : 1;
         });
 
         return view('site.pronostics', compact('groupedPronostics'));

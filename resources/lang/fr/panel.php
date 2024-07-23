@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'site_title' => 'Pronostic JO 2024',
+    'site_title' => 'WiztiGames',
 
 ];
