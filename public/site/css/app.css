@@ -1911,6 +1911,9 @@ select {
 .items-stretch {
 	align-items: stretch;
 }
+.justify-start {
+	justify-content: flex-start;
+}
 .justify-end {
 	justify-content: flex-end;
 }

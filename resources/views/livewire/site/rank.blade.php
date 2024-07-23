@@ -9,7 +9,7 @@
         </nav>
 
         <!-- Navigation pour les sports -->
-        <nav class="flex w-full justify-around mb-4 overflow-x-auto flex-nowrap max-w-full" aria-label="Tabs">
+        <nav class="flex w-full mb-4 overflow-x-auto flex-nowrap max-w-full justify-start" aria-label="Tabs">
             @foreach ($sports as $sport)
                 <a href="#" wire:click.prevent="$set('selectedSportTitle', '{{ $sport }}')" class="sport-tab whitespace-nowrap py-4 px-4 border-b-2 font-medium text-lg {{ $selectedSportTitle == $sport ? 'border-focusBlueSite text-focusBlueSite' : '' }}">
                     {{ $sport }}
