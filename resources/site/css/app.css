@@ -40,3 +40,24 @@ body {
     color: white;
 }
 
+@media only screen and (max-width: 440px) {
+    .scrollable-element {
+        overflow: auto; /* Permet le défilement */
+    }
+
+    /* Pour les navigateurs Webkit */
+    .scrollable-element::-webkit-scrollbar {
+        display: none; /* Masque la barre de défilement */
+    }
+
+    /* Pour Firefox */
+    .scrollable-element {
+        scrollbar-width: none; /* Masque la barre de défilement */
+    }
+
+    /* Pour Edge et Internet Explorer */
+    .scrollable-element {
+        -ms-overflow-style: none; /* Masque la barre de défilement */
+    }
+}
+
