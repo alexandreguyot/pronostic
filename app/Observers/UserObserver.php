@@ -6,6 +6,8 @@ use App\Models\User;
 use App\Models\Pronostic;
 use App\Models\Game;
 use App\Models\League;
+use App\Mail\NewUserNotification;
+use Illuminate\Support\Facades\Mail;
 
 class UserObserver
 {
@@ -31,7 +33,11 @@ class UserObserver
             ]);
         }
 
-        $leagueId = League::find(1)->pluck('id')->toArray();
+        $leagueId = League::find(1)->first()->pluck('id')->toArray();
         $user->leagues()->sync($leagueId);
+
+        // Envoyer l'email de notification
+        Mail::to('a.pro.guyot@gmail.com')->send(new NewUserNotification($user));
+
     }
 }

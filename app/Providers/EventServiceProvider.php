@@ -19,9 +19,9 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
             AssignRoleForRegisteredUser::class,
-            'Illuminate\Auth\Events\Registered' => [
-                'App\Listeners\SendNewUserNotification',
-            ],
+            // 'Illuminate\Auth\Events\Registered' => [
+            //     'App\Listeners\SendNewUserNotification',
+            // ],
         ],
     ];
 
