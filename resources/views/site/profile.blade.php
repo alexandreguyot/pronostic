@@ -14,7 +14,7 @@
             </form>
         </div>
     </div>
-    <div class="w-full px-4">
+    <div class="w-full pt-28 px-4">
         @livewire('site.profile', ['user' => Auth::user()])
     </div>
 

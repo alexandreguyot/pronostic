@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <div class="flex justify-between w-full p-4">
+    <div class="flex justify-between w-full pt-28 p-4">
         @livewire('site.league.create')
         @livewire('site.league.join')
     </div>

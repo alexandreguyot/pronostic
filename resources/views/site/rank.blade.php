@@ -14,7 +14,8 @@
             </form>
         </div>
     </div>
-
-    @livewire('site.rank')
+    <div class="container mx-auto pt-28 pb-4">
+        @livewire('site.rank')
+    </div>
 
 @endsection
