@@ -1,6 +1,6 @@
 @extends('layouts.site')
 @section('content')
-    <div class="flex w-full bg-gradient-title p-6">
+    <div class="flex w-full bg-gradient-title p-6 fixed z-50">
         <div class="w-1/4">
             <img src="{{ asset('images/logo.png')}}" alt="logo" class="h-10">
         </div>

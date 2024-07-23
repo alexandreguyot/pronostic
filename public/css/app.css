@@ -2483,6 +2483,15 @@ select {
 .p-2 {
 	padding: 0.5rem;
 }
+.p-40 {
+	padding: 10rem;
+}
+.p-32 {
+	padding: 8rem;
+}
+.p-28 {
+	padding: 7rem;
+}
 .py-4 {
 	padding-top: 1rem;
 	padding-bottom: 1rem;
@@ -2579,6 +2588,9 @@ select {
 }
 .pt-5 {
 	padding-top: 1.25rem;
+}
+.pt-28 {
+	padding-top: 7rem;
 }
 .text-left {
 	text-align: left;

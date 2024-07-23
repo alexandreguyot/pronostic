@@ -1,6 +1,6 @@
 @extends('layouts.site')
 @section('content')
-    <div class="flex w-full bg-gradient-title p-6">
+    <div class="flex w-full bg-gradient-title p-6 fixed z-50 fixed z-50">
         <div class="w-1/4">
             <img src="{{ asset('images/logo.png')}}" alt="logo" class="h-10">
         </div>
@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <div class="container mx-auto p-4">
+    <div class="container mx-auto pt-28 px-4 pb-4">
         @foreach ($groupedPronostics as $sportTitle => $data)
             <div class="mb-4 border border-gray-200 rounded-lg overflow-hidden">
                 <div class="bg-gradient-sport-title text-white px-4 py-2 cursor-pointer flex w-full h-20 justify-evenly" onclick="toggleAccordion('{{ Str::slug($sportTitle) }}')">

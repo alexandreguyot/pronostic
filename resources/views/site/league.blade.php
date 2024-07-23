@@ -1,6 +1,6 @@
 @extends('layouts.site')
 @section('content')
-    <div class="flex justify-center w-full bg-gradient-title p-6">
+    <div class="flex justify-center w-full bg-gradient-title p-6 fixed z-50">
         <h2 class="font-bold text-xl">{{ $league->title }}</h2>
     </div>
 
