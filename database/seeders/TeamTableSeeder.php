@@ -42,7 +42,7 @@ class TeamTableSeeder extends Seeder
                 'name'              => 'Australie',
                 'sport_id'             => 1,
                 'group'             => 'Groupe A',
-                'icon'              => 'fi fi-au fis'
+                'icon'              => 'fi fi-en fis'
             ],
             [
                 'name'              => 'Serbie',
@@ -102,7 +102,7 @@ class TeamTableSeeder extends Seeder
                 'name'              => 'Australie',
                 'sport_id'             => 2,
                 'group'             => 'Groupe B',
-                'icon'              => 'fi fi-as fis'
+                'icon'              => 'fi fi-en fis'
             ],
             [
                 'name'              => 'Nigéria',
@@ -114,7 +114,7 @@ class TeamTableSeeder extends Seeder
                 'name'              => 'Serbie',
                 'sport_id'             => 2,
                 'group'             => 'Groupe A',
-                'icon'              => 'fi fi-sr fis'
+                'icon'              => 'fi fi-rs fis'
             ],
             [
                 'name'              => 'Espagne',
@@ -147,13 +147,13 @@ class TeamTableSeeder extends Seeder
                 'icon'              => 'fi fi-de fis'
             ],
             [
-                'name'              => 'USA F',
+                'name'              => 'USA',
                 'sport_id'             => 2,
                 'group'             => 'Groupe C',
                 'icon'              => 'fi fi-us fis'
             ],
             [
-                'name'              => 'Japon F',
+                'name'              => 'Japon',
                 'sport_id'             => 2,
                 'group'             => 'Groupe C',
                 'icon'              => 'fi fi-jp fis'

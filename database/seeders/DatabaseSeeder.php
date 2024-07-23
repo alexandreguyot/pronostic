@@ -12,10 +12,11 @@ class DatabaseSeeder extends Seeder
             PermissionsTableSeeder::class,
             RolesTableSeeder::class,
             PermissionRoleTableSeeder::class,
-            UsersTableSeeder::class,
-            RoleUserTableSeeder::class,
+
             CompetitionTableSeeder::class,
             LeagueTableSeeder::class,
+            UsersTableSeeder::class,
+            RoleUserTableSeeder::class,
             SportTableSeeder::class,
             TeamTableSeeder::class,
             GameTableSeeder::class,
