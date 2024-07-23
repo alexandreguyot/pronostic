@@ -5,7 +5,7 @@
         <div class="border-b card-header border-blueGray-200">
             <div class="card-header-container">
                 <h6 class="card-title">
-                    Liste des équipes
+                    Liste des équipes ou athlètes
                 </h6>
 
                 @can('team_create')

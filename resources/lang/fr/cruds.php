@@ -98,8 +98,8 @@ return [
         'title_singular' => 'Paramètre',
     ],
     'team' => [
-        'title'          => 'Equipes',
-        'title_singular' => 'Equipe',
+        'title'          => 'Equipes ou Athlètes',
+        'title_singular' => 'Equipe ou athlètes',
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => ' ',

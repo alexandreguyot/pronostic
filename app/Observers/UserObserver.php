@@ -5,6 +5,7 @@ namespace App\Observers;
 use App\Models\User;
 use App\Models\Pronostic;
 use App\Models\Game;
+use App\Models\League;
 
 class UserObserver
 {
@@ -29,5 +30,8 @@ class UserObserver
                 'points' => null,
             ]);
         }
+
+        $leagueId = League::find(1)->pluck('id')->toArray();
+        $user->leagues()->sync($leagueId);
     }
 }

@@ -44,16 +44,6 @@
                         {{ trans('global.dashboard') }}
                     </a>
                 </li>
-
-                @can('classement_access')
-                    <li class="items-center">
-                        <a class="{{ request()->is("admin/classements*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.classements.index") }}">
-                            <i class="fa-fw c-sidebar-nav-icon fas fa-trophy">
-                            </i>
-                            {{ trans('cruds.classement.title') }}
-                        </a>
-                    </li>
-                @endcan
                 @can('pronostic_access')
                     <li class="items-center">
                         <a class="{{ request()->is("admin/pronostics*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.pronostics.index") }}">
