@@ -37,7 +37,7 @@
                     @foreach ($leagueData['users'] as $index => $user)
                         <tr class="text-center border-b-2 border-b-white/30">
                             <td class="py-2 px-4 border-right">{{ $index + 1 }}</td>
-                            <td class="py-2 px-4 border-right">{{ $user->name }}</td>
+                            <td class="py-2 px-4 border-right">{{ $user->name }} {{ $user->firstname }}</td>
                             <td class="py-2 px-4 text-white bg-focusBlueSite/30 relative group">
                                 {{ $user->total_points }}
                                 <!-- Info Icon -->

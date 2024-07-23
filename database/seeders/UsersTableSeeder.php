@@ -21,17 +21,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token'    => null,
                 'email_verified_at' => now(),
                 'locale'            => 'fr',
-            ],
-            [
-                'id'                => 2,
-                'name'              => 'Joueur',
-                'firstname'         => '1',
-                'email'             => 'joueur1@mail.com',
-                'password'          => bcrypt('joueur1'),
-                'remember_token'    => null,
-                'email_verified_at' => now(),
-                'locale'            => 'fr',
-            ],
+            ]
         ];
 
         User::insert($users);
