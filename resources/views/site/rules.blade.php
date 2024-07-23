@@ -58,7 +58,7 @@
             </div>
         </div>
 
-        <div class="shadow-md rounded-lg border border-gray-200 p-6">
+        <div class="shadow-md rounded-lg border border-gray-200 p-6 hidden">
             <h2 class="text-2xl font-semibold mb-4">Exemples de Calcul de Points</h2>
 
             <div class="mb-4">
