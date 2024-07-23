@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <div class="container mx-auto p-6">
+    <div class="container mx-auto pt-28 px-6 pb-6">
         <div class="shadow-md rounded-lg border border-gray-200 p-6 mb-6">
             <h2 class="text-2xl font-semibold mb-4">Points de Base</h2>
             <p>

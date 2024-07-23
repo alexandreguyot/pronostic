@@ -108,7 +108,7 @@ class User extends Authenticatable implements HasLocalePreference, MustVerifyEma
 
     public function setEmailVerifiedAtAttribute($value)
     {
-        $this->attributes['email_verified_at'] = $value ? Carbon::createFromFormat(config('project.datetime_format'), $value)->format('Y-m-d H:i:s') : null;
+        $this->attributes['email_verified_at'] = $value;
     }
 
     public function setPasswordAttribute($input)
