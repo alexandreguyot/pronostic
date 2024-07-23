@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset('site/css/app.css') }}" />
     <script src="https://kit.fontawesome.com/e037e5d93a.js" crossorigin="anonymous"></script>
     <title>{{ trans('panel.site_title') }}</title>
+    <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/x-icon">
 
     @livewireStyles
 </head>
