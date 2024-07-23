@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
-use App\Observers\UserObserver;
 
 class UsersTableSeeder extends Seeder
 {
@@ -21,13 +20,19 @@ class UsersTableSeeder extends Seeder
                 'remember_token'    => null,
                 'email_verified_at' => now(),
                 'locale'            => 'fr',
+            ],
+            [
+                'id'                => 2,
+                'name'              => 'Guffroy',
+                'firstname'         => 'Marine',
+                'email'             => 'marine.guffroy@wiztivi.com',
+                'password'          => bcrypt('marine'),
+                'remember_token'    => null,
+                'email_verified_at' => now(),
+                'locale'            => 'fr',
             ]
         ];
 
         User::insert($users);
-        foreach(User::all() as $user) {
-            $observer = new UserObserver();
-            $observer->created($user);
-        }
     }
 }
