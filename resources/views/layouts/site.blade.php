@@ -73,6 +73,14 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{ asset('vendor/livewire-alert/livewire-alert.js') }}"></script>
     <x-livewire-alert::flash />
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            @if (session('success'))
+                // Afficher une alerte de succès
+                window.livewireAlert.show('success', '{{ session('success') }}');
+            @endif
+        });
+    </script>
     @yield('scripts')
     @stack('scripts')
 </body>

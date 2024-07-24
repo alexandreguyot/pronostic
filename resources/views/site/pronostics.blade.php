@@ -16,6 +16,14 @@
     </div>
 
     <div class="container mx-auto pt-28 px-4 pb-4">
+        <div class="shadow-md rounded-lg border border-gray-200 p-2 mb-6">
+            <h2 class="text-l font-semibold">Comment jouer ? </h2>
+            <small>
+                Si vous souhaitez jouer sur chaque sports, vous le pouvez, autrement, vous pouvez choisir votre sport.
+                Il suffit de saisir le score pour chaque match. Si vous voyez un message "Pronostic mis à jour", c'est que votre pronostic a été pris en compte.
+                Attention pour qu'un pari soit pris pour un match, il faut bien saisir les deux champs, même si vous souhaitez mettre 0.
+            </small>
+        </div>
         @foreach ($groupedPronostics as $sportTitle => $data)
             <div class="mb-4 border border-gray-200 rounded-lg overflow-hidden">
                 <div class="bg-gradient-sport-title text-white px-4 py-2 cursor-pointer flex w-full h-20 justify-evenly" onclick="toggleAccordion('{{ Str::slug($sportTitle) }}')">
