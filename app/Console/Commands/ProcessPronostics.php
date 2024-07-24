@@ -18,6 +18,7 @@ class ProcessPronostics extends Command
 
     public function handle()
     {
+        $this->info('Pronostics processed started.');
         // Get the current date and time
         $now = Carbon::now();
 
