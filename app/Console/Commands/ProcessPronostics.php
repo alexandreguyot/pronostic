@@ -22,7 +22,8 @@ class ProcessPronostics extends Command
         $now = Carbon::now();
 
         // Fetch pronostics for matches that have passed and have scores
-        $pronostics = Pronostic::whereHas('game', function ($query) use ($now) {
+        $pronostics = Pronostic::whereNull('points')
+        ->whereHas('game', function ($query) use ($now) {
             $query->where('date_time', '<=', $now);
         })
         ->whereHas('game', function ($query) {
