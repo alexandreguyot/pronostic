@@ -67,6 +67,12 @@
                                 </label>
                                 <input id="password_confirmation" name="password_confirmation" type="password" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" placeholder="{{ __('global.confirm_password') }}" required autocomplete="new-password" />
                             </div>
+
+                            <div>
+                                <small>
+                                    En vous inscrivant, j'accepte que les informations recueillies soient enregistrées dans un fichier informatisé par le CSE de Wiztivi. Les informations seront communiquées seulement aux membres du CSE et conserver pendant 1 mois. Je peux accéder aux données me concernant, les rectifier, demander leur effacement ou exercer mon droit à la limitation de leur traitement. Pour exercer ces droits ou pour toute question, je peux contacter le CSE de Wiztivi : cse@wiztivi.com
+                                </small>
+                            </div>
                             <div class="text-center mt-6">
                                 <button class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150">
                                     {{ __('global.register') }}
