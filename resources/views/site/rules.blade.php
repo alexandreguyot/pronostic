@@ -17,11 +17,43 @@
 
     <div class="container mx-auto pt-28 px-6 pb-6">
         <div class="shadow-md rounded-lg border border-gray-200 p-6 mb-6">
-            <h2 class="text-2xl font-semibold mb-4">Points de Base</h2>
+            <h2 class="text-2xl font-semibold mb-4">Médailles</h2>
+            <div>
+                <h3 class="text-lg font-semibold mb-2">Points</h3>
+                <ul class="list-disc ml-6">
+                    <li>
+                        <strong>Score pour chaque équipe (-7/+7)</strong> : <strong>5 point</strong>
+                    </li>
+                    <li>
+                        <strong>Score pour chaque équipe (-5/+5)</strong> : <strong>8 points</strong>
+                    </li>
+                    <li>
+                        <strong>Score exact</strong> : <strong>15 points</strong>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="shadow-md rounded-lg border border-gray-200 p-6 mb-6">
+            <h2 class="text-2xl font-semibold mb-4">Points de Base pour le basket et le handball</h2>
             <p>
                 Pour chaque pronostic, si vous trouvez le bon vainqueur du match, vous recevez <strong>2 points</strong>.
                 Si le pronostic est incorrect, vous ne recevez aucun point.
             </p>
+            <div>
+                <h3 class="text-lg font-semibold mb-2">Médailles</h3>
+                <ul class="list-disc ml-6">
+                    <li>
+                        <strong>Score pour chaque équipe (-7/+7)</strong> : <strong>5 point</strong>
+                    </li>
+                    <li>
+                        <strong>Score pour chaque équipe (-5/+5)</strong> : <strong>8 points</strong>
+                    </li>
+                    <li>
+                        <strong>Score exact</strong> : <strong>15 points</strong>
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <div class="shadow-md rounded-lg border border-gray-200 p-6 mb-6">

@@ -21,16 +21,16 @@ class UsersTableSeeder extends Seeder
                 'email_verified_at' => now(),
                 'locale'            => 'fr',
             ],
-            [
-                'id'                => 2,
-                'name'              => 'Guffroy',
-                'firstname'         => 'Marine',
-                'email'             => 'marine.guffroy@wiztivi.com',
-                'password'          => bcrypt('marine'),
-                'remember_token'    => null,
-                'email_verified_at' => now(),
-                'locale'            => 'fr',
-            ]
+            // [
+            //     'id'                => 2,
+            //     'name'              => 'Guffroy',
+            //     'firstname'         => 'Marine',
+            //     'email'             => 'marine.guffroy@wiztivi.com',
+            //     'password'          => bcrypt('marine'),
+            //     'remember_token'    => null,
+            //     'email_verified_at' => now(),
+            //     'locale'            => 'fr',
+            // ]
         ];
 
         User::insert($users);
