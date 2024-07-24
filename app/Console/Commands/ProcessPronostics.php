@@ -16,7 +16,7 @@ class ProcessPronostics extends Command
         parent::__construct();
     }
 
-    private function handle()
+    public function handle()
     {
         // Get the current date and time
         $now = Carbon::now();
