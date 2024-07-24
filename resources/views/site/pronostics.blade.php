@@ -21,7 +21,7 @@
             <small>
                 Vous avez le choix, jouer pour toutes les rencontres sportives et médailles ou pour celles que vous voulez
                 Il suffit de saisir le score pour chaque match. Si vous voyez un message "Pronostic mis à jour", c'est que votre pronostic a été pris en compte. Attention pour qu'un pari soit pris pour un match, il faut bien saisir les deux champs, même si vous souhaitez mettre 0.
-                Pour les matches de basket et handball vous avez jusqu'au début du match pour faire vos pronos. Pour les médailles, vous avez jusqu'au 26 juillet 23h.
+                Pour les matches de basket et handball vous avez jusqu'au début du match pour faire vos pronos. Pour les médailles, vous avez jusqu'au 6 août 12h.
             </small>
         </div>
         @foreach ($groupedPronostics as $sportTitle => $data)
