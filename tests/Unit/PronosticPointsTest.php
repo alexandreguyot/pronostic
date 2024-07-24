@@ -1,22 +1,105 @@
 <?php
 
-namespace App\Console\Commands;
+namespace Tests\Unit;
 
-use Illuminate\Console\Command;
+use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\Pronostic;
+use App\Models\Game;
+use App\Models\Sport;
+use App\Models\User;
+use App\Models\League;
 use Carbon\Carbon;
 
-class ProcessPronostics extends Command
+class PronosticPointsTest extends TestCase
 {
-    protected $signature = 'pronostics:process';
-    protected $description = 'Process the pronostics for completed matches and apply the scoring rules';
+    use RefreshDatabase;
 
-    public function __construct()
+   /** @test */
+   public function test_calculate_points_for_handball_with_draw()
+   {
+       $league = League::factory()->create(['id' => 1, 'title' => 'Wiztivi Pronostic']);
+       $sport = Sport::factory()->create(['id' => 3, 'title' => 'Handball']);
+       $game = Game::factory()->create([
+           'sport_id' => $sport->id,
+           'home_score' => 25,
+           'exterior_score' => 25,
+           'date_time' => Carbon::now()->subDay()->format('d/m/Y H:i:s')
+       ]);
+       $user = User::factory()->create();
+       $pronostic = Pronostic::factory()->create([
+           'user_id' => $user->id,
+           'game_id' => $game->id,
+           'score_home' => 25,
+           'score_exterior' => 25,
+           'points' => null
+       ]);
+
+       // Call the function to calculate points
+       $this->calculatePoints();
+
+       $pronostic->refresh();
+       $this->assertEquals(10, $pronostic->points); // 2 for correct draw + 4 for exact score + 4 for exact score
+   }
+
+   /** @test */
+   public function test_calculate_points_for_basketball()
+   {
+       $league = League::factory()->create(['id' => 1, 'title' => 'Wiztivi Pronostic']);
+       $sport = Sport::factory()->create(['id' => 2, 'title' => 'Basketball']);
+       $game = Game::factory()->create([
+           'sport_id' => $sport->id,
+           'home_score' => 90,
+           'exterior_score' => 85,
+           'date_time' => Carbon::now()->subDay()->format('d/m/Y H:i:s')
+       ]);
+       $user = User::factory()->create();
+       $pronostic = Pronostic::factory()->create([
+           'user_id' => $user->id,
+           'game_id' => $game->id,
+           'score_home' => 88,
+           'score_exterior' => 84,
+           'points' => null
+       ]);
+
+       // Call the function to calculate points
+       $this->calculatePoints();
+
+       $pronostic->refresh();
+       $this->assertEquals(6, $pronostic->points); // 2 for correct winner + 2 + 2
+   }
+
+
+    /** @test */
+    public function test_calculate_points_for_medals()
     {
-        parent::__construct();
+        $league = League::factory()->create(['id' => 1, 'title' => 'Wiztivi Pronostic']);
+        $sport = Sport::factory()->create(['id' => 5, 'title' => 'Médailles']);
+        $game = Game::factory()->create([
+            'sport_id' => $sport->id,
+            'home_score' => 10,
+            'exterior_score' => 0,
+            'date_time' => Carbon::now()->subDay()->format('d/m/Y H:i:s')
+        ]);
+        $user = User::factory()->create();
+        $pronostic = Pronostic::factory()->create([
+            'user_id' => $user->id,
+            'game_id' => $game->id,
+            'score_home' => 9,
+            'score_exterior' => 0,
+            'points' => null
+        ]);
+
+        // Call the function to calculate points
+        $this->calculatePoints();
+
+        $pronostic->refresh();
+        $this->assertEquals(8, $pronostic->points); // 8 points for +/- 5 medals
     }
 
-    private function handle()
+
+
+    private function calculatePoints()
     {
         // Get the current date and time
         $now = Carbon::now();

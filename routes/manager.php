@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['verify' => true]);
 
+Route::get('process-pronostic', [PronosticController::class, 'processPronostic'])->name('process-pronostic');
+
 Route::redirect('/', '/login');
 
 Route::group(['as' => 'admin.', 'middleware' => ['auth', 'verified']], function () {

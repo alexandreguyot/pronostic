@@ -7,6 +7,7 @@ use App\Models\Pronostic;
 use Gate;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Artisan;
 
 class PronosticController extends Controller
 {
@@ -38,5 +39,11 @@ class PronosticController extends Controller
         $pronostic->load('game');
 
         return view('admin.pronostic.show', compact('pronostic'));
+    }
+
+    public function processPronostic() {
+        Artisan::call('email:send', [
+            'user' => 1, '--queue' => 'default'
+        ]);
     }
 }

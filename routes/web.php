@@ -7,7 +7,6 @@ use App\Http\Controllers\Admin\AuthController;
 
 Auth::routes(['verify' => true]);
 
-
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::redirect('/', '/pronostics');
     Route::get('/pronostics', [SiteHomeController::class, 'pronostics'])->name('pronostics');
