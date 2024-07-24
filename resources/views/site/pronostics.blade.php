@@ -19,7 +19,7 @@
         <div class="shadow-md rounded-lg border border-gray-200 p-2 mb-6">
             <h2 class="text-l font-semibold">Comment jouer ? </h2>
             <small>
-                VVous avez le choix, jouer pour toutes les rencontres sportives et médailles ou pour celles que vous voulez
+                Vous avez le choix, jouer pour toutes les rencontres sportives et médailles ou pour celles que vous voulez.
                 Il suffit de saisir le score pour chaque match. Si vous voyez un message "Pronostic mis à jour", c'est que votre pronostic a été pris en compte. Attention pour qu'un pari soit pris pour un match, il faut bien saisir les deux champs, même si vous souhaitez mettre 0.
                 Pour les matchs de basket et handball vous avez jusqu'à la date de la rencontre pour faire vos pronos. Pour les médailles, vous avez jusqu'au 6 août pour faire vos pronostics.
             </small>
