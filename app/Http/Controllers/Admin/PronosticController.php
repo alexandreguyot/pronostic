@@ -7,7 +7,7 @@ use App\Models\Pronostic;
 use Gate;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Artisan;
+use Illuminate\Support\Facades\Artisan;
 
 class PronosticController extends Controller
 {
@@ -42,8 +42,8 @@ class PronosticController extends Controller
     }
 
     public function processPronostic() {
-        Artisan::call('email:send', [
-            'user' => 1, '--queue' => 'default'
-        ]);
+        Artisan::call('pronostics:process');
+        // Optionally return a response
+        return response()->json(['message' => 'Pronostics processing started.']);
     }
 }
