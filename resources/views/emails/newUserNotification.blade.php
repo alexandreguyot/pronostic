@@ -8,6 +8,7 @@
     <p>Un nouvel utilisateur a été créé :</p>
     <ul>
         <li>Nom : {{ $user->name }}</li>
+        <li>Prénom : {{ $user->firstname }}</li>
         <li>Email : {{ $user->email }}</li>
     </ul>
 </body>
