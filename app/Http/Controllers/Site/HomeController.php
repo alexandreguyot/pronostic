@@ -79,9 +79,42 @@ class HomeController extends Controller
             ->where('pronostics.user_id', Auth::user()->id)
             ->where('games.date_time', '<', Carbon::now())
             ->orderBy('games.date_time')
-            ->select('pronostics.*', 'sports.title as sport_title')
+            ->select('pronostics.*', 'sports.id as sport_id', 'sports.title as sport_title')
             ->get()
-            ->groupBy('sport_title');
+            ->groupBy(function ($item) {
+                // Regrouper les sports IDs 5, 6, et 7 sous un même titre
+                if (in_array($item->sport_id, [5, 6, 7])) {
+                    return 'Médailles';
+                }
+                return $item->sport_title;
+            });
+
+        $groupedPronostics->transform(function ($pronostics, $sportTitle) {
+            // Vous pouvez personnaliser le sportTitle si nécessaire, comme ajouter une condition pour le groupe 5-6-7
+            if ($sportTitle === 'Médailles') {
+                $sportTitle = 'Médailles'; // Donnez un nom personnalisé à ce groupe
+            }
+
+            $sport = Sport::find($pronostics->first()->sport_id);
+            $mediaItem = $sport ? $sport->getPictoAttribute() : null;
+            $url = $mediaItem ? $mediaItem->pluck('url')->first() : null;
+
+             // Pour le groupe 'Médailles', trier les pronostics par sport_id
+            if ($sportTitle === 'Médailles') {
+                $pronostics = $pronostics->sortBy(function ($pronostic) {
+                    return $pronostic->game->sport->id; // Triez par sport_id
+                });
+            }
+
+            return [
+                'pronostics' => $pronostics,
+                'url' => $url,
+            ];
+        });
+        // Trier pour mettre le groupe 'Médailles' en premier
+        $groupedPronostics = $groupedPronostics->sortBy(function ($value, $key) {
+            return $key === 'Médailles' ? 0 : 1;
+        });
 
         return view('site.results', compact('groupedPronostics'));
     }
