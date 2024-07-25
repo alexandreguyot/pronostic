@@ -15,22 +15,23 @@ use Illuminate\Support\Collection;
 class HomeController extends Controller
 {
     public function pronostics() {
-        $games = Game::notPassed()->orderBy('date_time')->get();
-        foreach ($games as $game) {
-            $prono = Pronostic::where('game_id', $game->id)->where('user_id', Auth::user()->id)->first();
-            if (!$prono) {
-                $prono = new Pronostic();
-                $prono->user_id = Auth::user()->id;
-                $prono->game_id = $game->id;
-                $prono->save();
-            }
-        }
+        // $games = Game::notPassed()->orderBy('date_time')->get();
+        // foreach ($games as $game) {
+        //     $prono = Pronostic::where('game_id', $game->id)->where('user_id', Auth::user()->id)->first();
+        //     if (!$prono) {
+        //         $prono = new Pronostic();
+        //         $prono->user_id = Auth::user()->id;
+        //         $prono->game_id = $game->id;
+        //         $prono->save();
+        //     }
+        // }
 
         $groupedPronostics = Pronostic::with(['game', 'game.sport'])
             ->join('games', 'pronostics.game_id', '=', 'games.id')
             ->join('sports', 'games.sport_id', '=', 'sports.id')
             ->where('pronostics.user_id', Auth::user()->id)
             ->where('games.date_time', '>', Carbon::now())
+            ->whereNull('pronostics.deleted_at')
             ->orderBy('games.date_time')
             ->select('pronostics.*', 'sports.id as sport_id', 'sports.title as sport_title')
             ->get()
@@ -41,7 +42,7 @@ class HomeController extends Controller
                 }
                 return $item->sport_title;
             });
-
+            
         $groupedPronostics->transform(function ($pronostics, $sportTitle) {
             // Vous pouvez personnaliser le sportTitle si nécessaire, comme ajouter une condition pour le groupe 5-6-7
             if ($sportTitle === 'Médailles') {
