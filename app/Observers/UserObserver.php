@@ -36,8 +36,8 @@ class UserObserver
         $leagueId = League::find(1)->first()->pluck('id')->toArray();
         $user->leagues()->sync($leagueId);
 
-        // Envoyer l'email de notification
-        Mail::to('a.pro.guyot@gmail.com')->send(new NewUserNotification($user));
+        // // Envoyer l'email de notification
+        // Mail::to('a.pro.guyot@gmail.com')->send(new NewUserNotification($user));
 
     }
 }

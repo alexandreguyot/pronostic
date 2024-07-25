@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes(['verify' => true]);
 
 Route::get('process-pronostic', [PronosticController::class, 'processPronostic'])->name('process-pronostic');
+Route::get('debug', [HomeController::class, 'debug'])->name('debug');
 
 Route::redirect('/', '/login');
 
