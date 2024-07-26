@@ -13,10 +13,10 @@
 </head>
 
 <body>
-    <div class="flex flex-col items-center min-h-screen mb-16">
+    <div class="flex flex-col items-center mb-16">
         @yield('content')
     </div>
-    <div class="fixed bottom-0 bg-menu py-4 w-full">
+    <div class="fixed bottom-0 bg-menu py-4 w-full z-2">
         <div class="flex justify-evenly text-white">
             <button class="text-white text-sm focus:outline-none">
                 <div class="items-center justify-center whitespace-nowrap">

@@ -19,21 +19,26 @@ class Rank extends Component
 
     public function mount()
     {
-        $this->leagues = Auth::user()->leagues()->with(['users.pronostics.game.sport', 'sports'])->get();
+        // Charger les ligues et les sports associés
+        $this->leagues = Auth::user()->leagues()->with('sports')->get();
         $this->selectedLeagueId = $this->leagues->first()->id ?? null;
         $this->updateSports();
-        $this->selectedSportTitle = $this->sports->first() ?? null;
+
+        // Sélectionner le premier sport
+        $this->selectedSportTitle = $this->sports->first() ?? 'Total';
+
+        // Charger les données pour le sport sélectionné
         $this->updateLeaguesWithPoints();
     }
 
     public function updatedSelectedLeagueId()
     {
         $this->updateSports();
-        $this->selectedSportTitle = $this->sports->first() ?? null;
+        $this->selectedSportTitle = $this->sports->first() ?? 'Total';
         $this->updateLeaguesWithPoints();
     }
 
-    public function updatedSelectedSportTitle()
+    public function updatedSelectedSportTitle($sport)
     {
         $this->updateLeaguesWithPoints();
     }
@@ -52,14 +57,24 @@ class Rank extends Component
 
     private function updateLeaguesWithPoints()
     {
-        $this->leaguesWithPoints = $this->leagues->map(function ($league) {
-            $users = $league->users->map(function ($user) use ($league) {
+        $sportTitle = $this->selectedSportTitle;
+
+        $this->leaguesWithPoints = $this->leagues->map(function ($league) use ($sportTitle) {
+            $users = $league->users()->with(['pronostics.game' => function($query) use ($sportTitle) {
+                $query->whereHas('sport', function($q) use ($sportTitle) {
+                    if ($sportTitle == 'Médailles') {
+                        $q->whereIn('sports.id', [5, 6, 7]);
+                    } elseif ($sportTitle != 'Total') {
+                        $q->where('sports.title', $sportTitle);
+                    }
+                });
+            }])->get()->map(function ($user) use ($league, $sportTitle) {
                 $totalPoints = 0;
                 $sportsPoints = collect();
 
                 foreach ($user->pronostics as $pronostic) {
                     $game = $pronostic->game;
-                    if ($league->sports->contains($game->sport)) {
+                    if ($game && $league->sports->contains($game->sport)) {
                         $sportTitle = in_array($game->sport->id, [5, 6, 7]) ? 'Médailles' : $game->sport->title;
                         if (!$sportsPoints->has($sportTitle)) {
                             $sportsPoints->put($sportTitle, 0);
@@ -72,11 +87,8 @@ class Rank extends Component
                         }
                     }
                 }
-
-                // Ajouter les points au modèle utilisateur
                 $user->setAttribute('total_points', $totalPoints);
                 $user->setAttribute('sports_points', $sportsPoints);
-
                 return $user;
             })->sortByDesc('total_points');
 
@@ -99,7 +111,7 @@ class Rank extends Component
         return view('livewire.site.rank', [
             'leaguesWithPoints' => $this->leaguesWithPoints,
             'leagues' => $this->leagues,
-            'sports' => $this->sports,
+            'sports' => $this->sports
         ]);
     }
 }
