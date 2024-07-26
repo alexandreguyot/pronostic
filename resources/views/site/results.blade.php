@@ -49,7 +49,12 @@
                                     <div class="mb-2">
                                         {{ $pronostic->game->getHourView() }}
                                     </div>
-                                    @livewire('site.pronos', ['pronostic' => $pronostic])
+                                    <div class="flex space-x-4 w-full">
+                                        <input type="number" class="block py-3 text-sm font-extrabold text-center text-gray-900 bg-white rounded-lg w-16 h-9 input-pronostic" wire:model="pronostic.score_home" disabled/>
+                                        @if($pronostic->game->exterior_team_id)
+                                            <input type="number" class="block py-3 text-sm font-extrabold text-center text-gray-900 bg-white rounded-lg w-16 h-9 input-pronostic" wire:model="pronostic.score_exterior" disabled/>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                             <div class="flex flex-col items-center justify-center w-1/3">

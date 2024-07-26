@@ -20,6 +20,7 @@
                         </th>
                         <th>
                             {{ trans('cruds.game.fields.date_time') }}
+                            @include('components.table.sort', ['field' => 'date_time'])
                         </th>
                         <th>
                             {{ trans('cruds.game.fields.home_team') }}
@@ -35,6 +36,7 @@
                         </th>
                         <th>
                             {{ trans('cruds.game.fields.sport') }}
+                            @include('components.table.sort', ['field' => 'sport.title'])
                         </th>
                         <th>
                         </th>
