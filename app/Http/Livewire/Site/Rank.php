@@ -64,7 +64,8 @@ class Rank extends Component
                         if (!$sportsPoints->has($sportTitle)) {
                             $sportsPoints->put($sportTitle, 0);
                         }
-                        if ($game->date_time < Carbon::now() && $game->home_score !== null && $game->exterior_score !== null) {
+
+                        if (Carbon::now()->gte(Carbon::createFromFormat(config('project.datetime_format'), $game->date_time)) && $game->home_score !== null && $game->exterior_score !== null) {
                             $points = $pronostic->points ?? 0;
                             $totalPoints += $points;
                             $sportsPoints[$sportTitle] += $points;

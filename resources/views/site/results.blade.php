@@ -32,9 +32,9 @@
                             @if($pronostic->game->competition)
                                 <span>{{ $pronostic->game->competition->title ?? '' }}</span>
                             @endif
-                            <span>{{ $pronostic->game->getDateView() }}</span>
+                            <span class="font-bold">{{ $pronostic->game->getDateView() }} - {{ $pronostic->game->getHourView() }}</span>
                             @if($pronostic->game->sport)
-                                <span>{{ $pronostic->game->sport->title ?? '' }}</span>
+                                <span>{{ $pronostic->game->sport->title ?? '' }} {{ $pronostic->game->tour ?? '' }}</span>
                             @endif
                         </div>
                         <div class="flex py-2">
@@ -46,14 +46,17 @@
                             </div>
                             <div class="flex items-center justify-center w-1/3">
                                 <div class="flex flex-col items-center">
-                                    <div class="mb-2">
-                                        {{ $pronostic->game->getHourView() }}
-                                    </div>
-                                    <div class="flex space-x-4 w-full">
-                                        <input type="number" class="block py-3 text-sm font-extrabold text-center text-gray-900 bg-white rounded-lg w-16 h-9 input-pronostic" wire:model="pronostic.score_home" disabled/>
-                                        @if($pronostic->game->exterior_team_id)
-                                            <input type="number" class="block py-3 text-sm font-extrabold text-center text-gray-900 bg-white rounded-lg w-16 h-9 input-pronostic" wire:model="pronostic.score_exterior" disabled/>
-                                        @endif
+                                    <div>
+                                        <p>Pronostics :
+                                            <span class="text-focusBlueSite">{{ $pronostic->score_home }} - {{ $pronostic->score_exterior}}</span>
+                                            </p>
+                                        <p>Resultats :
+                                            <span class="text-focusBlueSite">{{ $pronostic->game->home_score }} - {{ $pronostic->game->exterior_score}}
+                                                </span>
+                                            </p>
+                                        <p>Points gagnés :
+                                            <span class="text-focusBlueSite">{{ $pronostic->points ?? 0 }}</span>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
