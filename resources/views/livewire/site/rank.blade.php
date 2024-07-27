@@ -31,7 +31,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="bg-transparent">
-                                    @foreach ($leagueData['users'] as $index => $user)
+                                    @foreach ($leagueData['users']->sortByDesc('sports_points') as $index => $user)
                                         @if ($user->sports_points->has($selectedSportTitle))
                                             <tr class="text-center border-b-2 border-b-white/30">
                                                 <td class="py-2 px-4 border-right">{{ $index + 1 }}</td>
