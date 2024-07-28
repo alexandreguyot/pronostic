@@ -126,4 +126,12 @@ class Game extends Model
         return $builder->where('date_time', '<', Carbon::now());
     }
 
+    public function passed()
+    {
+        if ($this->id === 34) {
+            dd(Carbon::createFromFormat(config('project.datetime_format'), $this->date_time), Carbon::now(),Carbon::now()->gte(Carbon::createFromFormat(config('project.datetime_format'), $this->date_time)));
+        }
+        return Carbon::now()->gte(Carbon::createFromFormat(config('project.datetime_format'), $this->date_time));
+    }
+
 }
