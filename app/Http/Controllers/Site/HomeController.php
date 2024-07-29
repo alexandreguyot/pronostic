@@ -68,11 +68,15 @@ class HomeController extends Controller
     }
 
     public function pronos() {
+        // Récupérer les ligues de l'utilisateur et leurs sports associés
+        $userLeagues = Auth::user()->leagues()->with('sports')->get();
+        $leagueSportIds = $userLeagues->pluck('sports.*.id')->flatten()->unique()->toArray();
         $groupedPronostics = Pronostic::with(['game', 'game.sport'])
             ->join('games', 'pronostics.game_id', '=', 'games.id')
             ->join('sports', 'games.sport_id', '=', 'sports.id')
             ->where('pronostics.user_id', Auth::user()->id)
             ->where('games.date_time', '>', Carbon::now())
+            ->whereIn('sports.id', $leagueSportIds)
             ->whereNull('pronostics.deleted_at')
             ->orderBy('games.date_time')
             ->get();
@@ -86,11 +90,15 @@ class HomeController extends Controller
     }
 
     public function results() {
+        // Récupérer les ligues de l'utilisateur et leurs sports associés
+        $userLeagues = Auth::user()->leagues()->with('sports')->get();
+        $leagueSportIds = $userLeagues->pluck('sports.*.id')->flatten()->unique()->toArray();
         $groupedPronostics = Pronostic::with(['game', 'game.sport'])
             ->join('games', 'pronostics.game_id', '=', 'games.id')
             ->join('sports', 'games.sport_id', '=', 'sports.id')
             ->where('pronostics.user_id', Auth::user()->id)
             ->where('games.date_time', '<', Carbon::now())
+            ->whereIn('sports.id', $leagueSportIds)
             ->orderBy('games.date_time')
             ->select('pronostics.*', 'sports.id as sport_id', 'sports.title as sport_title')
             ->get()
