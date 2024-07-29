@@ -59,7 +59,7 @@ class PronosticController extends Controller
         ->where('user_id', $user->id)
         ->whereHas('game', function ($query) {
             $query->where('date_time', '>', Carbon::tomorrow());
-            $query->whereIn('sport_id', [1,3]);
+            $query->where('sport_id', 1);
         })
         ->get();
         $pronostics->each(function ($item, $key) use ($userBCR) {
