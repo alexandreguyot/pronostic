@@ -11,7 +11,7 @@ use Livewire\Component;
 class Create extends Component
 {
     public array $user = [];
-    public array $competition = [];
+    public string $competition = '';
     public array $sport = [];
 
     public array $listsForFields = [];
@@ -54,18 +54,35 @@ class Create extends Component
             'user.*.id' => [
                 'integer',
                 'exists:users,id',
+            ],
+            'competition' => [
+                'string',
+                'nullable',
+            ],
+            'sport' => [
+                'array',
+            ],
+            'sport.*.id' => [
+                'integer',
+                'exists:sports,id',
             ]
         ];
     }
 
-    public function updatedLeagueCompetitionId($value) {
-        $this->league->competition_id = $value;
+    public function updatedCompetition($value) {
+        if ($value) {
+            // $this->listsForFields['sports'] = Competition::whereId($value)->first()->sport->pluck('title', 'id')->toArray();
+        }
     }
 
     protected function initListsForFields(): void
     {
-        $this->listsForFields['user'] = User::pluck('name', 'id')->toArray();
+        $users = User::all();
+
+        $this->listsForFields['user'] = $users->mapWithKeys(function ($user) {
+            return [$user->id => $user->fullname];
+        })->toArray();
         $this->listsForFields['competition'] = Competition::pluck('title', 'id')->toArray();
-        $this->listsForFields['sport'] = [];
+        $this->listsForFields['sports'] = Competition::whereId(1)->first()->sport->pluck('title', 'id')->toArray();
     }
 }

@@ -11,7 +11,7 @@ use Livewire\Component;
 class Edit extends Component
 {
     public array $user = [];
-    public array $competition = [];
+    public string $competition = '';
     public array $sport = [];
 
     public array $listsForFields = [];
@@ -62,12 +62,26 @@ class Edit extends Component
                 'integer',
                 'exists:users,id',
             ],
+            'competition' => [
+                'string',
+                'nullable',
+            ],
+            'sport' => [
+                'array',
+            ],
+            'sport.*.id' => [
+                'integer',
+                'exists:sports,id',
+            ]
         ];
     }
 
     protected function initListsForFields(): void
     {
-        $this->listsForFields['user'] = User::pluck('name', 'id')->toArray();
+        $users = User::all();
+        $this->listsForFields['user'] = $users->mapWithKeys(function ($user) {
+            return [$user->id => $user->fullname];
+        })->toArray();
         $this->listsForFields['competition'] = Competition::pluck('title', 'id')->toArray();
         $this->listsForFields['sport'] =  Sport::pluck('title', 'id')->toArray();
     }

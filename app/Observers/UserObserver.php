@@ -33,11 +33,15 @@ class UserObserver
             ]);
         }
 
-        $leagueId = League::find(1)->first()->pluck('id')->toArray();
+        if (str_contains($user->email, 'wiztivi')) {
+            $leagueId = League::find(1)->first()->pluck('id')->toArray();
+        } else {
+            League::find(2)->first()->pluck('id')->toArray();
+        }
         $user->leagues()->sync($leagueId);
 
-        // // Envoyer l'email de notification
-        // Mail::to('a.pro.guyot@gmail.com')->send(new NewUserNotification($user));
+        // Envoyer l'email de notification
+        Mail::to('a.pro.guyot@gmail.com')->send(new NewUserNotification($user));
 
     }
 }

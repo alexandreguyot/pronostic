@@ -10,21 +10,21 @@
             {{ trans('cruds.league.fields.title_helper') }}
         </div>
     </div>
-    <div class="form-group {{ $errors->has('league.competition_id') ? 'invalid' : '' }}">
-        <label class="form-label" for="competition_id">{{ trans('cruds.league.fields.competition') }}</label>
-        <x-select-list class="form-control" id="competition_id" name="competition_id" wire:model="competition" :options="$this->listsForFields['competition']"/>
+    <div class="form-group {{ $errors->has('league.competition') ? 'invalid' : '' }}">
+        <label class="form-label" for="competition">{{ trans('cruds.league.fields.competition') }}</label>
+        <x-select-list class="form-control" id="competition" name="competition" wire:model="competition" :options="$this->listsForFields['competition']"/>
         <div class="validation-message">
-            {{ $errors->first('league.competition_id') }}
+            {{ $errors->first('league.competition') }}
         </div>
         <div class="help-block">
             {{ trans('cruds.league.fields.competition_helper') }}
         </div>
     </div>
-    <div class="form-group {{ $errors->has('league.sport_id') ? 'invalid' : '' }}">
-        <label class="form-label" for="sport_id">{{ trans('cruds.league.fields.sport') }}</label>
-        <x-select-list class="form-control" id="sport_id" name="sport_id" wire:model="sport" :options="$this->listsForFields['sport']" multiple/>
+    <div class="form-group {{ $errors->has('league.sport') ? 'invalid' : '' }}">
+        <label class="form-label" for="sport">{{ trans('cruds.league.fields.sport') }}</label>
+        <x-select-list class="form-control" id="sport" name="sport" wire:model="sport" :options="$this->listsForFields['sport']" multiple/>
         <div class="validation-message">
-            {{ $errors->first('league.sport_id') }}
+            {{ $errors->first('league.sport') }}
         </div>
         <div class="help-block">
             {{ trans('cruds.league.fields.sport_helper') }}

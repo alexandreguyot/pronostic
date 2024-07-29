@@ -86,6 +86,15 @@ class User extends Authenticatable implements HasLocalePreference, MustVerifyEma
         return $this->roles()->where('title', 'Admin')->exists();
     }
 
+
+    /**
+     * Getter Mutateur - Récupère le nom complet du membre
+     * @return string
+     */
+    public function getFullnameAttribute(){
+        return "{$this->firstname} {$this->name}";
+    }
+
     public function scopeAdmins()
     {
         return $this->whereHas('roles', fn ($q) => $q->where('title', 'Admin'));
