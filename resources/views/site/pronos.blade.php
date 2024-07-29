@@ -24,18 +24,18 @@
                 Pour les matchs de basket et handball vous avez jusqu'à la date de la rencontre pour faire vos pronos. Pour les médailles, vous avez jusqu'au 6 août pour faire vos pronostics.
             </small>
         </div>
-        @foreach ($groupedPronostics as $sportTitle => $data)
+        @foreach ($groupedPronostics as $key => $pronostic)
             <div class="mb-4 border border-gray-200 rounded-lg overflow-hidden">
-                <div class="bg-gradient-sport-title text-white px-4 py-2 cursor-pointer flex w-full h-20 justify-evenly" onclick="toggleAccordion('{{ Str::slug($sportTitle) }}')">
+                {{-- <div class="bg-gradient-sport-title text-white px-4 py-2 cursor-pointer flex w-full h-20 justify-evenly" onclick="toggleAccordion('{{ Str::slug($sportTitle) }}')">
                     @if ($data['url'])
                         <img src="{{ $data['url'] }}" alt="Image pour {{ $sportTitle }}">
                     @endif
                     <h2 class="text-lg pt-[20px]">{{ $sportTitle }}</h2>
                     <div></div>
-                </div>
-                <div id="{{ Str::slug($sportTitle) }}" class="hidden">
-                    @foreach ($data['pronostics'] as $pronostic)
-                            @if(!$pronostic->game->passed())
+                </div> --}}
+                <div>
+                    {{-- @foreach ($data['pronostics'] as $pronostic) --}}
+                        @if(!$pronostic->game->passed())
                             <div class="border-b border-gray-200 font-bold">
                                 <div class="flex  w-full bg-gradient-date text-white py-2 text-sm items-center">
                                     @if($pronostic->game->competition)
@@ -69,7 +69,7 @@
                                 </div>
                             </div>
                         @endif
-                    @endforeach
+                    {{-- @endforeach --}}
                 </div>
             </div>
         @endforeach
