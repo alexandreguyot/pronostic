@@ -26,7 +26,7 @@
                     <div></div>
                 </div> --}}
                 <div>
-                    <div class="border-b border-gray-200">
+                    <div class="border-b border-gray-200 font-bold">
                         <div class="flex  w-full bg-gradient-date text-white py-2 text-sm items-center">
                             @if($pronostic->game->competition)
                                 <span class="flex justify-center w-1/3">{{ $pronostic->game->competition->title ?? '' }}</span>
