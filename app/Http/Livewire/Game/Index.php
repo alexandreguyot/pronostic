@@ -94,7 +94,7 @@ class Index extends Component
         })
         ->when($this->sports, function($query) {
             return $query->whereHas('sport', function($query) {
-                return $query->whereIn('sport.id', $this->sports);
+                return $query->whereIn('sports.id', $this->sports);
             });
         });;
 
