@@ -9,8 +9,8 @@ Auth::routes(['verify' => true]);
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::redirect('/', '/pronostics');
-    Route::get('/pronostics', [SiteHomeController::class, 'pronostics'])->name('pronostics');
-    Route::get('/resultats', [SiteHomeController::class, 'results'])->name('results');
+    Route::get('/pronostics', [SiteHomeController::class, 'pronos'])->name('pronostics');
+    Route::get('/resultats', [SiteHomeController::class, 'results2'])->name('results');
     Route::get('/classements', [SiteHomeController::class, 'rank'])->name('rank');
     Route::get('/reglements', [SiteHomeController::class, 'rules'])->name('rules');
     Route::get('/ligues', [SiteHomeController::class, 'leagues'])->name('leagues');
