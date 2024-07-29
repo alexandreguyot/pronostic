@@ -1,15 +1,25 @@
 <div>
-    <div class="flex">
-        <div class="w-1/2 px-3 py-3">
-            Recherche:
-            <input type="text" wire:model.debounce.300ms="search" class="inline-block sm:w-1/3" />
-        </div>
-        <div class="w-1/2 px-3 py-3">
-            Date:
-            <input type="text" wire:model.debounce.300ms="date" class="inline-block sm:w-1/3" />
+    <div class="w-full px-2 py-3 text-white bg-activityHover">
+        <div class="w-full">
+            <div class="flex flex-row justify-between space-x-8">
+                <div class="w-1/4">
+                    <input type="text" placeholder="Recherche" wire:model.debounce.300ms="search"
+                    class="form-control" />
+                </div>
+                <div class="w-1/4">
+                    <input type="text" placeholder="Date" wire:model.debounce.300ms="date"
+                    class="form-control" />
+                </div>
+                <div class="w-1/4">
+                    <x-select-list class="form-control"
+                    id="sport" name="sport"
+                    wire:model="sports"
+                    placeholder="Sports"
+                    :options="$this->listsForFields['sports']" multiple/>
+                </div>
+            </div>
         </div>
     </div>
-
     <div wire:loading.delay>
         Loading...
     </div>

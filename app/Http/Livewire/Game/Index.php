@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Game;
 use App\Http\Livewire\WithConfirmation;
 use App\Http\Livewire\WithSorting;
 use App\Models\Game;
+use App\Models\Sport;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Gate;
 use Livewire\Component;
@@ -20,6 +21,7 @@ class Index extends Component
 
     public string $search = '';
     public string $date = '';
+    public array $sports = [];
 
     public array $selected = [];
 
@@ -27,6 +29,9 @@ class Index extends Component
 
     protected $queryString = [
         'date' => [
+            'except' => '',
+        ],
+        'sport' => [
             'except' => '',
         ],
         'search' => [
@@ -67,6 +72,7 @@ class Index extends Component
         $this->perPage           = 100;
         $this->paginationOptions = config('project.pagination.options');
         $this->orderable         = (new Game())->orderable;
+        $this->listsForFields['sports'] = Sport::all()->pluck('title', 'id')->toArray();
     }
 
     public function render()
@@ -83,7 +89,12 @@ class Index extends Component
             $date = array_reverse($date);
             $date = implode('-', $date);
             $query->where('date', 'like', '%'.$date.'%');
-        });
+        })
+        ->when($this->sports, function($query) {
+            return $query->whereHas('sport', function($query) {
+                return $query->whereIn('sport.id', $this->sports);
+            });
+        });;
 
         $games = $query->paginate($this->perPage);
 
