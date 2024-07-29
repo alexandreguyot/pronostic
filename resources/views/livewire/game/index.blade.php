@@ -1,8 +1,15 @@
 <div>
-    <div class="w-full px-3 py-3">
-        Recherche:
-        <input type="text" wire:model.debounce.300ms="search" class="inline-block w-full sm:w-1/3" />
+    <div class="flex">
+        <div class="w-1/2 px-3 py-3">
+            Recherche:
+            <input type="text" wire:model.debounce.300ms="search" class="inline-block sm:w-1/3" />
+        </div>
+        <div class="w-1/2 px-3 py-3">
+            Date:
+            <input type="text" wire:model.debounce.300ms="date" class="inline-block sm:w-1/3" />
+        </div>
     </div>
+
     <div wire:loading.delay>
         Loading...
     </div>
@@ -54,7 +61,7 @@
                                 {{ $game->tour }}
                             </td>
                             <td>
-                                {{ $game->date_time }}
+                                {{ $game->getDateViewDayMonthYear() }} - {{ $game->getHourView()}}
                             </td>
                             <td>
                                 @if($game->homeTeam)

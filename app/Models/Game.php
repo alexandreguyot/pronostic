@@ -82,6 +82,10 @@ class Game extends Model
         return Carbon::createFromFormat(config('project.datetime_format'), $this->date_time)->formatLocalized('%A %d %B');
     }
 
+    public function getDateViewDayMonthYear() {
+        return Carbon::createFromFormat(config('project.datetime_format'), $this->date_time)->format('d/m/Y');
+    }
+
     public function getHourView() {
         return Carbon::createFromFormat(config('project.datetime_format'), $this->date_time)->format('H:i');
     }

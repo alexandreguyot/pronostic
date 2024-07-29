@@ -19,12 +19,16 @@ class Index extends Component
     public array $orderable;
 
     public string $search = '';
+    public string $date = '';
 
     public array $selected = [];
 
     public array $paginationOptions;
 
     protected $queryString = [
+        'date' => [
+            'except' => '',
+        ],
         'search' => [
             'except' => '',
         ],
@@ -72,6 +76,14 @@ class Index extends Component
             'order_column'    => $this->sortBy,
             'order_direction' => $this->sortDirection,
         ]);
+
+        $query->when($this->date, function($query) {
+            $date = str_replace("/", "-", $this->date);
+            $date = explode('-', $date);
+            $date = array_reverse($date);
+            $date = implode('-', $date);
+            $query->where('date', 'like', '%'.$date.'%');
+        });
 
         $games = $query->paginate($this->perPage);
 
