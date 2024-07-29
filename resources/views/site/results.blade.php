@@ -27,14 +27,16 @@
                 </div>
                 <div id="{{ Str::slug($sportTitle) }}" class="hidden">
                     @foreach ($data['pronostics'] as $pronostic)
-                        <div class="border-b border-gray-200">
-                            <div class="flex justify-between w-full bg-gradient-date text-white px-4 py-2 text-sm">
+                        <div class="border-b border-gray-200 font-bold">
+                            <div class="flex w-full bg-gradient-date text-white py-2 text-sm items-center">
                                 @if($pronostic->game->competition)
-                                    <span>{{ $pronostic->game->competition->title ?? '' }}</span>
+                                    <span class="flex justify-center w-1/3">{{ $pronostic->game->competition->title ?? '' }}</span>
                                 @endif
-                                <span class="font-bold">{{ $pronostic->game->getDateView() }} - {{ $pronostic->game->getHourView() }}</span>
+                                <span class="flex justify-center w-1/3">{{ $pronostic->game->getDateView() }} - {{ $pronostic->game->getHourView() }}</span>
                                 @if($pronostic->game->sport)
-                                    <span>{{ $pronostic->game->sport->title ?? '' }} {{ $pronostic->game->tour ?? '' }}</span>
+                                    <div class="flex justify-center items-center w-1/3">
+                                        <img class="h-12 w-12 m-2" src="{{ $pronostic->game->sport->getPictoAttribute()->pluck('url')->first() }}" alt="">{{ $pronostic->game->sport->title ?? '' }} {{ $pronostic->game->tour ? '- ' . $pronostic->game->tour : ''   }}
+                                    </div>
                                 @endif
                             </div>
                             <div class="flex py-2">
