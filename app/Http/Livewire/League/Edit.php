@@ -22,7 +22,7 @@ class Edit extends Component
     {
         $this->league = $league;
         $this->user         = $this->league->users()->pluck('id')->toArray();
-        $this->competition         = $this->league->competitions()->pluck('id')->toArray();
+        $this->competition         = $this->league->competitions()->pluck('id')->first();
         $this->sport         = $this->league->sports()->pluck('id')->toArray();
         $this->initListsForFields();
     }
