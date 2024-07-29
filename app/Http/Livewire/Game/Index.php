@@ -25,14 +25,16 @@ class Index extends Component
 
     public array $selected = [];
 
+    public array $listsForFields = [];
+
     public array $paginationOptions;
 
     protected $queryString = [
         'date' => [
             'except' => '',
         ],
-        'sport' => [
-            'except' => '',
+       'sports' => [
+            'compact' => ',',
         ],
         'search' => [
             'except' => '',

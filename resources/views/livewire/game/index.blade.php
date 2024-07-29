@@ -12,7 +12,7 @@
                 </div>
                 <div class="w-1/4">
                     <x-select-list class="form-control"
-                    id="sport" name="sport"
+                    id="sports" name="sports"
                     wire:model="sports"
                     placeholder="Sports"
                     :options="$this->listsForFields['sports']" multiple/>
