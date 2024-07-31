@@ -49,7 +49,7 @@
                         <tr>
                             <td>
                                 @if($pronostic->user)
-                                    <span class="badge badge-relationship">{{ $pronostic->user->firstname . ' ' . $pronostic->user->name }} </span>
+                                    <span class="badge badge-relationship">{{ $pronostic->user->id .' - '. $pronostic->user->firstname . ' ' . $pronostic->user->name }} </span>
                                 @endif
                             </td>
                             <td>
