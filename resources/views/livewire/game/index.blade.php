@@ -78,10 +78,10 @@
                                     <span class="badge badge-relationship">{{ $game->homeTeam->name ?? '' }}</span>
                                 @endif
                             </td>
-                            <td>
+                            <td class="text-center">
                                 {{ $game->home_score }}
                             </td>
-                            <td>
+                            <td class="text-center">
                                 {{ $game->exterior_score }}
                             </td>
                             <td>
@@ -96,11 +96,6 @@
                             </td>
                             <td>
                                 <div class="flex justify-end">
-                                    @can('game_show')
-                                        <a class="mr-2 btn btn-sm btn-info" href="{{ route('admin.games.show', $game) }}">
-                                            {{ trans('global.view') }}
-                                        </a>
-                                    @endcan
                                     @can('game_edit')
                                         <a class="mr-2 btn btn-sm btn-success" href="{{ route('admin.games.edit', $game) }}">
                                             {{ trans('global.edit') }}

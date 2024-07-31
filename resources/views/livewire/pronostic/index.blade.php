@@ -13,23 +13,27 @@
                 <thead>
                     <tr>
                         <th>
+                            Utilisateur
+                            @include('components.table.sort', ['field' => 'game.date_time'])
+                        </th>
+                        <th>
                             {{ trans('cruds.pronostic.fields.game') }}
                             @include('components.table.sort', ['field' => 'game.date_time'])
                         </th>
                         <th>
-                            {{ trans('cruds.game.fields.home_score') }}
+                            Res. Score Dom.
                             @include('components.table.sort', ['field' => 'game.home_score'])
                         </th>
                         <th>
-                            {{ trans('cruds.game.fields.exterior_score') }}
+                            Res. Score Ext.
                             @include('components.table.sort', ['field' => 'game.exterior_score'])
                         </th>
                         <th>
-                            {{ trans('cruds.pronostic.fields.score_home') }}
+                            Pronos score Dom.
                             @include('components.table.sort', ['field' => 'score_home'])
                         </th>
                         <th>
-                            {{ trans('cruds.pronostic.fields.score_exterior') }}
+                            Pronos score Ext.
                             @include('components.table.sort', ['field' => 'score_exterior'])
                         </th>
                         <th>
@@ -44,27 +48,32 @@
                     @forelse($pronostics as $pronostic)
                         <tr>
                             <td>
-                                @if($pronostic->game)
-                                    <span class="badge badge-relationship">{{ $pronostic->game->date_time ?? '' }}</span>
+                                @if($pronostic->user)
+                                    <span class="badge badge-relationship">{{ $pronostic->user->firstname . ' ' . $pronostic->user->name }} </span>
                                 @endif
                             </td>
                             <td>
+                                @if($pronostic->game)
+                                    <span class="badge badge-relationship">{{ $pronostic->game->getDateViewDayMonthYear() ?? '' }} - {{ $pronostic->game->homeTeam->name ?? '' }}  {{ $pronostic->game->exteriorTeam && $pronostic->game->exteriorTeam->name ? 'vs ' . $pronostic->game->exteriorTeam->name :  '' }}</span>
+                                @endif
+                            </td>
+                            <td class="text-center">
                                 @if($pronostic->game)
                                     {{ $pronostic->game->home_score ?? '' }}
                                 @endif
                             </td>
-                            <td>
+                            <td class="text-center">
                                 @if($pronostic->game)
                                     {{ $pronostic->game->exterior_score ?? '' }}
                                 @endif
                             </td>
-                            <td>
+                            <td class="text-center">
                                 {{ $pronostic->score_home }}
                             </td>
-                            <td>
+                            <td class="text-center">
                                 {{ $pronostic->score_exterior }}
                             </td>
-                            <td>
+                            <td class="text-center">
                                 {{ $pronostic->points }}
                             </td>
                             <td>
