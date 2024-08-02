@@ -17,6 +17,9 @@
                             @include('components.table.sort', ['field' => 'game.date_time'])
                         </th>
                         <th>
+                            Sport
+                        </th>
+                        <th>
                             {{ trans('cruds.pronostic.fields.game') }}
                             @include('components.table.sort', ['field' => 'game.date_time'])
                         </th>
@@ -29,11 +32,11 @@
                             @include('components.table.sort', ['field' => 'game.exterior_score'])
                         </th>
                         <th>
-                            Pronos score Dom.
+                            Pro Dom.
                             @include('components.table.sort', ['field' => 'score_home'])
                         </th>
                         <th>
-                            Pronos score Ext.
+                            Pro Ext.
                             @include('components.table.sort', ['field' => 'score_exterior'])
                         </th>
                         <th>
@@ -50,6 +53,11 @@
                             <td>
                                 @if($pronostic->user)
                                     <span class="badge badge-relationship">{{ $pronostic->user->id .' - '. $pronostic->user->firstname . ' ' . $pronostic->user->name }} </span>
+                                @endif
+                            </td>
+                            <td>
+                                @if($pronostic->game->sport)
+                                    <span class="badge badge-relationship">{{ $pronostic->game->sport->title }}</span>
                                 @endif
                             </td>
                             <td>
