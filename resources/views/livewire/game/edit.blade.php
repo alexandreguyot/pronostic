@@ -42,7 +42,11 @@
     </div>
     <div class="form-group {{ $errors->has('game.home_team_id') ? 'invalid' : '' }}">
         <label class="form-label required" for="home_team">{{ trans('cruds.game.fields.home_team') }}</label>
-        <x-select-list class="form-control" required id="home_team" name="home_team" :options="$this->listsForFields['home_team']" wire:model="game.home_team_id" />
+        <select class="form-control" id="home_team_id" wire:model="game.home_team_id" data-placeholder="{{ trans('global.select_option') }}">
+            @foreach($this->listsForFields['home_team'] as $key => $value)
+                <option value="{{ $key }}" wire:key="{{ $key }}">{{ $value }}</option>
+            @endforeach
+        </select>
         <div class="validation-message">
             {{ $errors->first('game.home_team_id') }}
         </div>
@@ -62,7 +66,11 @@
     </div>
     <div class="form-group {{ $errors->has('game.exterior_team_id') ? 'invalid' : '' }}">
         <label class="form-label" for="exterior_team">{{ trans('cruds.game.fields.exterior_team') }}</label>
-        <x-select-list class="form-control" id="exterior_team" name="exterior_team" :options="$this->listsForFields['exterior_team']" wire:model="game.exterior_team_id" />
+        <select class="form-control" id="exterior_team" wire:model="game.exterior_team_id" data-placeholder="{{ trans('global.select_option') }}">
+            @foreach($this->listsForFields['exterior_team'] as $key => $value)
+                <option value="{{ $key }}" wire:key="{{ $key }}">{{ $value }}</option>
+            @endforeach
+        </select>
         <div class="validation-message">
             {{ $errors->first('game.exterior_team_id') }}
         </div>

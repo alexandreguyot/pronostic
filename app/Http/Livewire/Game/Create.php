@@ -94,8 +94,19 @@ class Create extends Component
     protected function initListsForFields(): void
     {
         $this->listsForFields['competition']   = Competition::pluck('title', 'id')->toArray();
-        $this->listsForFields['home_team']     = Team::pluck('name', 'id')->toArray();
-        $this->listsForFields['exterior_team'] = Team::pluck('name', 'id')->toArray();
+        $this->listsForFields['home_team']     = [];
+        $this->listsForFields['exterior_team'] = [];
         $this->listsForFields['sport']         = Sport::pluck('title', 'id')->toArray();
+    }
+
+    public function updatedGameSportId($value) {
+        if ($value) {
+            $teams = Team::where('sport_id', $value)->orderBy('name')->pluck('name', 'id')->toArray();
+            $this->listsForFields['home_team'] = $teams;
+            $this->listsForFields['exterior_team'] = $teams;
+        } else {
+            $this->listsForFields['home_team'] = [];
+            $this->listsForFields['exterior_team'] = [];
+        }
     }
 }

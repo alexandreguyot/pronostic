@@ -54,8 +54,8 @@
         if (data === "") {
             data = null
         }
-@this.set('{{ $attributes['wire:model'] }}', data)
-    });
-});
+        @this.set('{{ $attributes['wire:model'] }}', data)
+            });
+        });
     </script>
 @endpush

@@ -83,10 +83,19 @@ class Edit extends Component
         $this->listsForFields['competition']   = Competition::pluck('title', 'id')->toArray();
         $this->listsForFields['home_team']     = Team::whereHas('sport', function ($query) {
             $query->where('id', $this->game->sport_id);
-        })->pluck('name', 'id')->toArray();
+        })->orderBy('name')->pluck('name', 'id')->toArray();
         $this->listsForFields['exterior_team'] = Team::whereHas('sport', function ($query) {
             $query->where('id', $this->game->sport_id);
-        })->pluck('name', 'id')->toArray();
+        })->orderBy('name')->pluck('name', 'id')->toArray();
         $this->listsForFields['sport']         = Sport::pluck('title', 'id')->toArray();
+    }
+
+    public function updatedGameSportId($value) {
+        $this->listsForFields['home_team'] = Team::whereHas('sport', function ($query) use ($value) {
+            $query->where('id', $value);
+        })->orderBy('name')->pluck('name', 'id')->toArray();
+        $this->listsForFields['exterior_team'] = Team::whereHas('sport', function ($query) use ($value) {
+            $query->where('id', $value);
+        })->orderBy('name')->pluck('name', 'id')->toArray();
     }
 }
