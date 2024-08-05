@@ -6,6 +6,8 @@ use App\Models\Competition;
 use App\Models\Game;
 use App\Models\Sport;
 use App\Models\Team;
+use App\Models\User;
+use App\Models\Pronostic;
 use Livewire\Component;
 
 class Create extends Component
@@ -30,6 +32,15 @@ class Create extends Component
         $this->validate();
 
         $this->game->save();
+
+        $users = User::all();
+
+        foreach($users as $user) {
+            $pronostic = new Pronostic();
+            $pronostic->user_id = $user->id;
+            $pronostic->game_id = $this->game->id;
+            $pronostic->save();
+        }
 
         return redirect()->route('admin.games.index');
     }
