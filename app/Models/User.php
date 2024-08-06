@@ -59,7 +59,6 @@ class User extends Authenticatable implements HasLocalePreference, MustVerifyEma
         'locale',
     ];
 
-    protected $appends = ['total_points', 'sports_points'];
 
     public function getTotalPointsAttribute()
     {
