@@ -34,13 +34,19 @@ class HomeController extends Controller
                 if (in_array($item->sport_id, [5, 6, 7])) {
                     return 'Médailles';
                 }
+                if (in_array($item->sport_id, [8,9,10])) {
+                    return 'Médailles Paralympiques';
+                }
                 return $item->sport_title;
             });
 
         $groupedPronostics->transform(function ($pronostics, $sportTitle) {
             // Vous pouvez personnaliser le sportTitle si nécessaire, comme ajouter une condition pour le groupe 5-6-7
             if ($sportTitle === 'Médailles') {
-                $sportTitle = 'Médailles'; // Donnez un nom personnalisé à ce groupe
+                $sportTitle = 'Médailles';
+            }
+            if ($sportTitle === 'Médailles Paralympiques') {
+                $sportTitle = 'Médailles Paralympiques';
             }
 
             $sport = Sport::find($pronostics->first()->sport_id);
@@ -50,7 +56,13 @@ class HomeController extends Controller
              // Pour le groupe 'Médailles', trier les pronostics par sport_id
             if ($sportTitle === 'Médailles') {
                 $pronostics = $pronostics->sortBy(function ($pronostic) {
-                    return $pronostic->game->sport->id; // Triez par sport_id
+                    return $pronostic->game->sport->id;
+                });
+            }
+
+            if ($sportTitle === 'Médailles Paralympiques') {
+                $pronostics = $pronostics->sortBy(function ($pronostic) {
+                    return $pronostic->game->sport->id;
                 });
             }
 
@@ -101,6 +113,9 @@ class HomeController extends Controller
                 if (in_array($item->sport_id, [5, 6, 7])) {
                     return 'Médailles';
                 }
+                if (in_array($item->sport_id, [8,9,10])) {
+                    return 'Médailles Paralympiques';
+                }
                 return $item->sport_title;
             });
 
@@ -110,12 +125,21 @@ class HomeController extends Controller
                 $sportTitle = 'Médailles'; // Donnez un nom personnalisé à ce groupe
             }
 
+            if ($sportTitle === 'Médailles') {
+                $sportTitle = 'Médailles Paralympiques'; // Donnez un nom personnalisé à ce groupe
+            }
+
             $sport = Sport::find($pronostics->first()->sport_id);
             $mediaItem = $sport ? $sport->getPictoAttribute() : null;
             $url = $mediaItem ? $mediaItem->pluck('url')->first() : null;
 
              // Pour le groupe 'Médailles', trier les pronostics par sport_id
             if ($sportTitle === 'Médailles') {
+                $pronostics = $pronostics->sortBy(function ($pronostic) {
+                    return $pronostic->game->sport->id; // Triez par sport_id
+                });
+            }
+            if ($sportTitle === 'Médailles Paralympiques') {
                 $pronostics = $pronostics->sortBy(function ($pronostic) {
                     return $pronostic->game->sport->id; // Triez par sport_id
                 });
