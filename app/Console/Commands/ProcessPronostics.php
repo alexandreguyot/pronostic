@@ -23,15 +23,13 @@ class ProcessPronostics extends Command
 
         // Fetch pronostics for matches that have passed and have scores
         $pronostics = Pronostic::whereNull('points')
-        ->whereHas('game', function ($query) use ($now) {
-            $query->where('date_time', '<=', $now);
-        })
-        ->whereHas('game', function ($query) {
-            $query->whereNotNull('home_score')
-                ->whereNotNull('exterior_score');
-        })
-        ->get();
-
+            ->whereHas('game', function ($query) use ($now) {
+                $query->where('date_time', '<=', $now);
+            })
+            ->whereHas('game', function ($query) {
+                $query->whereNotNull('home_score');
+            })
+            ->get();
         foreach ($pronostics as $pronostic) {
             $game = $pronostic->game;
 
@@ -109,7 +107,6 @@ class ProcessPronostics extends Command
 
                 } elseif (in_array($sportId, [5, 6, 7])) { // Médailles
                     $medalDifference = abs($homeScore - $predictedHomeScore);
-
                     // Reset points for medals
                     $points = 0;
                     if ($homeScore == $predictedHomeScore) {

@@ -43,6 +43,7 @@
     <div class="form-group {{ $errors->has('game.home_team_id') ? 'invalid' : '' }}">
         <label class="form-label required" for="home_team">{{ trans('cruds.game.fields.home_team') }}</label>
         <select class="form-control" id="home_team_id" wire:model="game.home_team_id" data-placeholder="{{ trans('global.select_option') }}">
+            <option value=""></option>
             @foreach($this->listsForFields['home_team'] as $key => $value)
                 <option value="{{ $key }}" wire:key="{{ $key }}">{{ $value }}</option>
             @endforeach
@@ -67,6 +68,7 @@
     <div class="form-group {{ $errors->has('game.exterior_team_id') ? 'invalid' : '' }}">
         <label class="form-label" for="exterior_team">{{ trans('cruds.game.fields.exterior_team') }}</label>
         <select class="form-control" id="exterior_team" wire:model="game.exterior_team_id" data-placeholder="{{ trans('global.select_option') }}">
+            <option value=""></option>
             @foreach($this->listsForFields['exterior_team'] as $key => $value)
                 <option value="{{ $key }}" wire:key="{{ $key }}">{{ $value }}</option>
             @endforeach
