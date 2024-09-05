@@ -75,7 +75,11 @@ class Rank extends Component
             $league->sports->each(function ($sport, $k) use ($results, $league) {
                 $this->first_sport = $sport->title;
 
-                $sportTitle = in_array($sport->id, [5, 6, 7]) ? 'Médailles' : $sport->title;
+                if (in_array($sport->id, [8, 9, 10]) ) {
+                    $sportTitle = 'Médailles Paralympiques';
+                } else {
+                    $sportTitle = in_array($sport->id, [5, 6, 7]) ? 'Médailles' : $sport->title;
+                }
                 // Initialiser la structure des sports
                 $results['leagues'][$league->title]['sports']->put($sportTitle, collect());
                 $results['leagues'][$league->title]['sports']->put('Total', collect());
@@ -83,7 +87,13 @@ class Rank extends Component
                 // Traiter les utilisateurs de la ligue
                 $league->users->each(function ($user) use ($results, $sport, $league, $sportTitle) {
                     // Calculer les points par sport
-                    if (in_array($sport->id, [5, 6, 7])) {
+                    if (in_array($sport->id, [8, 9, 10])) {
+                        $totalBySport = Pronostic::whereHas('game', function ($query) use ($sport) {
+                            $query->whereIn('sport_id', [8, 9, 10]);
+                        })
+                        ->where('user_id', $user->id)
+                        ->sum('points');
+                    } elseif (in_array($sport->id, [5, 6, 7])) {
                         $totalBySport = Pronostic::whereHas('game', function ($query) use ($sport) {
                             $query->whereIn('sport_id', [5, 6, 7]);
                         })
