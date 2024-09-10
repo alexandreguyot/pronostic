@@ -119,6 +119,20 @@ class ProcessPronostics extends Command
                         $points = max($points, 5);
                     }
                 }
+                elseif (in_array($sportId, [8, 9, 10])) { // Médailles paralympiques
+                    $medalDifference = abs($homeScore - $predictedHomeScore);
+                    // Reset points for medals
+                    $points = 0;
+                    if ($homeScore == $predictedHomeScore) {
+                        $points = 15;
+                    }
+                    if ($medalDifference <= 5) {
+                        $points = max($points, 8);
+                    }
+                    if ($medalDifference <= 7) {
+                        $points = max($points, 5);
+                    }
+                }
 
                 // Check for correct winner or draw
                 if (in_array($sportId, [1, 2])) { // Basketball
