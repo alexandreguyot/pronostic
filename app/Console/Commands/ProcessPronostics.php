@@ -22,7 +22,7 @@ class ProcessPronostics extends Command
         $now = Carbon::now();
 
         // Fetch pronostics for matches that have passed and have scores
-        $pronostics = Pronostic::whereNull('points')
+        $pronostics = Pronostic::whereNull('points')->orWhere('points', 0)
             ->whereHas('game', function ($query) use ($now) {
                 $query->where('date_time', '<=', $now);
             })
@@ -30,6 +30,7 @@ class ProcessPronostics extends Command
                 $query->whereNotNull('home_score');
             })
             ->get();
+
         foreach ($pronostics as $pronostic) {
             $game = $pronostic->game;
 
